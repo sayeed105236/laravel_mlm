@@ -11,7 +11,7 @@
     <meta name="keywords" content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
     <title>Dashboard ecommerce - Vuexy - Bootstrap HTML admin template</title>
-  @include('admin.layouts.style')
+  @include('admin.partials.style')
     <!-- END: Custom CSS-->
 
 

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontendController;
+use App\Http\Controllers\PackageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+Route::get('/', [FrontendController::class,'index'])->name('home');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function () {
     return view('dashboard');
@@ -23,3 +26,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard', function
 Route::middleware(['auth:sanctum', 'verified','authadmin'])->get('/admin/dashboard', function () {
     return view('admin.pages.index');
 })->name('admin.pages.dashboard');
+
+//Admin add package Routes
+Route::get('/admin/package', [PackageController::class,'index'])->name('package-manage')->middleware('authadmin');
