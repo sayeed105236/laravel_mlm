@@ -14,6 +14,10 @@
 <!-- BEGIN: Page JS-->
 <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
 <!-- END: Page JS-->
+<script src="{{ asset('backend') }}/lib/sweetalert/sweetalert.min.js"></script>
+
+
+<script src="{{ asset('backend') }}/lib/sweetalert/code.js"></script>
 
 <script>
     $(window).on('load', function() {
@@ -25,3 +29,4 @@
         }
     })
 </script>
+@stack('scripts')

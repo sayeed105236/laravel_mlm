@@ -38,7 +38,18 @@
 
                           </div>
                             @include('admin.modals.package_addmodal')
-                          <div class="card-body">
+
+
+                              @if(Session::has('package_added'))
+                            <div class="alert alert-success" role="alert">
+                                           <h4 class="alert-heading">Success</h4>
+                                           <div class="alert-body">
+                                                {{Session::get('package_added')}}
+                                           </div>
+                            </div>
+
+                                @endif
+
 
                           </div>
                           <div class="table-responsive">
@@ -57,25 +68,35 @@
                                       </tr>
                                   </thead>
                                   <tbody>
+                                    @foreach($packages as $row)
                                       <tr>
-                                        <td>1</td>
+                                        <td>{{$loop->index+1}}</td>
                                           <td>
 
-                                              <span class="font-weight-bold">Active</span>
+                                              <span class="font-weight-bold">{{$row->package_name}}</span>
                                           </td>
-                                          <td>30$</td>
+                                          <td>{{$row->price}}$</td>
                                           <td>
-                                            15
+                                            {{$row->no_of_pairs}}
                                           </td>
-                                          <td>0.55%</td>
-                                          <td>30 days</td>
-                                          <td>Sunday</td>
-                                          <td><span class="badge badge-pill badge-light-primary mr-1">Active</span></td>
+                                          <td>{{$row->return_percentage}}%</td>
+                                          <td>{{$row->duration}} days</td>
+                                          <td>{{$row->except_day}}</td>
                                           <td>
-                                              <a href="#"><i data-feather='edit'></i></a>
-                                              <a href="#"><i data-feather='trash-2'></i></a>
+                                            @if($row->status=="Active")
+                                              <span class="badge badge-pill badge-light-primary mr-1">Active</span>
+                                            @else
+                                          <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
+                                            @endif
+
                                           </td>
+                                          <td>
+                                              <a href="#" data-toggle="modal" data-target="#PackageEditModal{{$row->id}}"><i data-feather='edit'></i></a>
+                                              <a href="/admin/package/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
+                                          </td>
+                                          @include('admin.modals.package_editmodal')
                                       </tr>
+                                      @endforeach
 
                                   </tbody>
                               </table>
@@ -97,6 +118,7 @@
 
     </div>
 </div>
+
 
 
 

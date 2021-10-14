@@ -51,7 +51,7 @@
     <nav class="header-navbar navbar-expand-lg navbar navbar-fixed align-items-center navbar-shadow navbar-brand-center" data-nav="brand-center">
         <div class="navbar-header d-xl-block d-none">
             <ul class="nav navbar-nav">
-                <li class="nav-item"><a class="navbar-brand" href="../../../html/ltr/horizontal-menu-template-dark/index.html"><span class="brand-logo">
+                <li class="nav-item"><a class="navbar-brand" href="/"><span class="brand-logo">
                             <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                                 <defs>
                                     <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
@@ -87,6 +87,8 @@
               @if (Route::has('login'))
                   <li class="nav-item dropdown dropdown-user">
                       @auth
+
+
                           <a href="{{ url('/user/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                       @else
                           <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
@@ -168,83 +170,7 @@
             </ul>
         </div>
     </nav>
-    <ul class="main-search-list-defaultlist d-none">
-        <li class="d-flex align-items-center"><a href="javascript:void(0);">
-                <h6 class="section-label mt-75 mb-0">Files</h6>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
-                <div class="d-flex">
-                    <div class="mr-75"><img src="{{asset('app-assets/images/icons/xls.png')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">Two new item submitted</p><small class="text-muted">Marketing Manager</small>
-                    </div>
-                </div><small class="search-data-size mr-50 text-muted">&apos;17kb</small>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
-                <div class="d-flex">
-                    <div class="mr-75"><img src="{{asset('app-assets/images/icons/jpg.png')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">52 JPG file Generated</p><small class="text-muted">FontEnd Developer</small>
-                    </div>
-                </div><small class="search-data-size mr-50 text-muted">&apos;11kb</small>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
-                <div class="d-flex">
-                    <div class="mr-75"><img src="{{asset('app-assets/images/icons/pdf.png')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">25 PDF File Uploaded</p><small class="text-muted">Digital Marketing Manager</small>
-                    </div>
-                </div><small class="search-data-size mr-50 text-muted">&apos;150kb</small>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between w-100" href="app-file-manager.html">
-                <div class="d-flex">
-                    <div class="mr-75"><img src="{{asset('app-assets/images/icons/doc.png')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">Anna_Strong.doc</p><small class="text-muted">Web Designer</small>
-                    </div>
-                </div><small class="search-data-size mr-50 text-muted">&apos;256kb</small>
-            </a></li>
-        <li class="d-flex align-items-center"><a href="javascript:void(0);">
-                <h6 class="section-label mt-75 mb-0">Members</h6>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view.html">
-                <div class="d-flex align-items-center">
-                    <div class="avatar mr-75"><img src="{{asset('app-assets/images/portrait/small/avatar-s-8.jpg')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">John Doe</p><small class="text-muted">UI designer</small>
-                    </div>
-                </div>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view.html">
-                <div class="d-flex align-items-center">
-                    <div class="avatar mr-75"><img src="{{asset('app-assets/images/portrait/small/avatar-s-1.jpg')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">Michal Clark</p><small class="text-muted">FontEnd Developer</small>
-                    </div>
-                </div>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view.html">
-                <div class="d-flex align-items-center">
-                    <div class="avatar mr-75"><img src="{{asset('app-assets/images/portrait/small/avatar-s-14.jpg')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">Milena Gibson</p><small class="text-muted">Digital Marketing Manager</small>
-                    </div>
-                </div>
-            </a></li>
-        <li class="auto-suggestion"><a class="d-flex align-items-center justify-content-between py-50 w-100" href="app-user-view.html">
-                <div class="d-flex align-items-center">
-                    <div class="avatar mr-75"><img src="{{asset('app-assets/images/portrait/small/avatar-s-6.jpg')}}" alt="png" height="32"></div>
-                    <div class="search-data">
-                        <p class="search-data-title mb-0">Anna Strong</p><small class="text-muted">Web Designer</small>
-                    </div>
-                </div>
-            </a></li>
-    </ul>
-    <ul class="main-search-list-defaultlist-other-list d-none">
-        <li class="auto-suggestion justify-content-between"><a class="d-flex align-items-center justify-content-between w-100 py-50">
-                <div class="d-flex justify-content-start"><span class="mr-75" data-feather="alert-circle"></span><span>No results found.</span></div>
-            </a></li>
-    </ul>
+
     <!-- END: Header-->
 
 
@@ -275,133 +201,42 @@
                         <div class="col-12 col-sm-offset-2 col-sm-10 col-md-12 col-lg-offset-2 col-lg-10 mx-auto">
                             <div class="row">
                                 <!-- basic plan -->
+                                <?php
+
+                                $packages= App\Models\Package::all();
+                                 ?>
+                                @foreach($packages as $row)
+                                @if($row->status=='Active')
                                 <div class="col-12 col-md-4">
                                     <div class="card basic-pricing text-center">
                                         <div class="card-body">
                                             <img src="{{asset('app-assets/images/illustration/Pot1.svg')}}" class="mb-2 mt-5" alt="svg img" />
-                                            <h3>Active</h3>
+                                            <h3>{{$row->package_name}}</h3>
 
                                             <div class="annual-plan">
                                                 <div class="plan-price mt-2">
 
-                                                    <h1 class="pricing-basic-value font-weight-bolder text-primary">30$</h1>
+                                                    <h1 class="pricing-basic-value font-weight-bolder text-primary">{{$row->price}}$</h1>
 
                                                 </div>
                                                 <small class="annual-pricing d-none text-muted"></small>
                                             </div>
                                             <ul class="list-group list-group-circle text-left">
-                                                <li class="list-group-item">15  pair binary (per day)</li>
-                                                <li class="list-group-item">Daily return -  0.55%</li>
-                                                <li class="list-group-item"> Duration - 40 Days (without Sunday) </li>
+                                                <li class="list-group-item">{{$row->no_of_pairs}} pair binary (per day)</li>
+                                                <li class="list-group-item">Daily return - {{$row->return_percentage}}%</li>
+                                                <li class="list-group-item"> Duration - {{$row->duration}} Days (without Sunday) </li>
 
                                             </ul>
                                             <button class="btn btn-block btn-outline-success mt-2">Choose Your plan</button>
                                         </div>
                                     </div>
                                 </div>
+                                @endif
+                                @endforeach
                                 <!--/ basic plan -->
 
                                 <!-- standard plan -->
-                                <div class="col-12 col-md-4">
-                                    <div class="card basic-pricing text-center">
-                                        <div class="card-body">
-                                            <img src="{{asset('app-assets/images/illustration/Pot1.svg')}}" class="mb-2 mt-5" alt="svg img" />
-                                            <h3>Basic</h3>
 
-                                            <div class="annual-plan">
-                                                <div class="plan-price mt-2">
-
-                                                    <h1 class="pricing-basic-value font-weight-bolder text-primary">50$</h1>
-
-                                                </div>
-                                                <small class="annual-pricing d-none text-muted"></small>
-                                            </div>
-                                            <ul class="list-group list-group-circle text-left">
-                                                <li class="list-group-item">30 pair binary (per day)</li>
-                                                <li class="list-group-item">Daily return -  0.55%</li>
-                                                <li class="list-group-item"> Duration - 60 Days (without Sunday) </li>
-
-                                            </ul>
-                                            <button class="btn btn-block btn-outline-success mt-2">Choose Your plan</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ standard plan -->
-
-                                <!-- enterprise plan -->
-                                <div class="col-12 col-md-4">
-                                    <div class="card basic-pricing text-center">
-                                        <div class="card-body">
-                                            <img src="{{asset('app-assets/images/illustration/Pot1.svg')}}" class="mb-2 mt-5" alt="svg img" />
-                                            <h3>Silver</h3>
-
-                                            <div class="annual-plan">
-                                                <div class="plan-price mt-2">
-
-                                                    <h1 class="pricing-basic-value font-weight-bolder text-primary">100$</h1>
-
-                                                </div>
-                                                <small class="annual-pricing d-none text-muted"></small>
-                                            </div>
-                                            <ul class="list-group list-group-circle text-left">
-                                                <li class="list-group-item">40  pair binary (per day)</li>
-                                                <li class="list-group-item">Daily return -  0.55%</li>
-                                                <li class="list-group-item"> Duration - 180 Days (without Sunday) </li>
-
-                                            </ul>
-                                            <button class="btn btn-block btn-outline-success mt-2">Choose Your plan</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!--/ enterprise plan -->
-                                <div class="col-12 col-md-4">
-                                    <div class="card basic-pricing text-center">
-                                        <div class="card-body">
-                                            <img src="{{asset('app-assets/images/illustration/Pot1.svg')}}" class="mb-2 mt-5" alt="svg img" />
-                                            <h3>Gold</h3>
-
-                                            <div class="annual-plan">
-                                                <div class="plan-price mt-2">
-
-                                                    <h1 class="pricing-basic-value font-weight-bolder text-primary">200$</h1>
-
-                                                </div>
-                                                <small class="annual-pricing d-none text-muted"></small>
-                                            </div>
-                                            <ul class="list-group list-group-circle text-left">
-                                                <li class="list-group-item">50  pair binary (per day)</li>
-                                                <li class="list-group-item">Daily return -  0.55%</li>
-                                                <li class="list-group-item"> Duration - 280 Days (without Sunday) </li>
-
-                                            </ul>
-                                            <button class="btn btn-block btn-outline-success mt-2">Choose Your plan</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-12 col-md-4">
-                                    <div class="card basic-pricing text-center">
-                                        <div class="card-body">
-                                            <img src="{{asset('app-assets/images/illustration/Pot1.svg')}}" class="mb-2 mt-5" alt="svg img" />
-                                            <h3>Platinum</h3>
-
-                                            <div class="annual-plan">
-                                                <div class="plan-price mt-2">
-
-                                                    <h1 class="pricing-basic-value font-weight-bolder text-primary">100$</h1>
-
-                                                </div>
-                                                <small class="annual-pricing d-none text-muted"></small>
-                                            </div>
-                                            <ul class="list-group list-group-circle text-left">
-                                                <li class="list-group-item">80  pair binary (per day)</li>
-                                                <li class="list-group-item">Daily return -  0.55%</li>
-                                                <li class="list-group-item"> Duration - 400 Days (without Sunday) </li>
-
-                                            </ul>
-                                            <button class="btn btn-block btn-outline-success mt-2">Choose Your plan</button>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
