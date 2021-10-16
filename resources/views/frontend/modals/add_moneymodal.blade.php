@@ -14,8 +14,9 @@
                 <div class="modal-body">
                   <div class="card-body">
 
-                      <form id="jquery-val-form" action="#" method="post">
+                      <form id="jquery-val-form" action="{{route('money-store')}}" method="post">
                         @csrf
+                        <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
 
                           <div class="form-group">
                               <label class="form-label" for="basic-default-email">Enter Amount</label>

@@ -20,8 +20,19 @@
                                     <p class="card-text font-small-3">Acitvated Package: No Active Package</p>
 
                                     <h3 class="mb-75 mt-2 pt-50">
+                                      @if($deposit)
 
-                                        <a href="javascript:void(0);">Available Balance: $0.00</a>
+                                      @if($deposit->status=='approve')
+                                      <a href="javascript:void(0);">Available Balance: ${{$deposit->amount}}</a>
+                                      @else
+                                      <a href="javascript:void(0);">Available Balance: $0.00</a>
+
+
+
+                                          @endif
+                                          @else
+                                          <a href="javascript:void(0);">Available Balance: $0.00</a>
+                                          @endif
                                     </h3>
 
                                       <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#DepositModal">Deposit</button>

@@ -40,6 +40,8 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('package-manage')}}"><i data-feather='package'></i><span class="menu-title text-truncate" data-i18n="Email">Package</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('deposit-manage')}}"><i data-feather='shopping-cart'></i><span class="menu-title text-truncate" data-i18n="Email">Deposit Request</span></a>
+            </li>
           <!--  <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>
