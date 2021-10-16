@@ -89,7 +89,7 @@
                       @auth
 
 
-                          <a href="{{ url('/user/dashboard') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
+                          <a href="/home/dashboard/{{Auth::user()->id}}" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</a>
                       @else
                           <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 underline">Log in</a>
 
@@ -100,7 +100,8 @@
                   </li>
               @endif
 
-
+                @if (Route::has('login'))
+                  @auth
 
 
               <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link" id="dropdown-user" href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -167,6 +168,8 @@
                     </div>
                   </div>
               </li>
+              @endauth
+              @endif
             </ul>
         </div>
     </nav>
