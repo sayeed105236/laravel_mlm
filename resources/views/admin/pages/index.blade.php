@@ -3,6 +3,26 @@
 
 
 @section('content')
+<style media="screen">
+body {
+    background: black;
+}
+
+.clock {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    color: #17D4FE;
+    font-size: 60px;
+    font-family: Orbitron;
+    letter-spacing: 7px;
+
+
+
+}
+</style>
+
 
 
 <div class="app-content content ">
@@ -14,99 +34,45 @@
         <div class="content-body">
             <!-- Dashboard Ecommerce Starts -->
             <section id="dashboard-ecommerce">
-                <div class="row match-height">
-                    <!-- Medal Card -->
-                    <div class="col-xl-4 col-md-6 col-12">
-                        <div class="card card-congratulation-medal">
-                            <div class="card-body">
-                                <h5>Congratulations 🎉 John!</h5>
-                                <p class="card-text font-small-3">You have won gold medal</p>
-                                <h3 class="mb-75 mt-2 pt-50">
-                                    <a href="javascript:void(0);">$48.9k</a>
-                                </h3>
-                                <button type="button" class="btn btn-primary">View Sales</button>
-                                <img src="{{asset('app-assets/images/illustration/badge.svg')}}" class="congratulation-medal" alt="Medal Pic" />
-                            </div>
-                        </div>
-                    </div>
-                    <!--/ Medal Card -->
+              <div id="MyClockDisplay" class="clock" onload="showTime()"></div>
 
-                    <!-- Statistics Card -->
-                    <div class="col-xl-8 col-md-6 col-12">
-                        <div class="card card-statistics">
-                            <div class="card-header">
-                                <h4 class="card-title">Statistics</h4>
-                                <div class="d-flex align-items-center">
-                                    <p class="card-text font-small-2 mr-25 mb-0">Updated 1 month ago</p>
-                                </div>
-                            </div>
-                            <div class="card-body statistics-body">
-                                <div class="row">
-                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                        <div class="media">
-                                            <div class="avatar bg-light-primary mr-2">
-                                                <div class="avatar-content">
-                                                    <i data-feather="trending-up" class="avatar-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">230k</h4>
-                                                <p class="card-text font-small-3 mb-0">Sales</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-xl-0">
-                                        <div class="media">
-                                            <div class="avatar bg-light-info mr-2">
-                                                <div class="avatar-content">
-                                                    <i data-feather="user" class="avatar-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">8.549k</h4>
-                                                <p class="card-text font-small-3 mb-0">Customers</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 col-12 mb-2 mb-sm-0">
-                                        <div class="media">
-                                            <div class="avatar bg-light-danger mr-2">
-                                                <div class="avatar-content">
-                                                    <i data-feather="box" class="avatar-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">1.423k</h4>
-                                                <p class="card-text font-small-3 mb-0">Products</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-xl-3 col-sm-6 col-12">
-                                        <div class="media">
-                                            <div class="avatar bg-light-success mr-2">
-                                                <div class="avatar-content">
-                                                    <i data-feather="dollar-sign" class="avatar-icon"></i>
-                                                </div>
-                                            </div>
-                                            <div class="media-body my-auto">
-                                                <h4 class="font-weight-bolder mb-0">$9745</h4>
-                                                <p class="card-text font-small-3 mb-0">Revenue</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!--/ Statistics Card -->
-                </div>
-
-              
             </section>
             <!-- Dashboard Ecommerce ends -->
 
         </div>
     </div>
 </div>
+<script type="text/javascript">
+function showTime(){
+    var date = new Date();
+    var h = date.getHours(); // 0 - 23
+    var m = date.getMinutes(); // 0 - 59
+    var s = date.getSeconds(); // 0 - 59
+    var session = "AM";
+
+    if(h == 0){
+        h = 12;
+    }
+
+    if(h > 12){
+        h = h - 12;
+        session = "PM";
+    }
+
+    h = (h < 10) ? "0" + h : h;
+    m = (m < 10) ? "0" + m : m;
+    s = (s < 10) ? "0" + s : s;
+
+    var time = h + ":" + m + ":" + s + " " + session;
+    document.getElementById("MyClockDisplay").innerText = time;
+    document.getElementById("MyClockDisplay").textContent = time;
+
+    setTimeout(showTime, 1000);
+
+}
+
+showTime();
+
+</script>
 
 @endsection

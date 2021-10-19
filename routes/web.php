@@ -31,6 +31,7 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->get('/admin/dashboa
     return view('admin.pages.index');
 })->name('admin.pages.dashboard');
 
+
 //Admin add package Routes
 Route::get('/admin/package', [PackageController::class,'index'])->name('package-manage')->middleware('authadmin');
 Route::post('/admin/package/store', [PackageController::class,'StorePackage'])->name('package-store')->middleware('authadmin');

@@ -18,20 +18,34 @@
                 <x-jet-label for="email" value="{{ __('Email') }}" />
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
+            <?php
+              $packages= App\Models\Package::select('package_name','price')->where('id',request()->get('id'))->first();
+              //dd($packages);
+              $users= App\Models\User::all();
+
+             ?>
+            <div class="mt-4">
+                <x-jet-label for="package" value="{{$packages->package_name.' ('.$packages->price.' USD )'}}" />
+                <x-jet-input id="package" class="block mt-1 w-full" type="number" name="price" value="{{$packages->price}}"  required />
+            </div>
+
 
             <div class="mt-4">
               <label for="custom select">Select Sponsor</label>
-              <select class="block mt-1 w-full" name="sponsor" id="sponsor">
+              <select onchange="select_position()" class="block mt-1 w-full" name="sponsor" id="sponsor">
                 <option label="Choose sopnsor"></option>
+                @foreach ($users as $user)
 
-                  <option value="Main Sponsor">Main Sponsor</option>
-                  <option value="Sponsor 2">Sponser 2</option>
+                  <option value="{{$user->id}}">{{$user->name}}</option>
+                @endforeach
+
               </select>
             </div>
             <div class="mt-4">
               <label for="custom select">Select Position</label>
-              <select class="block mt-1 w-full" name="position" id="position">
-                <option label="Choose sopnsor"></option>
+              <select  class="block mt-1 w-full" name="position" id="position">
+                <option label="Choose position"></option>
+
 
                   <option value="Right">Right</option>
                   <option value="Left">Left</option>
@@ -77,3 +91,12 @@
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+
+<script type="text/javascript">
+function select_position(){
+ var a= document.getElementById('sponsor').value;
+ //console.log(a);
+ var b = '<?php echo Auth::user() ?>';
+ console.log(b);
+}
+</script>

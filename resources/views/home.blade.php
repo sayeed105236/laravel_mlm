@@ -207,6 +207,7 @@
                                 <?php
 
                                 $packages= App\Models\Package::all();
+                                //dd($packages);
                                  ?>
                                 @foreach($packages as $row)
                                 @if($row->status=='Active')
@@ -230,7 +231,8 @@
                                                 <li class="list-group-item"> Duration - {{$row->duration}} Days (without Sunday) </li>
 
                                             </ul>
-                                            <button class="btn btn-block btn-outline-success mt-2">Choose Your plan</button>
+
+                                            <a href="{{route('register',['id'=>$row->id])}}" class="btn btn-block btn-outline-success mt-2">Choose Your plan</a>
                                         </div>
                                     </div>
                                 </div>

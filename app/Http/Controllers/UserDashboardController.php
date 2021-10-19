@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
-use App\Models\Addmoney;
+use App\Models\AddMoney;
 
 class UserDashboardController extends Controller
 {
@@ -18,10 +18,13 @@ class UserDashboardController extends Controller
     {
 
 
-      $user=User::find($id);
-      $deposit=AddMoney::where('user_id',$id)->first();
+      $data['user']=User::find($id);
+      $data['deposit']=AddMoney::where('user_id',$id)->first();
 
-      return view('users.pages.index',compact('user','deposit'));
+      $data['sum_deposit']=AddMoney::where('user_id',$id)->where('status','approve')->sum('amount');
+      //dd($data);
+
+      return view('users.pages.index',compact('data'));
     }
 
 }
