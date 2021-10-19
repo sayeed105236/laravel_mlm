@@ -26,21 +26,22 @@
              ?>
             <div class="mt-4">
                 <x-jet-label for="package" value="{{$packages->package_name.' ('.$packages->price.' USD )'}}" />
-                <x-jet-input id="package" class="block mt-1 w-full" type="number" name="price" value="{{$packages->price}}"  required />
+                <x-jet-input id="price" class="block mt-1 w-full" type="number" name="price" value="{{$packages->price}}"  required />
             </div>
 
 
             <div class="mt-4">
               <label for="custom select">Select Sponsor</label>
               <select onchange="select_position()" class="block mt-1 w-full" name="sponsor" id="sponsor">
-                <option label="Choose sopnsor"></option>
+                <option label="Choose sponsor"></option>
                 @foreach ($users as $user)
 
-                  <option value="{{$user->id}}">{{$user->name}}</option>
+                  <option value="{{$user->name}}">{{$user->name}}</option>
                 @endforeach
 
               </select>
             </div>
+
             <div class="mt-4">
               <label for="custom select">Select Position</label>
               <select  class="block mt-1 w-full" name="position" id="position">
