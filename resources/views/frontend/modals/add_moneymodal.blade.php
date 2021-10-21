@@ -27,10 +27,14 @@
                         <div class="form-group">
                               <label for="select-country">Payment Method</label>
                               <select class="form-control select2" id="select-country" name="method" required>
-                                  <option selected>Manual</option>
-                                  <option value="pm">Perfect Money (PM)</option>
+                                <option label="Choose category"></option>
+                                <?php
+                                  $payment= App\Models\PaymentMethod::all()
+                                 ?>
+                                <?php foreach ($payment as $row): ?>
+                                  <option value="{{$row->name}}">{{$row->name}}</option>
 
-                                  <option value="btc">Bitcoin (Btc)</option>
+                                <?php endforeach; ?>
 
                               </select>
                           </div>
