@@ -59,6 +59,7 @@
                                           <th>User Name</th>
                                           <th>Requested Amount</th>
                                           <th>Method</th>
+                                          <th>Transaction Id</th>
                                           <th>Status</th>
 
                                           <th>Actions</th>
@@ -71,9 +72,10 @@
                                           <td>
 
                                               <span class="font-weight-bold">{{$row->user->name}}</span>
-                                          </td>
+                                           </td>
                                           <td>{{$row->amount}}$</td>
                                           <td>{{$row->method}}</td>
+                                          <td>{{$row->txn_id}}</td>
                                           <td>
                                             <span class="badge badge-pill badge-success">{{ $row->status }}</span>
                                             @if($row->status=='pending')
