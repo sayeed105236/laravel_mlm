@@ -7,6 +7,7 @@ use App\Http\Controllers\UserDashboardController;
 use App\Http\Controllers\AddMoneyController;
 use App\Http\Controllers\AdminShowPaymentController;
 use App\Http\Controllers\UserListController;
+use App\Http\Controllers\PaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,3 +49,9 @@ Route::get('/admin/add-money-delete/{id}', [AdminShowPaymentController::class,'d
 Route::get('/admin/user_lists', [UserListController::class,'Manage'])->name('user-list')->middleware('authadmin');
 //user Add Money Routes
 Route::post('/user/dashboard/add-money', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
+
+//Payment method Routes
+Route::get('/admin/payment-method', [PaymentMethodController::class,'index'])->name('payment-method')->middleware('authadmin');
+Route::post('/admin/payment-method/store', [PaymentMethodController::class,'Store'])->name('payment-method-store')->middleware('authadmin');
+Route::get('/admin/payment-method/delete/{id}', [PaymentMethodController::class,'Delete'])->middleware('authadmin');
+Route::post('/admin/payment-method/update', [PaymentMethodController::class,'Update'])->name('payment-method-update')->middleware('authadmin');

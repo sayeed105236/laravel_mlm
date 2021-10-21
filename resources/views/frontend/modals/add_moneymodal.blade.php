@@ -34,6 +34,10 @@
 
                               </select>
                           </div>
+                          <div class="form-group">
+                              <label class="form-label" for="basic-default-email">Transaction Id</label>
+                              <input type="text"  id="basic-default-email" name="txn_id" class="form-control" placeholder="Enter Transaction Id" required/>
+                          </div>
 
 
 

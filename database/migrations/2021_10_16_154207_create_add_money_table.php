@@ -18,6 +18,7 @@ class CreateAddMoneyTable extends Migration
             $table->integer('user_id');
             $table->integer('amount');
             $table->string('method');
+            $table->string('txn_id')->nulalble();
             $table->enum('status',['pending','approve'])->default('pending');
             $table->timestamps();
         });

@@ -44,6 +44,8 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('user-list')}}"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Email">Users</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('payment-method')}}"><i data-feather='credit-card'></i></i><span class="menu-title text-truncate" data-i18n="Email">Payment Method</span></a>
+            </li>
           <!--  <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>
