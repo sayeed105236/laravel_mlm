@@ -26,7 +26,7 @@
 
                         <div class="form-group">
                               <label for="select-country">Payment Method</label>
-                              <select class="form-control select2" id="select-country" name="method" required>
+                              <select class="form-control select2" id="wallet" name="method" required>
                                 <option label="Choose category"></option>
                                 <?php
                                   $payment= App\Models\PaymentMethod::all()
@@ -34,10 +34,14 @@
                                 <?php foreach ($payment as $row): ?>
                                   <option value="{{$row->name}}">{{$row->name}}</option>
 
-                                <?php endforeach; ?>
+                                    <?php endforeach; ?>
 
                               </select>
+
                           </div>
+
+
+
                           <div class="form-group">
                               <label class="form-label" for="basic-default-email">Transaction Id</label>
                               <input type="text"  id="basic-default-email" name="txn_id" class="form-control" placeholder="Enter Transaction Id" required/>

@@ -8,6 +8,7 @@ use App\Http\Controllers\AddMoneyController;
 use App\Http\Controllers\AdminShowPaymentController;
 use App\Http\Controllers\UserListController;
 use App\Http\Controllers\PaymentMethodController;
+use App\Http\Controllers\ReferralController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,6 +26,10 @@ use App\Http\Controllers\PaymentMethodController;
 //});
 Route::get('/', [FrontendController::class,'index'])->name('home');
 Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->middleware('auth');
+
+
+//user refferals routes
+Route::get('/home/referrals/{id}', [ReferralController::class,'index'])->name('referrals')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard/', function () {
     return view('dashboard');

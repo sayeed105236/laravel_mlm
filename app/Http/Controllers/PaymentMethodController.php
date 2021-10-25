@@ -21,6 +21,7 @@ class PaymentMethodController extends Controller
   ]);
     $name = $request->name;
     $wallet_id = $request->wallet_id;
+    $acc_name= $request->acc_name;
     $status=$request->status;
     $payment = new PaymentMethod();
     $payment-> name = $name;
@@ -39,6 +40,7 @@ class PaymentMethodController extends Controller
 
     $payment = PaymentMethod::find($request->id);
     $payment->name =$name;
+    $payment->acc_name=$acc_name;
     $payment->wallet_id =$wallet_id;
 
     $payment->status=$status;

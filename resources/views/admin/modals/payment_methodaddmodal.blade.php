@@ -22,10 +22,15 @@
 
                           </div>
                           <div class="form-group">
+                              <label class="form-label" for="basic-default-name">Account Name</label>
+                              <input type="text" class="form-control" id="basic-default-name" name="acc_name" placeholder="Enter Method Name" required/>
+
+                          </div>
+                          <div class="form-group">
                               <label class="form-label" for="basic-default-email">Wallet Id</label>
                               <input type="text" id="basic-default-email" name="wallet_id" class="form-control" placeholder="Enter Wallet Id" required/>
                           </div>
-                          
+
                           <div class="form-group">
                               <label for="select-country">Status</label>
                               <select class="form-control select2" name="status" required>

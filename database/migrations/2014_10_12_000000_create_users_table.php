@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->string('sponsor')->nullable();
             $table->string('position')->nullable();
-            $table->integer('price')->nullable();
+            $table->integer('package_id')->nullable();
             $table->string('utype')->default('USR')->comment('ADM for Admin USR for normal user');
             $table->timestamps();
         });

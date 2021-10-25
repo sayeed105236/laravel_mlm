@@ -21,15 +21,7 @@
 
                                     <h3 class="mb-75 mt-2 pt-50">
 
-
-
-
-                                      <a href="javascript:void(0);">Available Balance: ${{$data['sum_deposit'] ? $data['sum_deposit'] : '$0.00'}}</a>
-
-
-
-                                      
-
+                                      <a href="javascript:void(0);">Available Balance: ${{$data['sum_deposit'] ? $data['sum_deposit'] : '0.00'}}</a>
 
                                     </h3>
 
@@ -55,6 +47,26 @@
                                     <button type="button" class="btn btn-primary">Purchase</button>
 
                                 </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="card card-congratulation-medal">
+                              <?php
+                                $payment=App\Models\PaymentMethod::where('status','Active')->get();
+
+                               ?>
+                               @foreach($payment as $row)
+                                <div class="card-body">
+                                    <h5>Payment Method : {{$row->name}} </h5>
+                                    <p class="card-text font-small-3">Account Name: {{$row->acc_name}}</p>
+                                    <h3 class="mb-75 mt-2 pt-50">
+                                          <a href="javascript:void(0);">Wallet Id: {{$row->wallet_id}}</a>
+                                    </h3>
+
+
+                                </div>
+                                @endforeach
+                                
                             </div>
                         </div>
                         <!--/ Medal Card -->

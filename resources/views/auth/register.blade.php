@@ -19,14 +19,21 @@
                 <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required />
             </div>
             <?php
-              $packages= App\Models\Package::select('package_name','price')->where('id',request()->get('id'))->first();
+              $packages= App\Models\Package::all();
               //dd($packages);
               $users= App\Models\User::all();
 
              ?>
             <div class="mt-4">
-                <x-jet-label for="package" value="{{$packages->package_name.' ('.$packages->price.' USD )'}}" />
-                <x-jet-input id="price" class="block mt-1 w-full" type="number" name="price" value="{{$packages->price}}"  required />
+              <label for="custom select">Select Sponsor</label>
+              <select onchange="select_position()" class="block mt-1 w-full" name="package_id" id="sponsor">
+                <option label="Choose Package"></option>
+                @foreach ($packages as $package)
+
+                  <option value="{{$package->id}}">{{$package->name}}</option>
+                @endforeach
+
+              </select>
             </div>
 
 

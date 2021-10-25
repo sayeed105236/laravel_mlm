@@ -22,6 +22,10 @@
                               <input type="text" class="form-control"  value="{{$row->name}}" name="name" placeholder="Payment Method name" />
                           </div>
                           <div class="form-group">
+                              <label class="form-label" for="basic-default-name">Account Name</label>
+                              <input type="text" class="form-control"  value="{{$row->acc_name}}" name="acc_name" placeholder="Payment Method name" />
+                          </div>
+                          <div class="form-group">
                               <label class="form-label" for="basic-default-email">Wallet Id</label>
                               <input type="text"  name="wallet_id" value="{{$row->wallet_id}}" class="form-control" placeholder="Enter Wallet Id"/>
                           </div>

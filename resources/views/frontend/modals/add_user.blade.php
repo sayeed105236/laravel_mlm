@@ -1,0 +1,118 @@
+<div class="modal-size-default d-inline-block">
+    <!-- Button trigger modal -->
+
+    <!-- Modal -->
+    <div class="modal fade text-left" id="AddUserModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel18" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel18">Add User</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                  <div class="card-body">
+
+                    <form method="POST" action="#">
+                        @csrf
+
+                          <div class="form-group">
+                          <label class="form-label" for="basic-default-email">Name</label>
+                          <input type="text"  id="name" name="name" class="form-control" placeholder="Enter Name" required/>
+
+                        </div>
+
+                          <div class="form-group">
+                          <label class="form-label" for="basic-default-email">Email</label>
+                            <input type="text"  id="email" name="email" class="form-control" placeholder="Enter Email" required/>
+
+                        </div>
+                        <?php
+                          $packages= App\Models\Package::where('status','Active')->get();
+                          //dd($packages);
+                          $users= App\Models\User::all();
+
+                         ?>
+
+                        <div class="form-group">
+                            <label for="basicSelect">Select Package</label>
+                            <select class="form-control" id="basicSelect" onchange="select_position()" name="package_id">
+                              <option label="Choose Package"></option>
+                              @foreach ($packages as $package)
+
+                                <option value="{{$package->id}}">{{$package->package_name}}</option>
+                              @endforeach
+                            </select>
+                        </div>
+
+
+                          <div class="form-group">
+                          <label for="basicSelect">Select Sponsor</label>
+
+                              <select class="form-control" id="sponsor" name="sponsor">
+                            <option label="Choose Sponsor"></option>
+                            @foreach ($users as $user)
+
+                              <option value="{{$user->name}}">{{$user->name}}</option>
+                            @endforeach
+
+                          </select>
+                        </div>
+
+
+                        <div class="form-group">
+                          <label for="basicSelect">Select Position</label>
+                          <select class="form-control" name="position" id="position">
+                            <option label="Choose position"></option>
+
+
+                              <option value="Right">Right</option>
+                              <option value="Left">Left</option>
+                          </select>
+                        </div>
+
+                          <div class="form-group">
+                            <label class="form-label" for="basic-default-email">Password</label>
+                              <input type="password"  id="password" name="password" class="form-control" placeholder="*************" required/>
+
+                        </div>
+
+                        <div class="form-group">
+                          <label class="form-label" for="password_confirmation">Confirm Password</label>
+                            <input type="password"  id="password_confirmation" name="password_confirmation" class="form-control" placeholder="*************" required/>
+
+                        </div>
+
+                        @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
+                              <div class="form-group">
+                                <x-jet-label for="terms">
+                                    <div class="flex items-center">
+                                        <x-jet-checkbox name="terms" id="terms"/>
+
+                                        <div class="ml-2">
+                                            {!! __('I agree to the :terms_of_service and :privacy_policy', [
+                                                    'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Terms of Service').'</a>',
+                                                    'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900">'.__('Privacy Policy').'</a>',
+                                            ]) !!}
+                                        </div>
+                                    </div>
+                                </x-jet-label>
+                            </div>
+                        @endif
+
+
+
+
+
+                  </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                    <button type="Submit" class="btn btn-primary">Add User</button>
+                </div>
+                  </form>
+            </div>
+        </div>
+    </div>
+</div>
