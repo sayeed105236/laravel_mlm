@@ -14,7 +14,7 @@
                 <div class="modal-body">
                   <div class="card-body">
 
-                    <form method="POST" action="#">
+                    <form method="POST" action="{{route('register')}}">
                         @csrf
 
                           <div class="form-group">
@@ -72,17 +72,7 @@
                           </select>
                         </div>
 
-                          <div class="form-group">
-                            <label class="form-label" for="basic-default-email">Password</label>
-                              <input type="password"  id="password" name="password" class="form-control" placeholder="*************" required/>
 
-                        </div>
-
-                        <div class="form-group">
-                          <label class="form-label" for="password_confirmation">Confirm Password</label>
-                            <input type="password"  id="password_confirmation" name="password_confirmation" class="form-control" placeholder="*************" required/>
-
-                        </div>
 
                         @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                               <div class="form-group">

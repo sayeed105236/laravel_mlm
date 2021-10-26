@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Jetstream\Jetstream;
-
+use App\Notifications\UserCredential;
 class CreateNewUser implements CreatesNewUsers
 {
     use PasswordValidationRules;
@@ -20,20 +20,30 @@ class CreateNewUser implements CreatesNewUsers
      */
     public function create(array $input)
     {
+      
+      dd($input);
         Validator::make($input, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => $this->passwordRules(),
+          //'password' => $this->passwordRules(),
             'terms' => Jetstream::hasTermsAndPrivacyPolicyFeature() ? ['required', 'accepted'] : '',
         ])->validate();
+        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $password = substr(str_shuffle($chars), 0, 10);
+        $email_data['email']=$input['email'];
+        $email_data['name']=$input['name'];
+        $email_data['password']=$password;
 
-        return User::create([
+        $data= User::create([
             'name' => $input['name'],
             'email' => $input['email'],
             'sponsor' => $input['sponsor'],
             'position' => $input['position'],
-            'price' => $input['price'],
-            'password' => Hash::make($input['password']),
+            'package_id' => $input['package_id'],
+            'password' => Hash::make($password),
+
         ]);
+        //$data->notify(new UserCredential($email_data));
+
     }
 }
