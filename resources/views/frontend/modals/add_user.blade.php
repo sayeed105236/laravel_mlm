@@ -14,7 +14,7 @@
                 <div class="modal-body">
                   <div class="card-body">
 
-                    <form method="POST" action="{{route('register')}}">
+                      <form id="registeruser" class="form-horizontal" method="POST" action="{{ route('referrals-useradd') }}">
                         @csrf
 
                           <div class="form-group">
@@ -54,7 +54,7 @@
                             <option label="Choose Sponsor"></option>
                             @foreach ($users as $user)
 
-                              <option value="{{$user->name}}">{{$user->name}}</option>
+                              <option value="{{$user->id}}">{{$user->name}}</option>
                             @endforeach
 
                           </select>
@@ -91,18 +91,18 @@
                             </div>
                         @endif
 
-
-
-
-
                   </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                    <button type="Submit" class="btn btn-primary">Add User</button>
+                    <button type="button" id="submitForm" class="btn btn-primary">Add User</button>
+                    <button type="submit" class="btn btn-primary" id="submitForm">
+                        Register
+                    </button>
                 </div>
                   </form>
             </div>
         </div>
     </div>
 </div>
+

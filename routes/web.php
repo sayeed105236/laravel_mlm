@@ -30,6 +30,7 @@ Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->mi
 
 //user refferals routes
 Route::get('/home/referrals/{id}', [ReferralController::class,'index'])->name('referrals')->middleware('auth');
+Route::post('/home/referrals-user', [ReferralController::class,'userAdd'])->name('referrals-useradd')->middleware('auth');
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard/', function () {
     return view('dashboard');
