@@ -26,10 +26,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        
         'package_id',
         'sponsor',
         'position',
+        'password',
     ];
 
     /**
@@ -61,4 +61,14 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
+
+    public function packages()
+    {
+        return $this->belongsTo(Package::class,'package_id');
+    }
+    public function sponsors()
+    {
+        return $this->belongsTo(User::class,'sponsor');
+    }
+
 }

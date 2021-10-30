@@ -37,10 +37,14 @@
                         <div class="col-xl-6 col-md-6 col-12">
                             <div class="card card-congratulation-medal">
                                 <div class="card-body">
+                                    <?php
+                                    $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
+
+                                    ?>
                                     <h5>Cash Wallet</h5>
                                     <p class="card-text font-small-3">Minimum Amount Required for Withdrawal: 10$</p>
                                     <h3 class="mb-75 mt-2 pt-50">
-                                          <a href="javascript:void(0);">Available Balance: $0.00</a>
+                                          <a href="javascript:void(0);">Available Balance: {{isset($bonus_amount) ? '$'.$bonus_amount : '$00.00'}}</a>
                                     </h3>
                                     <button type="button" class="btn btn-primary">Withdraw</button>
                                     <button type="button" class="btn btn-primary">Transfer</button>
@@ -66,7 +70,7 @@
 
                                 </div>
                                 @endforeach
-                                
+
                             </div>
                         </div>
                         <!--/ Medal Card -->

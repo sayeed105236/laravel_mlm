@@ -40,3 +40,4 @@
         }
     })
 </script>
+@stack('scripts')

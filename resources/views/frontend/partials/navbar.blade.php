@@ -15,9 +15,9 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
                   <div class="dropdown-item">
                       <!-- Account Management -->
-                      <x-jet-responsive-nav-link href="{{ route('profile.admin-show') }}" :active="request()->routeIs('profile.admin-show')">
+                      {{--<x-jet-responsive-nav-link href="{{ route('profile.admin-show') }}" :active="request()->routeIs('profile.admin-show')">
                           {{ __('Profile') }}
-                      </x-jet-responsive-nav-link>
+                      </x-jet-responsive-nav-link>--}}
 
                       @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                           <x-jet-responsive-nav-link href="{{ route('api-tokens.admin-index') }}" :active="request()->routeIs('api-tokens.admin-index')">

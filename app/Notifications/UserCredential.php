@@ -46,10 +46,16 @@ class UserCredential extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
+
+        /*return (new MailMessage)
                     ->line('The introduction to the notification.')
                     ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->line('Thank you for using our application!');*/
+
+        return (new MailMessage())
+            ->subject('Account Credentials')
+            ->from('noreply@mlm.com', 'mlm')
+            ->view('emails.user-password', ['name' => $notifiable->name,'user_name' => $notifiable->email, 'user_password' => $this->password]);
     }
 
     /**
