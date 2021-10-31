@@ -14,7 +14,7 @@
                 <div class="modal-body">
                   <div class="card-body">
 
-                      <form id="jquery-val-form" action="{{route('basic-settings-store')}}" method="post">
+                      <form id="jquery-val-form" action="{{route('basic-settings-store')}}" method="post" enctype="multipart/form-data">
                         @csrf
                           <div class="form-group">
                               <label class="form-label" for="basic-default-name">Company Name</label>
@@ -29,7 +29,7 @@
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Logo</label>
-                              <input type="file" id="image" name="file" class="form-control" />
+                              <input type="file" id="image" name="file" class="form-control-file" />
                           </div>
 
 

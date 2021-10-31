@@ -232,7 +232,7 @@
 
                                             </ul>
 
-                                            <a href="{{route('register',['id'=>$row->id])}}" class="btn btn-block btn-outline-success mt-2">Choose Your plan</a>
+
                                         </div>
                                     </div>
                                 </div>

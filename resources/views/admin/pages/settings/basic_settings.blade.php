@@ -90,7 +90,7 @@
 
                                           <td>
                                               <a href="#" data-toggle="modal" data-target="#BSettingsEditModal{{$row->id}}"><i data-feather='edit'></i></a>
-                                              <a href="/admin/general-settings/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
+                                              <a href="/admin/basic-settings/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
                                           </td>
                                           @include('admin.modals.basic_settings_editmodal')
 

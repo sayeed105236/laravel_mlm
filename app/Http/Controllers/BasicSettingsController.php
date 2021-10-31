@@ -25,12 +25,10 @@ class BasicSettingsController extends Controller
         $filename = time() . $image->getClientOriginalName();
 
         Storage::disk('public')->putFileAs(
-            'Logo/',
+            '/Logo',
             $image,
             $filename
         );
-
-
     }
 
     $b_settings = new BasicSettings();
@@ -38,7 +36,7 @@ class BasicSettingsController extends Controller
     $b_settings->footer_link =$footer_link;
     $b_settings->image= $filename;
 
-
+    //dd($b_settings);
     $b_settings->save();
     return back()->with('settings_added','Settings has been added successfully!');
 

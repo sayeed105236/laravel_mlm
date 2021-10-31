@@ -25,10 +25,6 @@
                               <label class="form-label" for="basic-default-email">Footer Link</label>
                               <input type="text"  name="footer_link" value="{{$row->footer_link}}" class="form-control"/>
                           </div>
-                          
-
-
-
 
 
                   </div>

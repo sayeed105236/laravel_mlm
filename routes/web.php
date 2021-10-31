@@ -61,13 +61,6 @@ Route::post('/admin/basic-settings/update', [BasicSettingsController::class,'Upd
 Route::get('/admin/basic-settings/delete/{id}', [BasicSettingsController::class,'Delete'])->middleware('authadmin');
 
 
-
-
-
-
-
-
-
 //admin show payment request routes
 Route::get('/admin/add-money/requests', [AdminShowPaymentController::class,'Manage'])->name('deposit-manage')->middleware('authadmin');
 Route::get('/admin/add-money-approve/{id}', [AdminShowPaymentController::class,'approve'])->middleware('authadmin');
