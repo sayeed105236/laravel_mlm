@@ -10,6 +10,7 @@ use App\Http\Controllers\UserListController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\GeneralSettingsController;
+use App\Http\Controllers\BasicSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,6 +53,12 @@ Route::get('/admin/general-settings', [GeneralSettingsController::class,'index']
 Route::post('/admin/general-settings/store', [GeneralSettingsController::class,'Store'])->name('general-settings-store')->middleware('authadmin');
 Route::post('/admin/general-settings/update', [GeneralSettingsController::class,'Update'])->name('general-settings-update')->middleware('authadmin');
 Route::get('/admin/general-settings/delete/{id}', [GeneralSettingsController::class,'Delete'])->middleware('authadmin');
+
+//Basic settings
+Route::get('/admin/basic-settings', [BasicSettingsController::class,'index'])->name('manage-bsettings')->middleware('authadmin');
+Route::post('/admin/basic-settings/store', [BasicSettingsController::class,'Store'])->name('basic-settings-store')->middleware('authadmin');
+Route::post('/admin/basic-settings/update', [BasicSettingsController::class,'Update'])->name('basic-settings-update')->middleware('authadmin');
+Route::get('/admin/basic-settings/delete/{id}', [BasicSettingsController::class,'Delete'])->middleware('authadmin');
 
 
 

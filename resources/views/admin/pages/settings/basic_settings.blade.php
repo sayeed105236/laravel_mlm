@@ -14,12 +14,12 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
              <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-left mb-0">General Settings</h2>
+                    <h2 class="content-header-title float-left mb-0">Basic Settings</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/">Home</a>
                             </li>
-                            <li class="breadcrumb-item active">general settings
+                            <li class="breadcrumb-item active">basic settings
                             </li>
                         </ol>
                     </div>
@@ -33,12 +33,12 @@
                   <div class="col-12">
                       <div class="card">
                           <div class="card-header">
-                              <h4 class="card-title">General Settings</h4>
+                              <h4 class="card-title">Basic Settings</h4>
 
-                                <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#GSettingsAddModal">Add</a>
+                                <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#BSettingsAddModal">Add</a>
 
                           </div>
-                          @include('admin.modals.general_settings_addmodal')
+                          @include('admin.modals.basic_settings_addmodal')
 
 
 
@@ -59,36 +59,40 @@
                                   <thead>
                                       <tr>
                                         <th>#</th>
-                                          <th>Referral Bonus(%)</th>
-                                          <th>Pair Amount</th>
-                                          <th>Percentage Per pair</th>
-                                          <th>Minimum Withdrawal</th>
-                                          <th>Activation Charge</th>
+                                          <th>Company Name</th>
+                                          <th>Footer Link</th>
+                                          <th>Image</th>
+
 
                                           <th>Actions</th>
                                       </tr>
                                   </thead>
                                   <tbody>
-                                    @foreach($g_settings as $row)
+                                    @foreach($b_settings as $row)
 
                                       <tr>
                                         <td>#</td>
                                           <td>
 
-                                              <span class="font-weight-bold">{{$row->referral_percentage}}%</span>
+                                              <span class="font-weight-bold">{{$row->company_name}}</span>
                                           </td>
-                                          <td>{{$row->pair_amount}}</td>
+                                          <td>{{$row->footer_link}}</td>
                                           <td>
-                                            {{$row->pair_percentage}}%
+                                            <img
+                                              src="{{asset('storage/Logo/'.$row->image)}}"
+                                              alt="image"
+                                              height="50"
+                                              width="50"
+
+                                            />
                                           </td>
-                                          <td>{{$row->min_withdraw}}$</td>
-                                          <td>{{$row->activation_charge}}%</td>
+
 
                                           <td>
-                                              <a href="#" data-toggle="modal" data-target="#GSettingsEditModal{{$row->id}}"><i data-feather='edit'></i></a>
+                                              <a href="#" data-toggle="modal" data-target="#BSettingsEditModal{{$row->id}}"><i data-feather='edit'></i></a>
                                               <a href="/admin/general-settings/delete/{{$row->id}}"><i data-feather='trash-2'></i></a>
                                           </td>
-                                          @include('admin.modals.general_settings_editmodal')
+                                          @include('admin.modals.basic_settings_editmodal')
 
 
 

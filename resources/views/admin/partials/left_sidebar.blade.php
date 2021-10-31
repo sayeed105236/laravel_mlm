@@ -50,7 +50,7 @@
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{route('manage-gsettings')}}"><i data-feather='tool'></i><span class="menu-item text-truncate" data-i18n="List">General Settings</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='sliders'></i><span class="menu-item text-truncate" data-i18n="Preview">Basic Settings</span></a>
+                    <li><a class="d-flex align-items-center" href="{{route('manage-bsettings')}}"><i data-feather='sliders'></i><span class="menu-item text-truncate" data-i18n="Preview">Basic Settings</span></a>
                     </li>
 
                 </ul>

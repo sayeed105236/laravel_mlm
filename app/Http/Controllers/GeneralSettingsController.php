@@ -19,10 +19,14 @@ class GeneralSettingsController extends Controller
       $referral_percentage = $request->referral_percentage;
       $pair_amount = $request->pair_amount;
       $pair_percentage=$request->pair_percentage;
+      $min_withdraw=$request->min_withdraw;
+      $activation_charge=$request->activation_charge;
 
       $g_settings = new GeneralSettings();
       $g_settings->referral_percentage = $referral_percentage;
       $g_settings->pair_amount =$pair_amount;
+      $g_settings->min_withdraw =$min_withdraw;
+      $g_settings->activation_charge=$activation_charge;
 
       $g_settings->pair_percentage=$pair_percentage;
 
@@ -37,11 +41,15 @@ class GeneralSettingsController extends Controller
       $referral_percentage = $request->referral_percentage;
       $pair_amount = $request->pair_amount;
       $pair_percentage=$request->pair_percentage;
+      $min_withdraw=$request->min_withdraw;
+      $activation_charge=$request->activation_charge;
 
 
       $g_settings = GeneralSettings::find($request->id);
       $g_settings->referral_percentage = $referral_percentage;
       $g_settings->pair_amount =$pair_amount;
+      $g_settings->min_withdraw =$min_withdraw;
+      $g_settings->activation_charge=$activation_charge;
 
       $g_settings->pair_percentage=$pair_percentage;
 
