@@ -46,10 +46,19 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('payment-method')}}"><i data-feather='credit-card'></i></i><span class="menu-title text-truncate" data-i18n="Email">Payment Method</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="Invoice">Settings</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="{{route('manage-gsettings')}}"><i data-feather='tool'></i><span class="menu-item text-truncate" data-i18n="List">General Settings</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='sliders'></i><span class="menu-item text-truncate" data-i18n="Preview">Basic Settings</span></a>
+                    </li>
+
+                </ul>
+            </li>
           <!--  <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>
-            </li>
+             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Calendar</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>

@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminShowPaymentController;
 use App\Http\Controllers\UserListController;
 use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ReferralController;
+use App\Http\Controllers\GeneralSettingsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,6 +46,20 @@ Route::get('/admin/package', [PackageController::class,'index'])->name('package-
 Route::post('/admin/package/store', [PackageController::class,'StorePackage'])->name('package-store')->middleware('authadmin');
 Route::post('/admin/package/update', [PackageController::class,'UpdatePackage'])->name('package-update')->middleware('authadmin');
 Route::get('/admin/package/delete/{id}', [PackageController::class,'Delete'])->middleware('authadmin');
+
+//General Settings
+Route::get('/admin/general-settings', [GeneralSettingsController::class,'index'])->name('manage-gsettings')->middleware('authadmin');
+Route::post('/admin/general-settings/store', [GeneralSettingsController::class,'Store'])->name('general-settings-store')->middleware('authadmin');
+Route::post('/admin/general-settings/update', [GeneralSettingsController::class,'Update'])->name('general-settings-update')->middleware('authadmin');
+Route::get('/admin/general-settings/delete/{id}', [GeneralSettingsController::class,'Delete'])->middleware('authadmin');
+
+
+
+
+
+
+
+
 
 //admin show payment request routes
 Route::get('/admin/add-money/requests', [AdminShowPaymentController::class,'Manage'])->name('deposit-manage')->middleware('authadmin');

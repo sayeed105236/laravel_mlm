@@ -72,10 +72,10 @@ class ReferralController extends Controller implements CreatesNewUsers
             $wallet_amount->save();
 
 
-
+            
             $bonus_amount = new CashWallet();
             $bonus_amount->user_id = $request['sponsor'];
-            $bonus_amount->bonus_amount = ($sponsor_amount->price * 8/100);
+            $bonus_amount->bonus_amount = (($sponsor_amount->price)*8)/100;
             $bonus_amount->save();
 
 
