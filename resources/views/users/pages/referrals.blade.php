@@ -104,7 +104,7 @@
             data:formData,
             //dataType: 'json',
             success:function(data) {
-              //  console.log(data);
+                //console.log(data);
               location.reload();
             },
             error: function(data)

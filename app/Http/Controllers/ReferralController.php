@@ -1,11 +1,13 @@
 <?php
 
+
 namespace App\Http\Controllers;
 
 use App\Actions\Fortify\PasswordValidationRules;
 use App\Models\AddMoney;
 use App\Models\CashWallet;
 use App\Models\Package;
+use App\Models\GeneralSettings;
 use App\Notifications\UserCredential;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
@@ -45,6 +47,8 @@ class ReferralController extends Controller implements CreatesNewUsers
     }
     public function userAdd(Request $request)
     {
+
+      //dd($referral_bonus);
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $password = substr(str_shuffle($chars), 0, 10);
         $email_data['email']=$request['email'];
@@ -62,6 +66,15 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             ]);
             $sponsor_amount = Package::find($request['package_id']);
+            $referral_bonus= GeneralSettings::select('referral_percentage')->first();
+            //dd($referral_bonus);
+            $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+            $calculated_amount= ($sponsor_amount->price + ($sponsor_amount->price * 10/100));
+            //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
+            if ($sum_deposit < $calculated_amount) {
+
+              return response()->json(['status'=>'Insufficient Balance']);
+            };
 
             $wallet_amount = new AddMoney();
             $wallet_amount->user_id = Auth::id();
@@ -72,10 +85,10 @@ class ReferralController extends Controller implements CreatesNewUsers
             $wallet_amount->save();
 
 
-            
+
             $bonus_amount = new CashWallet();
             $bonus_amount->user_id = $request['sponsor'];
-            $bonus_amount->bonus_amount = (($sponsor_amount->price)*8)/100;
+            $bonus_amount->bonus_amount = (($sponsor_amount->price)* $referral_bonus->referral_percentage)/100;
             $bonus_amount->save();
 
 

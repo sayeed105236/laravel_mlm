@@ -34,8 +34,16 @@
                       <div class="card">
                           <div class="card-header">
                               <h4 class="card-title">Basic Settings</h4>
+                              <?php
+                              $data=App\Models\BasicSettings::count();
 
-                                <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#BSettingsAddModal">Add</a>
+
+                               ?>
+                               <?php if ($data<1): ?>
+                                 <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#BSettingsAddModal">Add</a>
+
+                               <?php endif; ?>
+
 
                           </div>
                           @include('admin.modals.basic_settings_addmodal')

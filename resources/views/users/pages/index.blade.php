@@ -21,7 +21,7 @@
 
                                     <h3 class="mb-75 mt-2 pt-50">
 
-                                      <a href="javascript:void(0);">Available Balance: ${{$data['sum_deposit'] ? $data['sum_deposit'] : '0.00'}}</a>
+                                      <a href="javascript:void(0);">Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</a>
 
                                     </h3>
 
@@ -44,7 +44,7 @@
                                     <h5>Cash Wallet</h5>
                                     <p class="card-text font-small-3">Minimum Amount Required for Withdrawal: 10$</p>
                                     <h3 class="mb-75 mt-2 pt-50">
-                                          <a href="javascript:void(0);">Available Balance: {{isset($bonus_amount) ? '$'.$bonus_amount : '$00.00'}}</a>
+                                          <a href="javascript:void(0);">Available Balance: {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</a>
                                     </h3>
                                     <button type="button" class="btn btn-primary">Withdraw</button>
                                     <button type="button" class="btn btn-primary">Transfer</button>
