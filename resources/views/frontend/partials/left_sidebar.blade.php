@@ -58,7 +58,7 @@
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="/home/referrals/{{Auth::user()->id}}"><i data-feather='archive'></i><span class="menu-item text-truncate" data-i18n="List">My Referrals</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">My Team</span></a>
+                    <li><a class="d-flex align-items-center" href="/home/my-team/{{Auth::user()->id}}"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">My Team</span></a>
                     </li>
 
                 </ul>

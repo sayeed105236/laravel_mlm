@@ -45,6 +45,13 @@ class ReferralController extends Controller implements CreatesNewUsers
 
       return view('users.pages.referrals',compact('users'));
     }
+    public function MyTeam($id)
+    {
+        //dd($id,Auth::id());
+      //$users=User::where('sponsor',Auth::id())->get();
+
+      return view('users.pages.my-team');
+    }
     public function userAdd(Request $request)
     {
 
@@ -60,6 +67,8 @@ class ReferralController extends Controller implements CreatesNewUsers
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'sponsor' => $request['sponsor'],
+              //'parent_id' => $request['sponsor'],
+                //'child' => $request['sponsor'],
                 'position' => $request['position'],
                 'package_id' => $request['package_id'],
                 'password' => Hash::make($password),
