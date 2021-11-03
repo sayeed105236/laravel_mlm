@@ -60,6 +60,19 @@
 
                           </select>
                         </div>
+                        <div class="form-group">
+                        <label for="basicSelect">Parrent Id</label>
+
+                            <select class="form-control" id="parrent_id" name="parent_id">
+                          <option label="Choose Sponsor"></option>
+                          @foreach ($users as $user)
+
+                            <option value="{{$user->id}}">{{$user->name}}</option>
+                          @endforeach
+
+                        </select>
+                      </div>
+
 
 
                         <div class="form-group">
@@ -102,7 +115,7 @@
                     </button>
                 </div>
                   </form>
-                  
+
             </div>
         </div>
     </div>

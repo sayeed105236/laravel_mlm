@@ -92,7 +92,7 @@ transition: all 0.5s;
 /*Time for some hover effects*/
 /*We will apply the hover effect the the lineage of the element also*/
 .tree li a:hover, .tree li a:hover+ul li a {
-background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+background: #3ca814; color: #000; border: 1px solid #94a0b4;
 }
 /*Connector styles on hover*/
 .tree li a:hover+ul li::after,
