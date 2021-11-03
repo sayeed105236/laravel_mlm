@@ -55,8 +55,9 @@
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->name}}</td>
                                             <td>{{$user->sponsors->name}}</td>
-                                            <td>{{$user->packages->package_name}}</td>
-                                            <td>{{$user->packages->price}}</td>
+
+                                            <td>{{$user->packages->package_name ?? ''}}</td>
+                                            <td>{{$user->packages->price ?? ''}}</td>
                                             <td>
                                                 <a href="#" data-toggle="modal" data-target="#PaymentMethodEditModal"><i
                                                         data-feather='edit'></i></a>

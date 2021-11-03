@@ -48,7 +48,10 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function MyTeam($id)
     {
         //dd($id,Auth::id());
-      //$users=User::where('sponsor',Auth::id())->get();
+      $users=User::leftJoin('orders', 'customers.id', '=', 'orders.customer_id')
+      ->where('id',Auth::id())->get()->toArray();
+
+      dd($users);
 
       return view('users.pages.my-team');
     }
@@ -67,7 +70,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                 'name' => $request['name'],
                 'email' => $request['email'],
                 'sponsor' => $request['sponsor'],
-              //'parent_id' => $request['sponsor'],
+                'parent_id' => $request['parent_id'],
                 //'child' => $request['sponsor'],
                 'position' => $request['position'],
                 'package_id' => $request['package_id'],

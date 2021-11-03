@@ -27,6 +27,7 @@ class User extends Authenticatable
         'name',
         'email',
         'package_id',
+        'parent_id',
         'sponsor',
         'position',
         'password',
