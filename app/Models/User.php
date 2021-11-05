@@ -69,7 +69,12 @@ class User extends Authenticatable
     }
     public function sponsors()
     {
-        return $this->belongsTo(User::class,'sponsor');
+        return $this->hasMany(User::class,'sponsor');
     }
+    public function childs()
+    {
+        return $this->hasMany(User::class,'parent_id');
+    }
+
 
 }

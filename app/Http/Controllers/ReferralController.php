@@ -14,6 +14,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Contracts\Auth\StatefulGuard;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -45,16 +46,16 @@ class ReferralController extends Controller implements CreatesNewUsers
 
       return view('users.pages.referrals',compact('users'));
     }
-    public function MyTeam($id)
+    public function MyTeam(User $query,$id)
     {
-        //dd($id,Auth::id());
-      $users=User::leftJoin('orders', 'customers.id', '=', 'orders.customer_id')
-      ->where('id',Auth::id())->get()->toArray();
 
-      dd($users);
+        $users = User::where('id', Auth::id())->get();
+        $allChildren = User::pluck('name','id')->all();
 
-      return view('users.pages.my-team');
+
+        return view('users.pages.my-team',compact(['users','allChildren']));
     }
+
     public function userAdd(Request $request)
     {
 
@@ -72,11 +73,14 @@ class ReferralController extends Controller implements CreatesNewUsers
                 'sponsor' => $request['sponsor'],
                 'parent_id' => $request['parent_id'],
                 //'child' => $request['sponsor'],
+                //$node->afterNode($neighbor)->save();
+            //$node->beforeNode($neighbor)->save();
                 'position' => $request['position'],
                 'package_id' => $request['package_id'],
                 'password' => Hash::make($password),
 
             ]);
+
             $sponsor_amount = Package::find($request['package_id']);
             $referral_bonus= GeneralSettings::select('referral_percentage')->first();
             //dd($referral_bonus);

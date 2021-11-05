@@ -81,8 +81,8 @@
                             <option label="Choose position"></option>
 
 
-                              <option value="Right">Right</option>
-                              <option value="Left">Left</option>
+                              <option value="2">Right</option>
+                              <option value="1">Left</option>
                           </select>
                         </div>
 
