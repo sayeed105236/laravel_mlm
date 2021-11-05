@@ -48,10 +48,10 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function MyTeam($id)
     {
         //dd($id,Auth::id());
-      $users=User::leftJoin('orders', 'customers.id', '=', 'orders.customer_id')
-      ->where('id',Auth::id())->get()->toArray();
+      //$users=User::leftJoin('orders', 'customers.id', '=', 'orders.customer_id')
+      //->where('id',Auth::id())->get()->toArray();
 
-      dd($users);
+    //  dd($users);
 
       return view('users.pages.my-team');
     }
