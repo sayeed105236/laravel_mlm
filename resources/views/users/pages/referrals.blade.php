@@ -53,8 +53,8 @@
 
                                         <tr>
                                             <td>{{$user->id}}</td>
-                                            <td>{{$user->name}}</td>
-                                            <td>{{$user->sponsors->name}}</td>
+                                            <td>{{$user->name ?? ''}}</td>
+                                            <td>{{(isset($user->sponsors)) ? $user->sponsors->name : ''}}</td>
 
                                             <td>{{$user->packages->package_name ?? ''}}</td>
                                             <td>{{$user->packages->price ?? ''}}</td>
