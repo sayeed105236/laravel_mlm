@@ -65,7 +65,7 @@ class User extends Authenticatable
 
     public function packages()
     {
-        return $this->belongsTo(Package::class,'package_id');
+        return $this->belongsTo(Package::class,'package_id')->where('status','Active');
     }
     public function sponsors()
     {

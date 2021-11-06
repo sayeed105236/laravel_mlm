@@ -2,8 +2,12 @@
 
 namespace App\Console\Commands;
 
+use App\Models\CashWallet;
 use App\Models\User;
+use Carbon\Carbon;
+use DateTime;
 use Illuminate\Console\Command;
+use function Sodium\add;
 
 class DailyBonus extends Command
 {
@@ -40,19 +44,23 @@ class DailyBonus extends Command
     {
         //return Command::SUCCESS;
 
-
-        // Setting up a random word
-        //$key = array_rand($quotes);
-        //$data = $quotes[$key];
-
         $users = User::with('packages')->get()->toArray();
-        dd($users);
+
         foreach ($users as $user) {
-            Mail::raw("{$key} -> {$data}", function ($mail) use ($user) {
-                $mail->from('digamber@positronx.com');
-                $mail->to($user->email)
-                    ->subject('Daily New Quote!');
-            });
+            if (!empty($user['packages'])){
+                $date1 = new DateTime($user['created_at']);
+                $date2 = new DateTime(Carbon::now()->addDay(1));
+                $days  = $date2->diff($date1)->format('%a');
+
+                if ($days <= $user['packages']['duration']){
+                    CashWallet::create([
+                        'user_id'=>$user['id'],
+                        'bonus_amount'=>$user['packages']['return_percentage'],
+                        'method'=>'daily bonus',
+                    ]);
+                }
+
+            }
         }
 
         $this->info('Successfully added daily bonus.');
