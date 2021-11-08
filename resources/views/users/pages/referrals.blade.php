@@ -42,6 +42,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Name</th>
+                                    <th>User Name</th>
                                     <th>Sponsor Name</th>
                                     <th>Package Name</th>
                                     <th>Purchased Amount</th>
@@ -54,6 +55,7 @@
                                         <tr>
                                             <td>{{$user->id}}</td>
                                             <td>{{$user->name ?? ''}}</td>
+                                            <td>{{$user->user_name ?? ''}}</td>
                                             <td>{{(isset($user->sponsors)) ? $user->sponsors->name : ''}}</td>
 
                                             <td>{{$user->packages->package_name ?? ''}}</td>

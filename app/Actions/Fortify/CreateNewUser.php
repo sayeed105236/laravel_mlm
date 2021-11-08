@@ -33,14 +33,16 @@ class CreateNewUser implements CreatesNewUsers
         $password = substr(str_shuffle($chars), 0, 10);
         $email_data['email']=$input['email'];
         $email_data['name']=$input['name'];
+        $email_data['user_name']=$input['user_name'];
         $email_data['password']=$password;
 //dd($input,Hash::make($password));
         DB::transaction(function() use ($input,$password,$email_data){
             return User::create([
                 'name' => $input['name'],
+                'user_name' => $input['user_name'],
                 'email' => $input['email'],
                 'sponsor' => $input['sponsor'],
-                'sponsor' => $input['sponsor'],
+                
                 'position' => $input['position'],
                 'package_id' => $input['package_id'],
                 'password' => Hash::make($password),

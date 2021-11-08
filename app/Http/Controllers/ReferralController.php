@@ -64,11 +64,13 @@ class ReferralController extends Controller implements CreatesNewUsers
         $password = substr(str_shuffle($chars), 0, 10);
         $email_data['email']=$request['email'];
         $email_data['name']=$request['name'];
+        $email_data['user_name']=$request['user_name'];
         $email_data['password']=$password;
 //dd($input,Hash::make($password));
         DB::transaction(function() use ($request,$password,$email_data){
             $data= User::create([
                 'name' => $request['name'],
+                'user_name' => $request['user_name'],
                 'email' => $request['email'],
                 'sponsor' => $request['sponsor'],
                 'parent_id' => $request['parent_id'],
@@ -138,6 +140,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
         $data= User::create([
             'name' => $input['name'],
+            'user_name' => $input['user_name'],
             'email' => $input['email'],
             'sponsor' => $input['sponsor'],
             'position' => $input['position'],

@@ -23,6 +23,12 @@
                           <input type="text"  id="name" name="name" class="form-control" placeholder="Enter Name" required/>
 
                         </div>
+                        <div class="form-group">
+                        <label class="form-label" for="basic-default-email">User Name</label>
+                        <input type="text"  id="user_name" name="user_name" class="form-control" placeholder="Enter User Name" required/>
+
+                      </div>
+
 
                           <div class="form-group">
                           <label class="form-label" for="basic-default-email">Email</label>
