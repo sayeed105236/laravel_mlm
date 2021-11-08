@@ -11,6 +11,7 @@ class UserCredential extends Notification
 {
     use Queueable;
     protected $name;
+    protected $user_name;
     protected $email;
     protected $password;
 
@@ -24,6 +25,7 @@ class UserCredential extends Notification
       //dd($email_data);
         $this->email=$email_data['email'];
         $this->name=$email_data['name'];
+        $this->user_name=$email_data['user_name'];
         $this->password=$email_data['password'];
     }
 
@@ -55,7 +57,7 @@ class UserCredential extends Notification
         return (new MailMessage())
             ->subject('Account Credentials')
             ->from('noreply@mlm.com', 'mlm')
-            ->view('emails.user-password', ['name' => $notifiable->name,'user_name' => $notifiable->email, 'user_password' => $this->password]);
+            ->view('emails.user-password', ['name' => $notifiable->name,'user_name' => $notifiable->user_name, 'user_password' => $this->password]);
     }
 
     /**
