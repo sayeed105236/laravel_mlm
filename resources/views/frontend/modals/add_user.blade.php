@@ -57,26 +57,22 @@
                           <div class="form-group">
                           <label for="basicSelect">Select Sponsor</label>
 
-                              <select class="form-control" id="sponsor" name="sponsor">
-                            <option label="Choose Sponsor"></option>
-                            @foreach ($users as $user)
-
-                              <option value="{{$user->id}}">{{$user->name}}</option>
-                            @endforeach
-
+                          <select class="form-control select2-show-search"  name="sponsor" id="sponsor">
+                          <option label="Choose Sponsor"></option>
+                          @foreach ($users as $user)
+                          <option value="{{ $user->id }}">{{ ucwords($user->name) }}</option>
+                          @endforeach
                           </select>
                         </div>
                         <div class="form-group">
                         <label for="basicSelect">Parrent Id</label>
 
-                            <select class="form-control" id="parrent_id" name="parent_id">
-                          <option label="Choose Sponsor"></option>
-                          @foreach ($users as $user)
-
-                            <option value="{{$user->id}}">{{$user->name}}</option>
-                          @endforeach
-
-                        </select>
+                        <select class="form-control select2-show-search"  name="parrent_id" id="parrent_id">
+                         <option label="Choose Sponsor"></option>
+                         @foreach ($users as $user)
+                         <option value="{{ $user->id }}">{{ ucwords($user->name) }}</option>
+                         @endforeach
+                       </select>
                       </div>
 
 

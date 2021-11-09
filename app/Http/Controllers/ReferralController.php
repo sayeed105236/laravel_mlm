@@ -136,6 +136,7 @@ class ReferralController extends Controller implements CreatesNewUsers
         $password = substr(str_shuffle($chars), 0, 10);
         $email_data['email']=$input['email'];
         $email_data['name']=$input['name'];
+        $email_data['user_name']=$input['user_name'];
         $email_data['password']=$password;
 
         $data= User::create([

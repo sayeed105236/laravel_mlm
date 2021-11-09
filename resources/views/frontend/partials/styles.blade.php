@@ -28,3 +28,4 @@
 <link rel="stylesheet" type="text/css" href="{{asset('assets/css/style.css')}}">
 <!-- END: Custom CSS-->
 <link rel="stylesheet" type="text/css" href="{{asset('app-assets/vendors/css/forms/select/select2.min.css')}}">
+<link href="{{asset('common')}}/lib/select2/css/select2.min.css" rel="stylesheet">

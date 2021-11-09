@@ -16,7 +16,9 @@
 <script src="{{asset('app-assets/js/scripts/pages/dashboard-ecommerce.js')}}"></script>
 <!-- END: Page JS-->
 <!-- BEGIN: Page JS-->
-<script src="{{asset('app-assets/js/scripts/forms/form-select2.js')}}"></script>
+<!--<script src="{{asset('app-assets/js/scripts/forms/form-select2.js')}}"></script>-->
+<script src="{{asset('common')}}/lib/select2/js/select2.min.js"></script>
+<script src="{{ asset('common') }}/lib/search/code.js"></script>
 <!-- END: Page JS-->
 
 <script>
