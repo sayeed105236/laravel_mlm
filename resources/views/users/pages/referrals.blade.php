@@ -1,5 +1,6 @@
 @extends('frontend.master')
 @section('frontend.content')
+
     <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -90,6 +91,8 @@
 
 @endsection
 @push('scripts')
+<!--<script src="{{asset('app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+<script src="{{asset('app-assets/js/scripts/forms/form-select2.js')}}"></script>}}-->
 <script type="text/javascript">
     $('#registeruser').on('submit', function(e){
         var registerForm = $("#registeruser");
