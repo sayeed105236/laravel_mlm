@@ -164,9 +164,9 @@
 
                                                 </a>
 
-                                                @if(count($user->childs))
+                                                {{--@if(count($user->childs))
                                                     @include('users.pages.manageChild',['childs' => $user->childs])
-                                                @endif
+                                                @endif--}}
                                             </li>
                                         @endforeach
                                     </ul>

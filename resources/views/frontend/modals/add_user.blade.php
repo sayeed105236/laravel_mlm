@@ -57,7 +57,7 @@
                           <div class="form-group">
                           <label for="basicSelect">Select Sponsor</label>
 
-                              <select class="form-control" id="sponsor" name="sponsor">
+                              <select class="form-control select2Me" id="sponsor" name="sponsor">
                             <option label="Choose Sponsor"></option>
                             @foreach ($users as $user)
 
@@ -83,12 +83,10 @@
 
                         <div class="form-group">
                           <label for="basicSelect">Select Position</label>
-                          <select class="form-control" name="position" id="position">
+                          <select class="form-control" name="position" id="position" onchange="checkPosition(this);">
                             <option label="Choose position"></option>
-
-
-                              <option value="2">Right</option>
-                              <option value="1">Left</option>
+                              <option value="2" >Right</option>
+                              <option value="1" >Left</option>
                           </select>
                         </div>
 

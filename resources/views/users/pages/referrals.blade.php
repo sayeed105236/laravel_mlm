@@ -91,6 +91,34 @@
 @endsection
 @push('scripts')
 <script type="text/javascript">
+    $(document).ready(function() {
+       selectToMe('');
+    });
+
+    function checkPosition(){
+      var sponsor=  $('#sponsor').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            //url: $(this).attr('action'),
+             url: '{{route("referrals-checkposition")}}',
+            type:'POST',
+            data: {sponsor:sponsor},
+            //dataType: 'json',
+            success:function(data) {
+                //console.log(data);
+                //location.reload();
+            },
+            error: function(data)
+            {
+
+            }
+        });
+    }
+
     $('#registeruser').on('submit', function(e){
         var registerForm = $("#registeruser");
         var formData = registerForm.serialize();
@@ -108,7 +136,7 @@
             //dataType: 'json',
             success:function(data) {
                 //console.log(data);
-              location.reload();
+              //location.reload();
             },
             error: function(data)
             {

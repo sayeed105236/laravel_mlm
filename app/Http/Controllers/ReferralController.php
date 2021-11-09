@@ -50,16 +50,20 @@ class ReferralController extends Controller implements CreatesNewUsers
     {
 
         $users = User::where('id', Auth::id())->get();
-        $allChildren = User::pluck('name','id')->all();
+        //$allChildren = User::pluck('name','id')->all();
 
 
-        return view('users.pages.my-team',compact(['users','allChildren']));
+        return view('users.pages.my-team',compact(['users']));
+    }
+
+    public function checkPosition(Request $request){
+      dd($request->all());
     }
 
     public function userAdd(Request $request)
     {
 
-      //dd($referral_bonus);
+      dd($request->all());
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $password = substr(str_shuffle($chars), 0, 10);
         $email_data['email']=$request['email'];

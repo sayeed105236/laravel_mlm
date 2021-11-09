@@ -33,6 +33,7 @@ Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->mi
 //user refferals routes
 Route::get('/home/referrals/{id}', [ReferralController::class,'index'])->name('referrals')->middleware('auth');
 Route::post('/home/referrals-user', [ReferralController::class,'userAdd'])->name('referrals-useradd')->middleware('auth');
+Route::post('/home/check-position', [ReferralController::class,'checkPosition'])->name('referrals-checkposition');
 Route::get('/home/my-team/{id}', [ReferralController::class,'MyTeam'])->name('my-team')->middleware('auth');
 Route::middleware(['auth:sanctum', 'verified'])->get('/user/dashboard/', function () {
     return view('dashboard');
