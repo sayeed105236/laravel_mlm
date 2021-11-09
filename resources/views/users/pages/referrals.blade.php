@@ -29,7 +29,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Add User</h4>
+                                <h4 class="card-title">Referral User Lists</h4>
+                                
                                 <a href="#" class="btn btn-primary float-right" data-toggle="modal"
                                    data-target="#AddUserModal">Add</a>
                                 @include('frontend.modals.add_user')
