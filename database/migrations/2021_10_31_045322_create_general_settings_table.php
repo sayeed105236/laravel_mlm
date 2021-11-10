@@ -18,6 +18,7 @@ class CreateGeneralSettingsTable extends Migration
             $table->integer('referral_percentage');
             $table->integer('pair_amount')->nulalble();
             $table->integer('pair_percentage')->nullable();
+            $table->integer('royality_bonus')->nullable();
             $table->integer('min_withdraw')->nullable();
             $table->integer('activation_charge')->nullable();
             $table->timestamps();

@@ -2,7 +2,7 @@
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto"><a class="navbar-brand" href="../../../html/ltr/vertical-menu-template-dark/index.html"><span class="brand-logo">
-                        <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
+                      <!--  <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                             <defs>
                                 <lineargradient id="linearGradient-1" x1="100%" y1="10.5120544%" x2="50%" y2="89.4879456%">
                                     <stop stop-color="#000000" offset="0%"></stop>
@@ -24,8 +24,14 @@
                                     </g>
                                 </g>
                             </g>
-                        </svg></span>
-                    <h2 class="brand-text">Vuexy</h2>
+                        </svg>--></span>
+                        <img
+                          src="{{asset('storage/Logo/'.basic_settings()[0]->image)}}"
+                          alt="image"
+                          height="50"
+                          width="50"
+
+                        />
                 </a></li>
             <li class="nav-item nav-toggle"><a class="nav-link modern-nav-toggle pr-0" data-toggle="collapse"><i class="d-block d-xl-none text-primary toggle-icon font-medium-4" data-feather="x"></i><i class="d-none d-xl-block collapse-toggle-icon font-medium-4  text-primary" data-feather="disc" data-ticon="disc"></i></a></li>
         </ul>
@@ -62,6 +68,26 @@
                     </li>
 
                 </ul>
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Invoice">Report</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Income Report</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Transfer Report</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Level Report</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Order Report</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Payment Report</span></a>
+                    </li>
+
+                </ul>
+                  <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Package Management</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Settings</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
+
+
+
             </li>
           <!--  <li class=" nav-item"><a class="d-flex align-items-center" href="app-file-manager.html"><i data-feather="save"></i><span class="menu-title text-truncate" data-i18n="File Manager">File Manager</span></a>
             </li>

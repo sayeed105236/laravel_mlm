@@ -71,6 +71,7 @@
                                           <th>Referral Bonus(%)</th>
                                           <th>Pair Amount</th>
                                           <th>Percentage Per pair</th>
+                                          <th>Royality Bonus</th>
                                           <th>Minimum Withdrawal</th>
                                           <th>Activation Charge</th>
 
@@ -90,6 +91,7 @@
                                           <td>
                                             {{$row->pair_percentage}}%
                                           </td>
+                                          <td>{{isset($row->royality_bonus)}}%</td>
                                           <td>{{$row->min_withdraw}}$</td>
                                           <td>{{$row->activation_charge}}%</td>
 
