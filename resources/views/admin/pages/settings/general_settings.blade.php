@@ -39,7 +39,7 @@
 
 
                                ?>
-                               <?php if ($data<1): ?>
+                               <?php if ($data<2): ?>
                                   <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#GSettingsAddModal">Add</a>
 
                                <?php endif; ?>
