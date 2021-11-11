@@ -29,6 +29,7 @@ class User extends Authenticatable
         'email',
         'package_id',
         'parent_id',
+        'placement_id',
         'sponsor',
         'position',
         'password',
@@ -71,6 +72,10 @@ class User extends Authenticatable
     public function sponsors()
     {
         return $this->belongsTo(User::class,'sponsor');
+    }
+    public function placements()
+    {
+        return $this->hasMany(User::class,'placement_id','user_name');
     }
     public function childs()
     {

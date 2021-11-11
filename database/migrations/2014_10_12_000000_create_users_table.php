@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('user_name');
             $table->string('email')->unique();
             $table->string('sponsor')->nullable();
+            $table->string('placement_id')->nullable();
             $table->integer('position')->nullable();
             $table->integer('package_id')->nullable();
             $table->integer('parent_id')->nullable();

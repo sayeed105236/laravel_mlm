@@ -44,7 +44,7 @@
 
                         <div class="form-group">
                             <label for="basicSelect">Select Package</label>
-                            <select class="form-control" id="basicSelect" onchange="select_position()" name="package_id">
+                            <select class="form-control" id="basicSelect" name="package_id">
                               <option label="Choose Package"></option>
                               @foreach ($packages as $package)
 
@@ -56,34 +56,22 @@
 
                           <div class="form-group">
                           <label for="basicSelect">Select Sponsor</label>
-
-                              <select class="form-control select2Me" id="sponsor" name="sponsor">
-                            <option label="Choose Sponsor"></option>
-                            @foreach ($users as $user)
-
-                              <option value="{{$user->id}}">{{$user->name}}</option>
-                            @endforeach
-
-                          </select>
-                        </div>
-                        <div class="form-group">
-                        <label for="basicSelect">Parrent Id</label>
-
-                            <select class="form-control" id="parrent_id" name="parent_id">
+                          <select class="select2Me form-control form-control-lg"  name="sponsor" id="sponsor">
                           <option label="Choose Sponsor"></option>
                           @foreach ($users as $user)
 
-                            <option value="{{$user->id}}">{{$user->name}}</option>
+                          <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
                           @endforeach
-
-                        </select>
+                          </select>
+                        </div>
+                        <div class="form-group">
+                        <label for="basicSelect">Placement ID</label>
+                            <input type="text" name="placement_id" id="placement_id" >
                       </div>
-
-
 
                         <div class="form-group">
                           <label for="basicSelect">Select Position</label>
-                          <select class="form-control" name="position" id="position" onchange="checkPosition(this);">
+                          <select class="select2Me form-control" name="position" id="position">
                             <option label="Choose position"></option>
                               <option value="2" >Right</option>
                               <option value="1" >Left</option>

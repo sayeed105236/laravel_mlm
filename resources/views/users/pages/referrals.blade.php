@@ -1,5 +1,6 @@
 @extends('frontend.master')
 @section('frontend.content')
+
     <div class="app-content content ">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -28,7 +29,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-header">
-                                <h4 class="card-title">Add User</h4>
+                                <h4 class="card-title">Referral User Lists</h4>
+
                                 <a href="#" class="btn btn-primary float-right" data-toggle="modal"
                                    data-target="#AddUserModal">Add</a>
                                 @include('frontend.modals.add_user')
@@ -90,13 +92,21 @@
 
 @endsection
 @push('scripts')
+
 <script type="text/javascript">
     $(document).ready(function() {
        selectToMe('');
     });
 
-    function checkPosition(){
+    $('#position').on('change', function (e) {
+
       var sponsor=  $('#sponsor').val();
+      if (sponsor == ''){
+          $(this).val('');
+          return alert('select a sponsor');
+      }
+      //var position=  $('#position').val();
+      var position=  $(this).val();
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -106,10 +116,11 @@
             //url: $(this).attr('action'),
              url: '{{route("referrals-checkposition")}}',
             type:'POST',
-            data: {sponsor:sponsor},
+            data: {sponsor:sponsor,position:position},
             //dataType: 'json',
             success:function(data) {
-                //console.log(data);
+                console.log(data);
+                $('#placement_id').val(data);
                 //location.reload();
             },
             error: function(data)
@@ -117,7 +128,7 @@
 
             }
         });
-    }
+    });
 
     $('#registeruser').on('submit', function(e){
         var registerForm = $("#registeruser");
@@ -140,6 +151,7 @@
             },
             error: function(data)
             {
+                alert(data);
 
             }
         });

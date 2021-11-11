@@ -8,11 +8,11 @@
                     </div>
                 </div>
                 <br>
-                <h5>{{ $child->name }}</h5>
+                <h5>{{ $child->user_name }}</h5>
             </a>
 
-            @if(count($child->childs))
-                @include('users.pages.manageChild',['childs' => $child->childs])
+            @if(count($child->placements))
+                @include('users.pages.manageChild',['childs' => $child->placements])
             @endif
         </li>
     @endforeach

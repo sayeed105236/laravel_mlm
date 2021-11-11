@@ -49,21 +49,60 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function MyTeam(User $query,$id)
     {
 
-        $users = User::where('id', Auth::id())->get();
+        $users = User::with('placements')->where('id', Auth::id())->get();
         //$allChildren = User::pluck('name','id')->all();
-
+//dd($users);
 
         return view('users.pages.my-team',compact(['users']));
     }
 
     public function checkPosition(Request $request){
-      dd($request->all());
+      //dd($request->all());
+        $check_position = User::where('sponsor',$request['sponsor'])->where('position',$request['position'])->first();
+
+        if(is_null($check_position)){
+            $sponsor_name = User::where('id',$request['sponsor'])->first();
+            return $sponsor_name->user_name;
+        }else{
+            $two_lev = User::where('placement_id',$check_position->user_name)->where('position',$request['position'])->first();
+
+            if (is_null($two_lev)){
+                return $check_position->user_name;
+            }else{
+
+                $three_lev = User::where('placement_id',$two_lev->user_name)->where('position',$request['position'])->first();
+
+                if(is_null($three_lev)){
+                    return $two_lev->user_name;
+                }else{
+                    $four_lev = User::where('placement_id',$three_lev->placement_id)->where('position',$request['position'])->first();
+                    if (is_null($four_lev)){
+                        return $three_lev->user_name;
+                    }else{
+                        $five_lev = User::where('placement_id',$three_lev->placement_id)->where('position',$request['position'])->first();
+                        if (is_null($five_lev)){
+                            return $four_lev->user_name;
+                        }else{
+                            $six_lev = User::where('placement_id',$three_lev->placement_id)->where('position',$request['position'])->first();
+                            if (is_null($five_lev)){
+                                return $five_lev->user_name;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
+   function check(){
+
+   }
+
 
     public function userAdd(Request $request)
     {
 
-      dd($request->all());
+      //dd($request->all());
+
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $password = substr(str_shuffle($chars), 0, 10);
         $email_data['email']=$request['email'];
@@ -72,20 +111,6 @@ class ReferralController extends Controller implements CreatesNewUsers
         $email_data['password']=$password;
 //dd($input,Hash::make($password));
         DB::transaction(function() use ($request,$password,$email_data){
-            $data= User::create([
-                'name' => $request['name'],
-                'user_name' => $request['user_name'],
-                'email' => $request['email'],
-                'sponsor' => $request['sponsor'],
-                'parent_id' => $request['parent_id'],
-                //'child' => $request['sponsor'],
-                //$node->afterNode($neighbor)->save();
-            //$node->beforeNode($neighbor)->save();
-                'position' => $request['position'],
-                'package_id' => $request['package_id'],
-                'password' => Hash::make($password),
-
-            ]);
 
             $sponsor_amount = Package::find($request['package_id']);
             $referral_bonus= GeneralSettings::select('referral_percentage')->first();
@@ -93,10 +118,28 @@ class ReferralController extends Controller implements CreatesNewUsers
             $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
             $calculated_amount= ($sponsor_amount->price + ($sponsor_amount->price * 10/100));
             //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
-            if ($sum_deposit < $calculated_amount) {
+            /*if ($sum_deposit < $calculated_amount) {
 
-              return response()->json(['status'=>'Insufficient Balance']);
-            };
+              //return response()->json(['status'=>'Insufficient Balance']);
+            };*/
+            //dd($request->all());
+
+            $data= User::create([
+                'name' => $request['name'],
+                'user_name' => $request['user_name'],
+                'email' => $request['email'],
+                'sponsor' => $request['sponsor'],
+                //'parent_id' => $request['sponsor'],
+                'placement_id' => $request['placement_id'],
+                //'child' => $request['sponsor'],
+                //$node->afterNode($neighbor)->save();
+                //$node->beforeNode($neighbor)->save();
+                'position' => $request['position'],
+                'package_id' => $request['package_id'],
+                'password' => Hash::make($password),
+
+            ]);
+
 
             $wallet_amount = new AddMoney();
             $wallet_amount->user_id = Auth::id();
@@ -108,10 +151,10 @@ class ReferralController extends Controller implements CreatesNewUsers
 
 
 
-            $bonus_amount = new CashWallet();
+            /*$bonus_amount = new CashWallet();
             $bonus_amount->user_id = $request['sponsor'];
             $bonus_amount->bonus_amount = (($sponsor_amount->price)* $referral_bonus->referral_percentage)/100;
-            $bonus_amount->save();
+            $bonus_amount->save();*/
 
 
             return $data->notify(new UserCredential($email_data));
@@ -140,6 +183,7 @@ class ReferralController extends Controller implements CreatesNewUsers
         $password = substr(str_shuffle($chars), 0, 10);
         $email_data['email']=$input['email'];
         $email_data['name']=$input['name'];
+        $email_data['user_name']=$input['user_name'];
         $email_data['password']=$password;
 
         $data= User::create([
