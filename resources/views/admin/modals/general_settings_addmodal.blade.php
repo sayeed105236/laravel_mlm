@@ -32,6 +32,10 @@
                               <input type="number" id="basic-default-password" name="pair_percentage" class="form-control" placeholder="Enter percentage amount" />
                           </div>
                           <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Royality Bonus</label>
+                              <input type="number" id="basic-default-password" name="royality_bonus" class="form-control" placeholder="Enter royality bonus amount" />
+                          </div>
+                          <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Withdrwal Amount</label>
                               <input type="number" id="basic-default-password" name="min_withdraw" class="form-control" placeholder="Enter minimum Withdrwal amount" />
                           </div>

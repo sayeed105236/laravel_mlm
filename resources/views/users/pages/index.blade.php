@@ -53,13 +53,14 @@
                                 </div>
                             </div>
                         </div>
+                        <?php
+                          $payment=App\Models\PaymentMethod::where('status','Active')->get();
+
+                         ?>
+                         @foreach($payment as $row)
                         <div class="col-xl-6 col-md-6 col-12">
                             <div class="card card-congratulation-medal">
-                              <?php
-                                $payment=App\Models\PaymentMethod::where('status','Active')->get();
 
-                               ?>
-                               @foreach($payment as $row)
                                 <div class="card-body">
                                     <h5>Payment Method : {{$row->name}} </h5>
                                     <p class="card-text font-small-3">Account Name: {{$row->acc_name}}</p>
@@ -69,8 +70,78 @@
 
 
                                 </div>
-                                @endforeach
 
+
+                            </div>
+                        </div>
+                        @endforeach
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="card card-congratulation-medal">
+                                <div class="card-body">
+
+                                    <h5>Users</h5>
+                                    <p class="card-text font-small-3"></p>
+                                    <h3 class="mb-75 mt-2 pt-50">
+                                      <?php
+                                      $users=App\Models\User::all();
+
+                                       ?>
+                                          <a href="javascript:void(0);">Total Users:   {{count($users)}}</a>
+                                    </h3>
+
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="card card-congratulation-medal">
+                                <div class="card-body">
+
+                                    <h5>Earnings</h5>
+                                    <p class="card-text font-small-3"></p>
+                                    <h3 class="mb-75 mt-2 pt-50">
+                                      <?php
+                                      $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
+
+                                      ?>
+                                          <a href="javascript:void(0);">Total Earnings:  {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</a>
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="card card-congratulation-medal">
+                                <div class="card-body">
+
+                                    <h5>Withdrwal</h5>
+                                    <p class="card-text font-small-3"></p>
+                                    <h3 class="mb-75 mt-2 pt-50">
+                                      <?php
+                                      $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
+
+                                      ?>
+                                          <a href="javascript:void(0);">Total Withdrwal:  $00.00</a>
+                                    </h3>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-6 col-md-6 col-12">
+                            <div class="card card-congratulation-medal">
+                                <div class="card-body">
+
+                                    <h5>Packages</h5>
+                                    <p class="card-text font-small-3"></p>
+                                    <h3 class="mb-75 mt-2 pt-50">
+                                      <?php
+                                      $packages=App\Models\Package::where('status','Active')->get();
+
+                                       ?>
+                                          <a href="javascript:void(0);">No of Package: {{count($packages)}} </a>
+                                    </h3>
+
+                                </div>
                             </div>
                         </div>
                         <!--/ Medal Card -->
