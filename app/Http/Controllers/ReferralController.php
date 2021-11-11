@@ -118,10 +118,10 @@ class ReferralController extends Controller implements CreatesNewUsers
             $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
             $calculated_amount= ($sponsor_amount->price + ($sponsor_amount->price * 10/100));
             //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
-            /*if ($sum_deposit < $calculated_amount) {
+            if ($sum_deposit < $calculated_amount) {
 
-              //return response()->json(['status'=>'Insufficient Balance']);
-            };*/
+              return response()->json(['status'=>'Insufficient Balance']);
+            };
             //dd($request->all());
 
             $data= User::create([
@@ -151,10 +151,10 @@ class ReferralController extends Controller implements CreatesNewUsers
 
 
 
-            /*$bonus_amount = new CashWallet();
+            $bonus_amount = new CashWallet();
             $bonus_amount->user_id = $request['sponsor'];
             $bonus_amount->bonus_amount = (($sponsor_amount->price)* $referral_bonus->referral_percentage)/100;
-            $bonus_amount->save();*/
+            $bonus_amount->save();
 
 
             return $data->notify(new UserCredential($email_data));

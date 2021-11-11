@@ -65,8 +65,8 @@
                           </select>
                         </div>
                         <div class="form-group">
-                        <label for="basicSelect">Placement ID</label>
-                            <input type="text" name="placement_id" id="placement_id" >
+                      <!--  <label for="basicSelect">Placement ID</label>-->
+                            <input type="hidden" name="placement_id" id="placement_id" >
                       </div>
 
                         <div class="form-group">
