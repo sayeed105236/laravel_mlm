@@ -30,6 +30,10 @@
                               <input type="number" name="pair_percentage" value="{{$row->pair_percentage}}" class="form-control" />
                           </div>
                           <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Royality Bonus</label>
+                              <input type="number" id="basic-default-password" name="royality_bonus"  value="{{$row->royality_bonus}}" class="form-control" placeholder="Enter royality bonus amount" />
+                          </div>
+                          <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Withdrwal</label>
                               <input type="number" name="min_withdraw" value="{{$row->min_withdraw}}" class="form-control" />
                           </div>
