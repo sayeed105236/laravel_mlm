@@ -31,7 +31,7 @@
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Royality Bonus</label>
-                              <input type="number" id="basic-default-password" name="{{$row->royality_bonus}}"  value="{{$row->royality_bonus}}" class="form-control" placeholder="Enter royality bonus amount" />
+                              <input type="number" id="basic-default-password" name="royality_bonus"  value="{{$row->royality_bonus}}" class="form-control" placeholder="Enter royality bonus amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Withdrwal</label>

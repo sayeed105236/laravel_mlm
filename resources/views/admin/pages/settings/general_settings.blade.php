@@ -39,7 +39,7 @@
 
 
                                ?>
-                               <?php if ($data<2): ?>
+                               <?php if ($data<1): ?>
                                   <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#GSettingsAddModal">Add</a>
 
                                <?php endif; ?>
@@ -91,7 +91,7 @@
                                           <td>
                                             {{$row->pair_percentage}}%
                                           </td>
-                                          <td>{{isset($row->royality_bonus)}}%</td>
+                                          <td>{{$row->royality_bonus}}%</td>
                                           <td>{{$row->min_withdraw}}$</td>
                                           <td>{{$row->activation_charge}}%</td>
 
