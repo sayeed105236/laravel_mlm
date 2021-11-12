@@ -114,9 +114,10 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             $sponsor_amount = Package::find($request['package_id']);
             $referral_bonus= GeneralSettings::select('referral_percentage')->first();
+            $activation= GeneralSettings::select('activation_charge')->first();
             //dd($referral_bonus);
             $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
-            $calculated_amount= ($sponsor_amount->price + ($sponsor_amount->price * 10/100));
+            $calculated_amount= ($sponsor_amount->price + ($sponsor_amount->price * $activation->activation_charge/100));
             //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
             if ($sum_deposit < $calculated_amount) {
 

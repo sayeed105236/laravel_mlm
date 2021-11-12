@@ -19,7 +19,8 @@
                             @csrf
                             <div class="form-group">
                                 <label for="select-country">Transfer User</label>
-                                <select class="form-control select2" name="user_id" required>
+                              
+                                <select class="select2Me form-control form-control-lg" name="user_id" required>
                                     <option label="select a user"></option>
 
                                     @foreach ( $data['user'] as $row)
