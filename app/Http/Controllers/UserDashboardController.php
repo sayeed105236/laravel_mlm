@@ -18,7 +18,7 @@ class UserDashboardController extends Controller
     {
 
 
-      $data['user']=User::find($id);
+      $data['user']=User::all();
       $data['deposit']=AddMoney::where('user_id',$id)->first();
 
       $data['sum_deposit']=AddMoney::where('user_id',$id)->where('status','approve')->sum('amount');

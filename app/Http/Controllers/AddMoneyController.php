@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\AddMoney;
+use Illuminate\Support\Facades\Auth;
 
 class AddMoneyController extends Controller
 {
@@ -31,4 +32,30 @@ class AddMoneyController extends Controller
     $deposit->save();
     return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
   }
+
+    public function moneyTransfer(Request $request)
+    {
+        //dd($request);
+        $request->validate([
+
+            'user_id' => 'required',
+            'amount' => 'required',
+
+        ]);
+
+        $deduct = new AddMoney;
+        $deduct->user_id = Auth::id();
+        $deduct->amount = -($request->amount);
+        $deduct->method ='Transfer';
+        $deduct->status ='approve';
+        $deduct->save();
+
+        $deposit = new AddMoney;
+        $deposit->user_id = $request->user_id;
+        $deposit->amount =$request->amount;
+        $deposit->method ='Transfer';
+        $deposit->status ='approve';
+        $deposit->save();
+        return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
+    }
 }

@@ -26,10 +26,11 @@
                                     </h3>
 
                                       <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#DepositModal">Deposit</button>
-                                      <button type="button" class="btn btn-primary">Transfer</button>
+                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TransferModal" >Transfer</button>
                                       <button type="button" class="btn btn-primary">Upgrade</button>
 
                                       @include('frontend.modals.add_moneymodal')
+                                      @include('frontend.modals.transfermoney_modal')
 
                                 </div>
                             </div>
