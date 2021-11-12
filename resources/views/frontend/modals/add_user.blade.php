@@ -35,6 +35,27 @@
                             <input type="text"  id="email" name="email" class="form-control" placeholder="Enter Email" required/>
 
                         </div>
+                        <div class="form-group">
+                        <label class="form-label" for="basic-default-email">Phone Number</label>
+                          <input type="number"  id="number" name="number" class="form-control" placeholder="+8801554555554" required/>
+
+                      </div>
+                      <div class="form-group">
+                      <label class="form-label" for="basic-default-email">Date Of Birth</label>
+                        <input type="date" id="birth" name="birth" class="form-control" placeholder="" required/>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="basicSelect">Gender</label>
+                        <select class="form-control" id="basicSelect" name="gender">
+                          <option label="Choose Gender"></option>
+
+
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+
+                        </select>
+                    </div>
                         <?php
                           $packages= App\Models\Package::where('status','Active')->get();
                           //dd($packages);
