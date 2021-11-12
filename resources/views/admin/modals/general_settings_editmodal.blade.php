@@ -6,7 +6,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel18">Edit general Settings</h4>
+                    <h4 class="modal-title" id="myModalLabel18">Edit General Settings</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -31,7 +31,7 @@
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Royality Bonus</label>
-                              <input type="number" id="basic-default-password" name="royality_bonus"  value="{{$row->royality_bonus}}" class="form-control" placeholder="Enter royality bonus amount" />
+                              <input type="number" id="basic-default-password" name="{{$row->royality_bonus}}"  value="{{$row->royality_bonus}}" class="form-control" placeholder="Enter royality bonus amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Withdrwal</label>
