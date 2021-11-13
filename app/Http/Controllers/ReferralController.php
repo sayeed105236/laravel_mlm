@@ -56,10 +56,11 @@ class ReferralController extends Controller implements CreatesNewUsers
         return view('users.pages.my-team',compact(['users']));
     }
 
-    public function checkPosition(User $user,Request $request){
+    public function checkPosition(Request $request){
 
         //$user->setPosition($request['position']);
-        $check_position = User::where('id',$request['sponsor'])->where('position',$request['position'])->first();
+        $check_position = User::where('sponsor',$request['sponsor'])->where('position',$request['position'])->first();
+       // dd($check_position);
         if(is_null($check_position)){
             $first = User::where('id',$request['sponsor'])->first();
             return  $first->user_name;
