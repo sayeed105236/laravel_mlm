@@ -56,52 +56,53 @@ class ReferralController extends Controller implements CreatesNewUsers
         return view('users.pages.my-team',compact(['users']));
     }
 
-    public function checkPosition(Request $request){
-      //dd($request->all());
-        $check_position = User::where('sponsor',$request['sponsor'])->where('position',$request['position'])->first();
+    public function checkPosition(User $user,Request $request){
 
+        //$user->setPosition($request['position']);
+        $check_position = User::where('id',$request['sponsor'])->where('position',$request['position'])->first();
         if(is_null($check_position)){
-            $sponsor_name = User::where('id',$request['sponsor'])->first();
-            return $sponsor_name->user_name;
+            $first = User::where('id',$request['sponsor'])->first();
+            return  $first->user_name;
         }else{
-            $two_lev = User::where('placement_id',$check_position->user_name)->where('position',$request['position'])->first();
+            $all = $check_position->childrenRecursive;
+        }
 
-            if (is_null($two_lev)){
-                return $check_position->user_name;
-            }else{
 
-                $three_lev = User::where('placement_id',$two_lev->user_name)->where('position',$request['position'])->first();
+        // loop through category ids and find all child categories until there are no more
 
-                if(is_null($three_lev)){
-                    return $two_lev->user_name;
-                }else{
-                    $four_lev = User::where('placement_id',$three_lev->placement_id)->where('position',$request['position'])->first();
-                    if (is_null($four_lev)){
-                        return $three_lev->user_name;
-                    }else{
-                        $five_lev = User::where('placement_id',$three_lev->placement_id)->where('position',$request['position'])->first();
-                        if (is_null($five_lev)){
-                            return $four_lev->user_name;
-                        }else{
-                            $six_lev = User::where('placement_id',$three_lev->placement_id)->where('position',$request['position'])->first();
-                            if (is_null($five_lev)){
-                                return $five_lev->user_name;
-                            }
-                        }
+        if(count($all)>0)
+        {
+            foreach($all as $subcat){
+
+                if(count($subcat->childrenRecursive) > 0){
+                    foreach ($subcat->childrenRecursive as $item){
+                       return $this->check($item);
                     }
+                }else{
+                    return $subcat->user_name;
                 }
             }
         }
+        else
+        {
+            return $check_position->user_name;
+        }
+
     }
-   function check(){
+   function check($subcat){
+       if(count($subcat->childrenRecursive) > 0){
+           foreach ($subcat->childrenRecursive as $item){
+               return $item->user_name;
+           }
+       }else{
+           return $subcat->user_name;
+       }
 
    }
 
 
     public function userAdd(Request $request)
     {
-
-      //dd($request->all());
 
         $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         $password = substr(str_shuffle($chars), 0, 10);

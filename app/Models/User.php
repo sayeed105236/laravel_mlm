@@ -84,6 +84,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(User::class,'parent_id');
     }
-
+    // recursive, loads all descendants
+    public function position()
+    {
+        return $this->hasMany(User::class,'placement_id','user_name');
+    }
+    public function childrenRecursive()
+    {
+        return $this->position()->with('childrenRecursive');
+    }
 
 }

@@ -52,23 +52,23 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach($users as $user)
+                                @foreach($users as $user)
 
-                                        <tr>
-                                            <td>{{$user->id}}</td>
-                                            <td>{{$user->name ?? ''}}</td>
-                                            <td>{{$user->user_name ?? ''}}</td>
-                                            <td>{{(isset($user->sponsors)) ? $user->sponsors->name : ''}}</td>
+                                    <tr>
+                                        <td>{{$user->id}}</td>
+                                        <td>{{$user->name ?? ''}}</td>
+                                        <td>{{$user->user_name ?? ''}}</td>
+                                        <td>{{(isset($user->sponsors)) ? $user->sponsors->name : ''}}</td>
 
-                                            <td>{{$user->packages->package_name ?? ''}}</td>
-                                            <td>{{$user->packages->price ?? ''}}</td>
-                                            <td>
-                                                <a href="#" data-toggle="modal" data-target="#PaymentMethodEditModal"><i
-                                                        data-feather='edit'></i></a>
-                                                <a href="#"><i data-feather='trash-2'></i></a>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                        <td>{{$user->packages->package_name ?? ''}}</td>
+                                        <td>{{$user->packages->price ?? ''}}</td>
+                                        <td>
+                                            <a href="#" data-toggle="modal" data-target="#PaymentMethodEditModal"><i
+                                                    data-feather='edit'></i></a>
+                                            <a href="#"><i data-feather='trash-2'></i></a>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
@@ -93,68 +93,66 @@
 @endsection
 @push('scripts')
 
-<script type="text/javascript">
-    $(document).ready(function() {
-       selectToMe('');
-    });
-
-    $('#position').on('change', function (e) {
-
-      var sponsor=  $('#sponsor').val();
-      if (sponsor == ''){
-          $(this).val('');
-          return alert('select a sponsor');
-      }
-      //var position=  $('#position').val();
-      var position=  $(this).val();
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+    <script type="text/javascript">
+        $(document).ready(function () {
+            selectToMe('');
         });
-        $.ajax({
-            //url: $(this).attr('action'),
-             url: '{{route("referrals-checkposition")}}',
-            type:'POST',
-            data: {sponsor:sponsor,position:position},
-            //dataType: 'json',
-            success:function(data) {
-                console.log(data);
-                $('#placement_id').val(data);
-                //location.reload();
-            },
-            error: function(data)
-            {
 
+        $('#position').on('change', function (e) {
+
+            var sponsor = $('#sponsor').val();
+            if (sponsor == '') {
+                $(this).val('');
+                return alert('select a sponsor');
             }
+            //var position=  $('#position').val();
+            var position = $(this).val();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                //url: $(this).attr('action'),
+                url: '{{route("referrals-checkposition")}}',
+                type: 'POST',
+                data: {sponsor: sponsor, position: position},
+                //dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    $('#placement_id').val(data);
+                    //location.reload();
+                },
+                error: function (data) {
+
+                }
+            });
         });
-    });
 
-    $('#registeruser').on('submit', function(e){
-        var registerForm = $("#registeruser");
-        var formData = registerForm.serialize();
+        $('#registeruser').on('submit', function (e) {
+            var registerForm = $("#registeruser");
+            var formData = registerForm.serialize();
 
-        $.ajaxSetup({
-            header:$('meta[name="_token"]').attr('content')
-        })
-        e.preventDefault(e);
+            $.ajaxSetup({
+                header: $('meta[name="_token"]').attr('content')
+            })
+            e.preventDefault(e);
 
-        $.ajax({
-            url: $(this).attr('action'),
-           // url: '{{route("referrals-useradd")}}',
-            type:'POST',
-            data:formData,
-            //dataType: 'json',
-            success:function(data) {
-                //console.log(data);
-              location.reload();
-            },
-            error: function(data)
-            {
-                alert(data);
+            $.ajax({
+                url: $(this).attr('action'),
+                // url: '{{route("referrals-useradd")}}',
+                type: 'POST',
+                data: formData,
+                //dataType: 'json',
+                success: function (data) {
+                    //console.log(data);
+                    location.reload();
+                },
+                error: function (data) {
+                    alert(data);
 
-            }
+                }
+            });
         });
-    });
-</script>
+    </script>
 @endpush
