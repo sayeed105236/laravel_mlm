@@ -146,10 +146,10 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             ]);
 
-
+            $activation= GeneralSettings::select('activation_charge')->first();
             $wallet_amount = new AddMoney();
             $wallet_amount->user_id = Auth::id();
-            $wallet_amount->amount = -($sponsor_amount->price + ($sponsor_amount->price * 10/100));
+            $wallet_amount->amount = -($sponsor_amount->price + ($sponsor_amount->price * $activation->activation_charge/100));
             $wallet_amount->method = 'Manual';
             $wallet_amount->status = 'approve';
             $wallet_amount->created_at = Carbon::now();
