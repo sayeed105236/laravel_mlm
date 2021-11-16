@@ -1,6 +1,7 @@
 <?php
 
 use App\Providers\RouteServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Laravel\Fortify\Features;
 
 return [
@@ -61,7 +62,20 @@ return [
     |
     */
 
-    'home' => RouteServiceProvider::HOME,
+    //'home' => RouteServiceProvider::HOME,
+    'home' => function(){
+
+        //if you want to go to a specific route
+        return "/home/dashboard/".Auth::id();
+
+        //or if you have a bunch of redirection options
+       /* if (Auth::user()->hasRole('admin')) {
+            return route('admin.dashboard');
+        }
+        else{
+            return route('guest.dashboard');
+        }*/
+    },
 
     /*
     |--------------------------------------------------------------------------
