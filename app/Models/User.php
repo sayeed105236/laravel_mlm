@@ -93,5 +93,6 @@ class User extends Authenticatable
     {
         return $this->position()->with('childrenRecursive');
     }
+    
 
 }

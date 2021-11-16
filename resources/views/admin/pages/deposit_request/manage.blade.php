@@ -67,6 +67,7 @@
                                   </thead>
                                   <tbody>
                                     @foreach($deposit as $row)
+
                                       <tr>
                                         <td>{{$loop->index+1}}</td>
                                           <td>
