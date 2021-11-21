@@ -36,6 +36,10 @@ class User extends Authenticatable
         'sponsor',
         'position',
         'password',
+        'left_count',
+        'right_count',
+        'left_side',
+        'right_side',
     ];
 
     /**
@@ -93,6 +97,6 @@ class User extends Authenticatable
     {
         return $this->position()->with('childrenRecursive');
     }
-    
+
 
 }

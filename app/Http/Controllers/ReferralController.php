@@ -126,7 +126,8 @@ class ReferralController extends Controller implements CreatesNewUsers
               return response()->json(['status'=>'Insufficient Balance']);
             };
             //dd($request->all());
-
+            $placement_id = $request['placement_id'];
+            $position_id = $request['position'];
             $data= User::create([
                 'name' => $request['name'],
                 'user_name' => $request['user_name'],
@@ -136,15 +137,27 @@ class ReferralController extends Controller implements CreatesNewUsers
                 'number' => $request['number'],
                 'gender' => $request['gender'],
                 //'parent_id' => $request['sponsor'],
-                'placement_id' => $request['placement_id'],
+                'placement_id' =>$placement_id,
                 //'child' => $request['sponsor'],
                 //$node->afterNode($neighbor)->save();
                 //$node->beforeNode($neighbor)->save();
-                'position' => $request['position'],
+                'position' => $position_id,
                 'package_id' => $request['package_id'],
                 'password' => Hash::make($password),
 
             ]);
+
+            if ($position_id == 1){
+                 User::where('user_name', $placement_id)
+                    ->update(['left_side' => $data->user_name]);
+            }else{
+                User::where('user_name', $placement_id)
+                    ->update(['right_side' => $data->user_name]);
+            }
+            //level distribution
+            //$this->levelBonus($placement_id);
+            $this->binary_count($placement_id,$position_id);
+
 
             $activation= GeneralSettings::select('activation_charge')->first();
             $wallet_amount = new AddMoney();
@@ -163,13 +176,79 @@ class ReferralController extends Controller implements CreatesNewUsers
             $bonus_amount->save();
 
 
-            return $data->notify(new UserCredential($email_data));
+           // return $data->notify(new UserCredential($email_data));
         });
 
     }
 
+    /**
+     * Level bonus
+     */
+    public function levelBonus($placement_id)
+    {
+
+        $i=0;
+
+        $income=[20,10,5,5,5];
+        while($i < 5 && $placement_id != ''){
+            $user = User::where('user_name',$placement_id)->first('id');
+
+            $bonus_amount = new CashWallet();
+            $bonus_amount->user_id = (int)$user->id;
+            $bonus_amount->bonus_amount = $income[$i];
+            $bonus_amount->save();
+
+            $next_id= $this->find_placement_id($placement_id);
+            $placement_id = $next_id;
+        }
+
+    }
+
+    public function binary_count($placement_id,$pos)
+    {
+
+       if ($pos == 1){
+            $pos = 'left_count';
+       }elseif($pos == 2){
+           $pos = 'right_count';
+       }
+        //dd($placement_id != '' && $pos != '');
+        while($placement_id != '' && $pos != ''){
+
+          // $in = "update users set $pos=`$pos`+1 where 'user_name' = '$placement_id'";
+            DB::statement("UPDATE users SET $pos = `$pos`+1 WHERE user_name = '$placement_id'");
 
 
+            //$user = User::where('user_name',$placement_id)->update([$pos =>`$pos`+1]);
+
+            $placement_id= $this->find_placement_id($placement_id);
+
+            $pos= $this->find_position_id($placement_id);
+
+        }
+
+    }
+    public function find_position_id($placement_id){
+
+            $user_id = User::where('user_name',$placement_id)->first();
+
+            if ($user_id){
+                $pos = $user_id->position;
+
+                if ($pos == 1){
+                    $pos = 'left_count';
+                }elseif($pos == 2){
+                    $pos = 'right_count';
+                }
+
+                return $pos;
+            }
+
+    }
+    public function find_placement_id($placement_id){
+            $user_id = User::where('user_name',$placement_id)->first();
+            return $user_id->user_name;
+    }
     /**
      * Validate and create a newly registered user.
      *

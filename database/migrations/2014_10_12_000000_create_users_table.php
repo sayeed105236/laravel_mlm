@@ -31,6 +31,10 @@ class CreateUsersTable extends Migration
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->integer('left_count')->unsigned()->default('0');
+            $table->integer('right_count')->unsigned()->default('0');
+            $table->string('left_side')->nullable();
+            $table->string('right_side')->nullable();
             $table->rememberToken();
             $table->string('utype')->default('USR')->comment('ADM for Admin USR for normal user');
             $table->timestamps();
