@@ -8,6 +8,7 @@ use App\Models\AddMoney;
 use App\Models\CashWallet;
 use App\Models\Package;
 use App\Models\GeneralSettings;
+use App\Models\PairCount;
 use App\Notifications\UserCredential;
 use Carbon\Carbon;
 use Illuminate\Auth\Events\Registered;
@@ -209,9 +210,10 @@ class ReferralController extends Controller implements CreatesNewUsers
 
        if ($pos == 1){
             $pos = 'left_count';
-       }elseif($pos == 2){
+       }else{
            $pos = 'right_count';
        }
+
         //dd($placement_id != '' && $pos != '');
         while($placement_id != '' && $pos != ''){
 
@@ -220,10 +222,11 @@ class ReferralController extends Controller implements CreatesNewUsers
 
 
             //$user = User::where('user_name',$placement_id)->update([$pos =>`$pos`+1]);
-
+                $this->is_pair_generate($placement_id);
+            $pos= $this->find_position_id($placement_id);
             $placement_id= $this->find_placement_id($placement_id);
 
-            $pos= $this->find_position_id($placement_id);
+
 
         }
 
@@ -231,8 +234,15 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function find_position_id($placement_id){
 
             $user_id = User::where('user_name',$placement_id)->first();
+            $pos= $user_id->position;
+            if ($pos == 1){
+                $pos = 'left_count';
+            }elseif($pos == 2){
+                $pos = 'right_count';
+            }
 
-            if ($user_id){
+            return $pos;
+        /* if ($user_id){
                 $pos = $user_id->position;
 
                 if ($pos == 1){
@@ -242,12 +252,36 @@ class ReferralController extends Controller implements CreatesNewUsers
                 }
 
                 return $pos;
-            }
+            }*/
 
     }
     public function find_placement_id($placement_id){
+
             $user_id = User::where('user_name',$placement_id)->first();
-            return $user_id->user_name;
+            //dd($user_id->);
+            return $user_id->placement_id;
+    }
+
+    public function is_pair_generate($placement_id)
+    {
+
+        $user = User::where('user_name',$placement_id)->first();
+
+
+        if ($user->left_count == $user->right_count){
+            $data = PairCount::where('user_id',$user->id)->where('created_at',Carbon::today())->get()->toArray();
+            $date= date('Y-m-d');
+            if(count($data) == 1){
+                DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' user_id = '$user->id'");
+            }else{
+                $insert= new PairCount();
+                $insert->user_id = $user->id;
+                $insert->date = Carbon::today();
+                $insert->no_of_pair = 1;
+                $insert->save();
+            }
+        }
+
     }
     /**
      * Validate and create a newly registered user.

@@ -15,6 +15,10 @@ class CreatePairCountsTable extends Migration
     {
         Schema::create('pair_counts', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id')->nullable();
+            $table->date('date')->nullable();
+            $table->integer('no_of_pair')->nullable();
+            $table->integer('status')->unsigned()->default('0');
             $table->timestamps();
         });
     }
