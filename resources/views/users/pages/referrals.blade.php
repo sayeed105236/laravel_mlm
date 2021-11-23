@@ -146,7 +146,7 @@
                 //dataType: 'json',
                 success: function (data) {
                     //console.log(data);
-                    //location.reload();
+                    location.reload();
                 },
                 error: function (data) {
                     alert(data);

@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\CashWallet;
 use App\Models\User;
+use App\Models\GeneralSettings;
 use Carbon\Carbon;
 use DateTime;
 use Illuminate\Console\Command;
@@ -45,6 +46,8 @@ class DailyBonus extends Command
         //return Command::SUCCESS;
 
         $users = User::with('packages')->get()->toArray();
+        $sponsor_bonus= GeneralSettings::select('royality_bonus')->first();
+        //dd($sponsor_bonus['royality_bonus']);
 
         foreach ($users as $user) {
             if (!empty($user['packages'])){
@@ -57,6 +60,11 @@ class DailyBonus extends Command
                         'user_id'=>$user['id'],
                         'bonus_amount'=>$user['packages']['return_percentage'],
                         'method'=>'daily bonus',
+                    ]);
+                    CashWallet::create([
+                        'user_id'=>$user['sponsor'],
+                        'bonus_amount'=>$user['packages']['return_percentage']*$sponsor_bonus['royality_bonus']/100,
+                        'method'=>'daily sponsor bonus',
                     ]);
                 }
 
