@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ReportController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FrontendController;
 use App\Http\Controllers\PackageController;
@@ -78,3 +79,7 @@ Route::get('/admin/payment-method', [PaymentMethodController::class,'index'])->n
 Route::post('/admin/payment-method/store', [PaymentMethodController::class,'Store'])->name('payment-method-store')->middleware('authadmin');
 Route::get('/admin/payment-method/delete/{id}', [PaymentMethodController::class,'Delete'])->middleware('authadmin');
 Route::post('/admin/payment-method/update', [PaymentMethodController::class,'Update'])->name('payment-method-update')->middleware('authadmin');
+
+//Report
+Route::get('/admin/income-report', [ReportController::class,'incomeReport'])->name('income-report')->middleware('auth');
+Route::get('/admin/transfer-report', [ReportController::class,'transferReport'])->name('transfer-report')->middleware('auth');

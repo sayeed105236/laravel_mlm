@@ -118,15 +118,15 @@ class ReferralController extends Controller implements CreatesNewUsers
             $sponsor_amount = Package::find($request['package_id']);
             $referral_bonus= GeneralSettings::select('referral_percentage')->first();
             $activation= GeneralSettings::select('activation_charge')->first();
-            //dd($referral_bonus);
+
             $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
             $calculated_amount= ($sponsor_amount->price + ($sponsor_amount->price * $activation->activation_charge/100));
             //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
-            if ($sum_deposit < $calculated_amount) {
 
-              return response()->json(['status'=>'Insufficient Balance']);
+            if ($sum_deposit < $calculated_amount) {
+                throw new \Exception("Insufficient Balance", 422);
             };
-            //dd($request->all());
+
             $placement_id = $request['placement_id'];
             $position_id = $request['position'];
             $data= User::create([
@@ -177,7 +177,7 @@ class ReferralController extends Controller implements CreatesNewUsers
             $bonus_amount->save();
 
 
-           // return $data->notify(new UserCredential($email_data));
+            return $data->notify(new UserCredential($email_data));
         });
 
     }

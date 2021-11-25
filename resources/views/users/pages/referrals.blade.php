@@ -97,16 +97,22 @@
         $(document).ready(function () {
             selectToMe('');
         });
+        $('#sponsor').on('change', function (e) {
+            $('#placement_id').val('');
+            $("#position").select2("val", "");
+        });
 
         $('#position').on('change', function (e) {
-
+            var position = $(this).val();
+           if(position == ''){
+               return false;
+           }
             var sponsor = $('#sponsor').val();
             if (sponsor == '') {
                 $(this).val('');
                 return alert('select a sponsor');
             }
             //var position=  $('#position').val();
-            var position = $(this).val();
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -119,14 +125,14 @@
                 data: {sponsor: sponsor, position: position},
                 //dataType: 'json',
                 success: function (data) {
-                    console.log(data);
                     $('#placement_id').val(data);
                     //location.reload();
                 },
                 error: function (data) {
-
+                    console.log(data);
                 }
             });
+
         });
 
         $('#registeruser').on('submit', function (e) {
@@ -149,8 +155,8 @@
                     location.reload();
                 },
                 error: function (data) {
-                    alert(data);
 
+console.log(data);
                 }
             });
         });

@@ -71,9 +71,9 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Invoice">Report</span></a>
                 <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Income Report</span></a>
+                    <li><a class="d-flex align-items-center" href="{{url(route('income-report'))}}"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Income Report</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Transfer Report</span></a>
+                    <li><a class="d-flex align-items-center" href="{{url(route('transfer-report'))}}"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Transfer Report</span></a>
                     </li>
                     <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Level Report</span></a>
                     </li>

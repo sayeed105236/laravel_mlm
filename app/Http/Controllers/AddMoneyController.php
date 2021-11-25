@@ -22,12 +22,13 @@ class AddMoneyController extends Controller
   ]);
     $user_id = $request->user_id;
     $amount = $request->amount;
-    $method=$request->method;
+    //$method=$request->method;
     $txn_id=$request->txn_id;
     $deposit = new AddMoney();
     $deposit-> user_id = $user_id;
     $deposit-> amount =$amount;
-    $deposit->method=$method;
+    //$deposit->method=$method;
+    $deposit->method='Deposit';
     $deposit->txn_id=$txn_id;
     $deposit->save();
     return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
@@ -50,12 +51,12 @@ class AddMoneyController extends Controller
         $deduct->status ='approve';
         $deduct->save();
 
-        $deposit = new AddMoney;
+       /* $deposit = new AddMoney;
         $deposit->user_id = $request->user_id;
         $deposit->amount =$request->amount;
         $deposit->method ='Transfer';
         $deposit->status ='approve';
-        $deposit->save();
+        $deposit->save();*/
         return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
     }
 }
