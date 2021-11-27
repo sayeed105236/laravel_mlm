@@ -27,7 +27,7 @@ use App\Http\Controllers\BasicSettingsController;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/', [FrontendController::class,'index'])->name('home');
+Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('auth');
 Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->middleware('auth');
 
 
