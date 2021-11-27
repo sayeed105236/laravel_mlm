@@ -213,6 +213,7 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function levelBonus($placement_id)
     {
         $g_set = GeneralSettings::first();
+        $data= $g_set->royalty_bonus;
         $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
         $i=0;
         while($i < 5 && $placement_id != ''){
@@ -220,7 +221,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             $bonus_amount = new CashWallet();
             $bonus_amount->user_id = (int)$user->id;
-            $bonus_amount->bonus_amount = $income[$i];
+            $bonus_amount->bonus_amount = $income[$i]*$data/100;
             $bonus_amount->method = 'Level Bonus';
             $bonus_amount->save();
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\AddMoney;
 use Illuminate\Support\Facades\Auth;
+use App\Models\GeneralSettings;
 
 class AddMoneyController extends Controller
 {
@@ -43,20 +44,20 @@ class AddMoneyController extends Controller
             'amount' => 'required',
 
         ]);
-
+        $g_set = GeneralSettings::first();
         $deduct = new AddMoney;
         $deduct->user_id = Auth::id();
-        $deduct->amount = -($request->amount);
+        $deduct->amount = -($request->amount+ ($request->amount)*$g_set->transfer_charge/100);
         $deduct->method ='Transfer';
         $deduct->status ='approve';
         $deduct->save();
 
-       /* $deposit = new AddMoney;
+        $deposit = new AddMoney;
         $deposit->user_id = $request->user_id;
         $deposit->amount =$request->amount;
         $deposit->method ='Transfer';
         $deposit->status ='approve';
-        $deposit->save();*/
+        $deposit->save();
         return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
     }
     public function walletTransfer(Request $request)
