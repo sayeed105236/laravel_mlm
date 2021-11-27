@@ -93,12 +93,7 @@
                                     @endforeach
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label class="form-label" for="basic-default-email">Placement ID</label>
-                                <input type="text" id="placement_id" name="placement_id" class="form-control"
-                                      required readonly />
 
-                            </div>
 
                             <div class="form-group">
                                 <label for="basicSelect">Select Position</label>
@@ -107,6 +102,12 @@
                                     <option value="2">Right</option>
                                     <option value="1">Left</option>
                                 </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label" for="basic-default-email">Placement ID</label>
+                                <input type="text" id="placement_id" name="placement_id" class="form-control"
+                                      required readonly />
+
                             </div>
 
 
@@ -142,4 +143,3 @@
         </div>
     </div>
 </div>
-

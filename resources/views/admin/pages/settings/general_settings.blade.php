@@ -74,6 +74,12 @@
                                           <th>Royality Bonus</th>
                                           <th>Minimum Withdrawal</th>
                                           <th>Activation Charge</th>
+                                          <th>Transfer Charge</th>
+                                          <th>Level 1 Bonus</th>
+                                          <th>Level 2 Bonus</th>
+                                          <th>Level 3 Bonus</th>
+                                          <th>Level 4 Bonus</th>
+                                          <th>Level 5 Bonus</th>
 
                                           <th>Actions</th>
                                       </tr>
@@ -94,6 +100,12 @@
                                           <td>{{$row->royality_bonus}}%</td>
                                           <td>{{$row->min_withdraw}}$</td>
                                           <td>{{$row->activation_charge}}%</td>
+                                          <td>{{$row->transfer_charge}}%</td>
+                                          <td>{{$row->level_1}}$</td>
+                                          <td>{{$row->level_2}}$</td>
+                                          <td>{{$row->level_3}}$</td>
+                                          <td>{{$row->level_4}}$</td>
+                                          <td>{{$row->level_5}}$</td>
 
                                           <td>
                                               <a href="#" data-toggle="modal" data-target="#GSettingsEditModal{{$row->id}}"><i data-feather='edit'></i></a>

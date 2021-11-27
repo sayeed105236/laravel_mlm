@@ -200,10 +200,10 @@ class ReferralController extends Controller implements CreatesNewUsers
 
 
                 //return $data->notify(new UserCredential($email_data));
-                Session::flash('success','User Added Successfully');
+                Session::flash('success','User has been Successfully Registered!!');
 
             });
-        return response()->json(['success'=>'User Added Successfully.'],200);
+        return response()->json(['success'=>'User has been Successfully Registered!!'],200);
 
     }
 

@@ -43,6 +43,30 @@
                               <label class="form-label" for="basic-default-password">Activation Charge</label>
                               <input type="number" id="basic-default-password" name="activation_charge" class="form-control" placeholder="Enter Activation Charge" />
                           </div>
+                          <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Transfer Charge</label>
+                              <input type="number" id="basic-default-password" name="transfer_charge" class="form-control" placeholder="Enter Transfer Charge" />
+                          </div>
+                          <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Level 1 Bonus Amount</label>
+                              <input type="number" id="basic-default-password" name="level_1" class="form-control" placeholder="Enter Level 1 Bonus Amount" />
+                          </div>
+                          <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Level 2 Bonus Amount</label>
+                              <input type="number" id="basic-default-password" name="level_2" class="form-control" placeholder="Enter Level 2 Bonus Amount" />
+                          </div>
+                          <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Level 3 Bonus Amount</label>
+                              <input type="number" id="basic-default-password" name="level_3" class="form-control" placeholder="Enter Level 3 Bonus Amount" />
+                          </div>
+                          <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Level 4 Bonus Amount</label>
+                              <input type="number" id="basic-default-password" name="level_4" class="form-control" placeholder="Enter Level 4 Bonus Amount" />
+                          </div>
+                          <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Level 5 Bonus Amount</label>
+                              <input type="number" id="basic-default-password" name="level_5" class="form-control" placeholder="Enter Level 5 Bonus Amount" />
+                          </div>
 
 
 
