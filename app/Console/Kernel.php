@@ -15,6 +15,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         Commands\DailyBonus::class,
+        Commands\PairBonus::class,
     ];
 
     /**
@@ -28,6 +29,8 @@ class Kernel extends ConsoleKernel
         // $schedule->command('inspire')->hourly();
         $schedule->command('bonus:daily')->weekdays()
             ->daily();
+        $schedule->command('pairbonus:daily')->weekdays()
+            ->dailyAt('13.00');
     }
 
     /**
