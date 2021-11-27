@@ -19,7 +19,7 @@
                             @csrf
                             <div class="form-group">
                                 <label for="select-country">Transfer User</label>
-                              
+
                                 <select class="select2Me form-control form-control-lg" name="user_id" required>
                                     <option label="select a user"></option>
 
@@ -30,10 +30,15 @@
                                 </select>
 
                             </div>
+                            <?php
+                            $min_transfer= App\Models\GeneralSettings::first();
+                            $value= $min_transfer->min_transfer;
+
+                             ?>
 
                             <div class="form-group">
                                 <label class="form-label" for="basic-default-email">Enter Amount</label>
-                                <input type="number" min="1" id="basic-default-email" name="amount"
+                                <input type="number" min="{{$value}}" id="basic-default-email" name="amount"
                                        class="form-control" placeholder="Enter Amount ($)" required/>
                             </div>
 
