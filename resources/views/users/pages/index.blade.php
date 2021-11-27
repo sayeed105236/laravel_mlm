@@ -50,8 +50,8 @@
                                     <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletWithdraw">Withdraw</button>
                                     <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletTransfer">Transfer</button>
                                   <!--  <button type="button" class="btn btn-primary">Purchase</button>-->
-                                        @include('frontend.modals.wallet_withdraw')
-                                        @include('frontend.modals.wallet_transfer')
+                                      <!--  @include('frontend.modals.wallet_withdraw')
+                                        @include('frontend.modals.wallet_transfer')-->
 
                                 </div>
                             </div>
