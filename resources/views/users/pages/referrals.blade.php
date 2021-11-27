@@ -102,7 +102,7 @@
         $(document).ready(function () {
             selectToMe('');
         });
-        $("#successMessage").delay(5000).slideUp(300);
+        $("#successMessage").delay(10000).slideUp(300);
         $('#sponsor').on('change', function (e) {
             $('#placement_id').val('');
             $("#position").select2("val", "");
@@ -160,21 +160,15 @@
                 data: formData,
                 //dataType: 'json',
                 success: function (data) {
-                    console.log('success-');
-                    console.log(data);
+                    //console.log(data);
                      location.reload();
                 },
                 error: function (error_response,e) {
                     $('#btnSubmit').attr("disabled", false);
-                    console.log(error_response,e)
-                    console.log(error_response.responseJSON)
                     if (error_response.responseJSON.message === "Insufficient Balance"){
                         alert("Insufficient Balance");
                     }
                     $.each(error_response.responseJSON.errors, function(key,value) {
-                        console.log(key);
-                        console.log('value');
-                        console.log(value);
                         $('#' + key ).after('<small class="text-danger">' + value + '</small>').closest('input').removeClass('is-invalid').addClass('is-invalid');
 
                     });

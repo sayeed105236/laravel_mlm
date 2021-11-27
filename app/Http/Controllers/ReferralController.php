@@ -212,16 +212,16 @@ class ReferralController extends Controller implements CreatesNewUsers
      */
     public function levelBonus($placement_id)
     {
-
+        $g_set = GeneralSettings::first();
+        $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
         $i=0;
-        $income=[20,10,5,5,5];
         while($i < 5 && $placement_id != ''){
             $user = User::where('user_name',$placement_id)->first('id');
 
             $bonus_amount = new CashWallet();
             $bonus_amount->user_id = (int)$user->id;
             $bonus_amount->bonus_amount = $income[$i];
-            $bonus_amount->method = 'Level bonus';
+            $bonus_amount->method = 'Level Bonus';
             $bonus_amount->save();
 
             $next_id= $this->find_placement_id($placement_id);

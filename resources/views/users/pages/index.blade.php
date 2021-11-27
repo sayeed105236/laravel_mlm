@@ -47,9 +47,11 @@
                                     <h3 class="mb-75 mt-2 pt-50">
                                           <a href="javascript:void(0);">Available Balance: {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</a>
                                     </h3>
-                                    <button type="button" class="btn btn-primary">Withdraw</button>
-                                    <button type="button" class="btn btn-primary">Transfer</button>
+                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletWithdraw">Withdraw</button>
+                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletTransfer">Transfer</button>
                                   <!--  <button type="button" class="btn btn-primary">Purchase</button>-->
+                                        @include('frontend.modals.wallet_withdraw')
+                                        @include('frontend.modals.wallet_transfer')
 
                                 </div>
                             </div>

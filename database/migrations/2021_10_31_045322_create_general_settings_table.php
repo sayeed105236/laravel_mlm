@@ -21,6 +21,12 @@ class CreateGeneralSettingsTable extends Migration
             $table->integer('royality_bonus')->nullable();
             $table->integer('min_withdraw')->nullable();
             $table->integer('activation_charge')->nullable();
+            $table->integer('transfer_charge')->nullable();
+            $table->integer('level_1')->nullable();
+            $table->integer('level_2')->nullable();
+            $table->integer('level_3')->nullable();
+            $table->integer('level_4')->nullable();
+            $table->integer('level_5')->nullable();
             $table->timestamps();
         });
     }

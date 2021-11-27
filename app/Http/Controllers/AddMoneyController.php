@@ -59,4 +59,40 @@ class AddMoneyController extends Controller
         $deposit->save();*/
         return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
     }
+    public function walletTransfer(Request $request)
+    {
+        //dd($request);
+        $request->validate([
+
+            'user_id' => 'required',
+            'amount' => 'required',
+
+        ]);
+
+        $deduct = new AddMoney;
+        $deduct->user_id = Auth::id();
+        $deduct->amount = -($request->amount);
+        $deduct->method ='Wallet Transfer';
+        $deduct->status ='pending';
+        $deduct->save();
+        return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
+    }
+    public function walletWithdraw(Request $request)
+    {
+        $request->validate([
+
+            'user_id' => 'required',
+            'amount' => 'required',
+
+        ]);
+
+        $deduct = new AddMoney;
+        $deduct->user_id = Auth::id();
+        $deduct->amount = -($request->amount);
+        $deduct->method ='Withdraw';
+        $deduct->status ='pending';
+        $deduct->save();
+
+        return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
+    }
 }

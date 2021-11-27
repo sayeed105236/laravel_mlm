@@ -73,6 +73,8 @@ Route::get('/admin/user_lists', [UserListController::class,'Manage'])->name('use
 //user Add Money Routes
 Route::post('/user/dashboard/add-money', [AddMoneyController::class,'Store'])->name('money-store')->middleware('auth');
 Route::post('/user/dashboard/transfer-money', [AddMoneyController::class,'moneyTransfer'])->name('money-transfer')->middleware('auth');
+Route::post('/user/dashboard/wallet-transfer', [AddMoneyController::class,'walletTransfer'])->name('wallet-transfer')->middleware('auth');
+Route::post('/user/dashboard/wallet-withdraw', [AddMoneyController::class,'walletWithdraw'])->name('wallet-withdraw')->middleware('auth');
 
 //Payment method Routes
 Route::get('/admin/payment-method', [PaymentMethodController::class,'index'])->name('payment-method')->middleware('authadmin');
