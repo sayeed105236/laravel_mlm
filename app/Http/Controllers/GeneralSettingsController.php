@@ -21,8 +21,10 @@ class GeneralSettingsController extends Controller
       $pair_percentage=$request->pair_percentage;
       $royality_bonus=$request->royality_bonus;
       $min_withdraw=$request->min_withdraw;
+      $min_transfer=$request->min_transfer;
       $activation_charge=$request->activation_charge;
       $transfer_charge=$request->transfer_charge;
+
       $level_1=$request->level_1;
       $level_2=$request->level_2;
       $level_3=$request->level_3;
@@ -35,6 +37,7 @@ class GeneralSettingsController extends Controller
       $g_settings->pair_amount =$pair_amount;
       $g_settings->royality_bonus =$royality_bonus;
       $g_settings->min_withdraw =$min_withdraw;
+      $g_settings->min_transfer =$min_transfer;
       $g_settings->activation_charge=$activation_charge;
 
       $g_settings->pair_percentage=$pair_percentage;
@@ -59,6 +62,7 @@ class GeneralSettingsController extends Controller
       $pair_percentage=$request->pair_percentage;
       $royality_bonus=$request->royality_bonus;
       $min_withdraw=$request->min_withdraw;
+      $min_transfer=$request->min_transfer;
       $activation_charge=$request->activation_charge;
       $transfer_charge=$request->transfer_charge;
       $level_1=$request->level_1;
@@ -74,6 +78,7 @@ class GeneralSettingsController extends Controller
       $g_settings->royality_bonus =$royality_bonus;
       $g_settings->min_withdraw =$min_withdraw;
       $g_settings->activation_charge=$activation_charge;
+      $g_settings->min_transfer =$min_transfer;
 
       $g_settings->pair_percentage=$pair_percentage;
       $g_settings->transfer_charge=$transfer_charge;

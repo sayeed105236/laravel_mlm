@@ -38,6 +38,10 @@
                               <input type="number" name="min_withdraw" value="{{$row->min_withdraw}}" class="form-control" />
                           </div>
                           <div class="form-group">
+                              <label class="form-label" for="basic-default-password">Minimum Transfer Amount</label>
+                              <input type="number" name="min_transfer" value="{{$row->min_transfer}}" class="form-control" />
+                          </div>
+                          <div class="form-group">
                               <label class="form-label" for="basic-default-password">Activation Charge</label>
                               <input type="number" name="activation_charge" value="{{$row->activation_charge}}" class="form-control" />
                           </div>

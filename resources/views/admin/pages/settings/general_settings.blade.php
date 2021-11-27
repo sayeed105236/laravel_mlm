@@ -73,6 +73,7 @@
                                           <th>Percentage Per pair</th>
                                           <th>Royality Bonus</th>
                                           <th>Minimum Withdrawal</th>
+                                          <th>Minimum Transfer</th>
                                           <th>Activation Charge</th>
                                           <th>Transfer Charge</th>
                                           <th>Level 1 Bonus</th>
@@ -99,13 +100,14 @@
                                           </td>
                                           <td>{{$row->royality_bonus}}%</td>
                                           <td>{{$row->min_withdraw}}$</td>
+                                          <td>{{$row->min_transfer}}$</td>
                                           <td>{{$row->activation_charge}}%</td>
                                           <td>{{$row->transfer_charge}}%</td>
-                                          <td>{{$row->level_1}}$</td>
-                                          <td>{{$row->level_2}}$</td>
-                                          <td>{{$row->level_3}}$</td>
-                                          <td>{{$row->level_4}}$</td>
-                                          <td>{{$row->level_5}}$</td>
+                                          <td>{{$row->level_1}}%</td>
+                                          <td>{{$row->level_2}}%</td>
+                                          <td>{{$row->level_3}}%</td>
+                                          <td>{{$row->level_4}}%</td>
+                                          <td>{{$row->level_5}}%</td>
 
                                           <td>
                                               <a href="#" data-toggle="modal" data-target="#GSettingsEditModal{{$row->id}}"><i data-feather='edit'></i></a>

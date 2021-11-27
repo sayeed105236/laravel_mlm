@@ -35,6 +35,7 @@
                                     <th>User Name</th>
                                     <th>Income</th>
                                     <th>Method</th>
+                                    <th>Created At</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -45,6 +46,7 @@
                                         <td>{{$income->user->user_name}}</td>
                                         <td>{{$income->bonus_amount ?? ''}}</td>
                                         <td>{{$income->method ?? ''}}</td>
+                                        <td>{{$income->created_at}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
