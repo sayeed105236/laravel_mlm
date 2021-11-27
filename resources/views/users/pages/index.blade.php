@@ -27,7 +27,7 @@
 
                                       <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#DepositModal">Deposit</button>
                                       <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TransferModal" >Transfer</button>
-                                      <button type="button" class="btn btn-primary">Upgrade</button>
+                                    <!--  <button type="button" class="btn btn-primary">Upgrade</button>-->
 
                                       @include('frontend.modals.add_moneymodal')
                                       @include('frontend.modals.transfermoney_modal')
@@ -49,7 +49,7 @@
                                     </h3>
                                     <button type="button" class="btn btn-primary">Withdraw</button>
                                     <button type="button" class="btn btn-primary">Transfer</button>
-                                    <button type="button" class="btn btn-primary">Purchase</button>
+                                  <!--  <button type="button" class="btn btn-primary">Purchase</button>-->
 
                                 </div>
                             </div>
@@ -66,7 +66,7 @@
                                     <h5>Payment Method : {{$row->name}} </h5>
                                     <p class="card-text font-small-3">Account Name: {{$row->acc_name}}</p>
                                     <h3 class="mb-75 mt-2 pt-50">
-                                          <a href="javascript:void(0);">Wallet Id: {{$row->wallet_id}}</a>
+                                          <a class="btn btn-primary" href="javascript:void(0);">Wallet Id: {{$row->wallet_id}}</a>
                                     </h3>
 
 
@@ -87,7 +87,7 @@
                                       $users=App\Models\User::all();
 
                                        ?>
-                                          <a href="javascript:void(0);">Total Users:   {{count($users)}}</a>
+                                          <a class="btn btn-primary" href="javascript:void(0);">Total Users:   {{count($users)}}</a>
                                     </h3>
 
 
@@ -105,7 +105,7 @@
                                       $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
 
                                       ?>
-                                          <a href="javascript:void(0);">Total Earnings:  {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</a>
+                                          <a class="btn btn-primary" href="javascript:void(0);">Total Earnings:  {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</a>
                                     </h3>
 
                                 </div>
@@ -122,7 +122,7 @@
                                       $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
 
                                       ?>
-                                          <a href="javascript:void(0);">Total Withdrwal:  $00.00</a>
+                                          <a class="btn btn-primary" href="javascript:void(0);">Total Withdrwal:  $00.00</a>
                                     </h3>
 
                                 </div>
@@ -139,7 +139,7 @@
                                       $packages=App\Models\Package::where('status','Active')->get();
 
                                        ?>
-                                          <a href="javascript:void(0);">No of Package: {{count($packages)}} </a>
+                                          <a class="btn btn-primary" href="javascript:void(0);">No of Package: {{count($packages)}} </a>
                                     </h3>
 
                                 </div>
