@@ -23,6 +23,14 @@
                 </div>
             </div>
             <div class="content-body">
+                @if(session()->has('success'))
+                    <div class="demo-spacing-0">
+                        <div class="alert alert-success" role="alert" id="successMessage">
+                            <div class="alert-body"><strong>{{ session()->get('success') }}</strong> </div>
+                        </div>
+                    </div>
+
+                @endif
                 <!-- Content start -->
 
                 <div class="row" id="table-hover-row">
@@ -75,20 +83,10 @@
                     </div>
                 </div>
             </div>
-
-
             <!-- Content End -->
-
-
         </div>
-
-
     </div>
-    </div>
-
-
-
-
+    <!--Toast popup html tag-->
 
 @endsection
 @push('scripts')
@@ -97,6 +95,7 @@
         $(document).ready(function () {
             selectToMe('');
         });
+        $("#successMessage").delay(5000).slideUp(300);
         $('#sponsor').on('change', function (e) {
             $('#placement_id').val('');
             $("#position").select2("val", "");
@@ -104,9 +103,9 @@
 
         $('#position').on('change', function (e) {
             var position = $(this).val();
-           if(position == ''){
-               return false;
-           }
+            if (position == '') {
+                return false;
+            }
             var sponsor = $('#sponsor').val();
             if (sponsor == '') {
                 $(this).val('');
@@ -136,14 +135,17 @@
         });
 
         $('#registeruser').on('submit', function (e) {
+            e.preventDefault();
+            //disable the submit button
+            $("#btnSubmit").attr("disabled", true);
+            $('form').find('small').remove();
+            $('form').find('input').removeClass('is-invalid');
             var registerForm = $("#registeruser");
             var formData = registerForm.serialize();
 
             $.ajaxSetup({
                 header: $('meta[name="_token"]').attr('content')
             })
-            e.preventDefault(e);
-
             $.ajax({
                 url: $(this).attr('action'),
                 // url: '{{route("referrals-useradd")}}',
@@ -151,12 +153,24 @@
                 data: formData,
                 //dataType: 'json',
                 success: function (data) {
-                    //console.log(data);
-                    location.reload();
+                    console.log('success-');
+                    console.log(data);
+                     location.reload();
                 },
-                error: function (data) {
+                error: function (error_response,e) {
+                    $('#btnSubmit').attr("disabled", false);
+                    console.log(error_response,e)
+                    console.log(error_response.responseJSON)
+                    if (error_response.responseJSON.message === "Insufficient Balance"){
+                        alert("Insufficient Balance");
+                    }
+                    $.each(error_response.responseJSON.errors, function(key,value) {
+                        console.log(key);
+                        console.log('value');
+                        console.log(value);
+                        $('#' + key ).after('<small class="text-danger">' + value + '</small>').closest('input').removeClass('is-invalid').addClass('is-invalid');
 
-console.log(data);
+                    });
                 }
             });
         });

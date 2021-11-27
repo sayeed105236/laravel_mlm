@@ -17,6 +17,7 @@
     <!-- END: Main Menu-->
 
     <!-- BEGIN: Content-->
+    @include('frontend.partials.messages')
     @yield('frontend.content')
     <!-- END: Content-->
 

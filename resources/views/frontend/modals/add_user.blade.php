@@ -31,6 +31,7 @@
                                 <input type="text" id="user_name" name="user_name" class="form-control"
                                        placeholder="Enter User Name" required/>
 
+
                             </div>
 
 
@@ -131,7 +132,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     <!--<button type="button" id="submitForm" class="btn btn-primary">Add User</button>-->
-                    <button type="submit" class="btn btn-primary" id="submitForm">
+                    <button type="submit" class="btn btn-primary" id="btnSubmit">
                         Add User
                     </button>
                 </div>
@@ -141,3 +142,4 @@
         </div>
     </div>
 </div>
+
