@@ -28,7 +28,7 @@ class Kernel extends ConsoleKernel
     {
         // $schedule->command('inspire')->hourly();
         $schedule->command('bonus:daily')->weekdays()
-            ->daily();
+            ->dailyAt('13.00');
         $schedule->command('pairbonus:daily')->weekdays()
             ->dailyAt('13.00');
     }
