@@ -149,12 +149,12 @@
                                 <div class="card bg-success text-white">
                                     <div class="card-body">
                                       <?php
-                                      $current_package = App\Models\User::where('id',Auth::id())->where('package_id')->get();
-                                      //dd($current_package);
+                                      $current_package = App\Models\User::where('id',Auth::id())->select('package_id')->first();
+                                      //dd($current_package->packages->package_name);
 
                                        ?>
                                         <h4 class="card-title text-white">Current Package</h4>
-                                        <p class="card-text">Active</p>
+                                        <p class="card-text">{{$current_package->packages->package_name}}</p>
                                     </div>
                                 </div>
                             </div>
