@@ -82,8 +82,14 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-warning text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $transferData = App\Models\AddMoney::where('user_id',Auth::id())->where('method','Transfer')->get()->sum('amount');
+                                      //dd($transferData);
+
+                                       ?>
                                         <h4 class="card-title text-white">Total Transfer</h4>
-                                          <h2 class="card-text"><strong>$00.00</strong></h2>
+                                          <h2 class="card-text"><strong>${{abs($transferData)}}</strong></h2>
+
                                     </div>
                                 </div>
                             </div>
@@ -91,37 +97,62 @@
                                 <div class="card bg-info text-white">
                                     <div class="card-body">
                                         <h4 class="card-title text-white">Total Refferals</h4>
-                                        <h2 class="card-text"><strong>0</strong></h2>
+                                        <?php
+                                        $refferals = App\Models\User::where('sponsor',Auth::id())->get()->count('id');
+                                        //dd($refferals);
+
+                                         ?>
+                                        <h2 class="card-text"><strong>{{$refferals}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $total_daily_bonus = App\Models\CashWallet::where('user_id',Auth::id())->where('method','daily bonus')->get()->sum('bonus_amount');
+                                      //dd($transferData);
+
+                                       ?>
                                       <h4 class="card-title text-white">Total Daily Bonus</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h2 class="card-text"><strong>${{$total_daily_bonus}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-primary text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $total_level_bonus = App\Models\CashWallet::where('user_id',Auth::id())->where('method','Level Bonus')->get()->sum('bonus_amount');
+                                      //dd($total_level_bonus);
+
+                                       ?>
                                         <h4 class="card-title text-white">Total Team Bonus</h4>
-                                        <h2 class="card-text"><strong>$00.00</strong></h2>
+                                        <h2 class="card-text"><strong>${{$total_level_bonus}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-danger text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $total_sponsor_bonus = App\Models\CashWallet::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get()->sum('bonus_amount');
+                                      //dd($total_level_bonus);
+
+                                       ?>
                                       <h4 class="card-title text-white">Total Sponsor Bonus</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h2 class="card-text"><strong>${{$total_sponsor_bonus}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-success text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $current_package = App\Models\User::where('id',Auth::id())->where('package_id')->get();
+                                      //dd($current_package);
+
+                                       ?>
                                         <h4 class="card-title text-white">Current Package</h4>
                                         <p class="card-text">Active</p>
                                     </div>
@@ -138,8 +169,13 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-info text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $total_royality_bonus = App\Models\CashWallet::where('user_id',Auth::id())->where('method','royality sponsor bonus')->get()->sum('bonus_amount');
+                                      //dd($total_royality_bonus);
+
+                                       ?>
                                       <h4 class="card-title text-white">Total Royality Bonus</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h2 class="card-text"><strong>${{$total_royality_bonus}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
