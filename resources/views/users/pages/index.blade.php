@@ -16,150 +16,139 @@
                     {{Session::get('Money_added')}}
                 </div>
             </div>
+
+            @elseif(Session::has('Money_Transfered'))
+          <div class="alert alert-success" role="alert">
+              <h4 class="alert-heading">Success</h4>
+              <div class="alert-body">
+                  {{Session::get('Money_Transfered')}}
+              </div>
+          </div>
             @endif
                 <!-- Dashboard Ecommerce Starts -->
                 <section id="dashboard-ecommerce">
-                    <div class="row match-height">
+
                         <!-- Medal Card -->
-                        <div class="col-xl-6 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-                                    <h5>Register Wallet</h5>
-                                    <p class="card-text font-small-3">Acitvated Package: No Active Package</p>
-
-                                    <h3 class="mb-75 mt-2 pt-50">
-
-                                      <a href="javascript:void(0);">Available Balance: {{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</a>
-
-                                    </h3>
-
-                                      <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#DepositModal">Deposit</button>
-                                      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#TransferModal" >Transfer</button>
-                                    <!--  <button type="button" class="btn btn-primary">Upgrade</button>-->
-
-                                      @include('frontend.modals.add_moneymodal')
-                                      @include('frontend.modals.transfermoney_modal')
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-                                    <?php
-                                    $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
-
-                                    ?>
-                                    <h5>Cash Wallet</h5>
-                                    <p class="card-text font-small-3">Minimum Amount Required for Withdrawal: 10$</p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                          <a href="javascript:void(0);">Available Balance: {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</a>
-                                    </h3>
-                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletWithdraw">Withdraw</button>
-                                    <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletTransfer">Transfer</button>
-                                  <!--  <button type="button" class="btn btn-primary">Purchase</button>-->
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <?php
-                          $payment=App\Models\PaymentMethod::where('status','Active')->get();
-
-                         ?>
-                         @foreach($payment as $row)
-                        <div class="col-xl-6 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-
-                                <div class="card-body">
-                                    <h5>Payment Method : {{$row->name}} </h5>
-                                    <p class="card-text font-small-3">Account Name: {{$row->acc_name}}</p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                          <a class="btn btn-primary" href="javascript:void(0);">Wallet Id: {{$row->wallet_id}}</a>
-                                    </h3>
-
-
-                                </div>
-
-
-                            </div>
-                        </div>
-                        @endforeach
-                        <div class="col-xl-6 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-
-                                    <h5>Users</h5>
-                                    <p class="card-text font-small-3"></p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                      <?php
-                                      $users=App\Models\User::all();
-
-                                       ?>
-                                          <a class="btn btn-primary" href="javascript:void(0);">Total Users:   {{count($users)}}</a>
-                                    </h3>
-
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-
-                                    <h5>Earnings</h5>
-                                    <p class="card-text font-small-3"></p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                      <?php
-                                      $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
-
-                                      ?>
-                                          <a class="btn btn-primary" href="javascript:void(0);">Total Earnings:  {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</a>
-                                    </h3>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-
-                                    <h5>Withdrwal</h5>
-                                    <p class="card-text font-small-3"></p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                      <?php
-                                      $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
-
-                                      ?>
-                                          <a class="btn btn-primary" href="javascript:void(0);">Total Withdrwal:  $00.00</a>
-                                    </h3>
-
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xl-6 col-md-6 col-12">
-                            <div class="card card-congratulation-medal">
-                                <div class="card-body">
-
-                                    <h5>Packages</h5>
-                                    <p class="card-text font-small-3"></p>
-                                    <h3 class="mb-75 mt-2 pt-50">
-                                      <?php
-                                      $packages=App\Models\Package::where('status','Active')->get();
-
-                                       ?>
-                                          <a class="btn btn-primary" href="javascript:void(0);">No of Package: {{count($packages)}} </a>
-                                    </h3>
-
-                                </div>
-                            </div>
-                        </div>
                         <!--/ Medal Card -->
+                        <div class="row match-height">
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-white">Register Wallet</h4>
+                                        <h4 class="card-text">Available Balance: <strong>{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</strong></h4>
+                                        <a class="btn btn-danger" data-toggle="modal" data-target="#DepositModal"><i data-feather='plus-circle'></i></a>
+                                        <a class="btn btn-info" data-toggle="modal" data-target="#TransferModal" ><i data-feather='send'></i></a>
+                                      <!--  <button type="button" class="btn btn-primary">Upgrade</button>-->
+
+                                        @include('frontend.modals.add_moneymodal')
+                                        @include('frontend.modals.transfermoney_modal')
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-secondary text-white">
+                                    <div class="card-body">
+                                      <?php
+                                      $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
+
+                                      ?>
+                                        <h4 class="card-title text-white">Cash Wallet</h4>
+
+
+                                        <h4 class="card-text">Available Balance: {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</h4>
+                                        <a class="btn btn-danger" data-toggle="modal" data-target="#walletWithdraw"><i data-feather='arrow-down-circle'></i></a>
+                                        <a class="btn btn-info" data-toggle="modal" data-target="#walletTransfer" ><i data-feather='send'></i></a>
+                                          <p class="card-text font-small-3">Minimum Withdrawal: 10$</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-white">Total Earnings</h4>
+                                        <h2 class="card-text"><strong>{{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-danger text-white">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-white">Total Withdraw</h4>
+                                          <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-warning text-white">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-white">Total Transfer</h4>
+                                          <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-white">Total Refferals</h4>
+                                        <h2 class="card-text"><strong>0</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-secondary text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Total Daily Bonus</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-primary text-white">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-white">Total Team Bonus</h4>
+                                        <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-danger text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Total Sponsor Bonus</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-success text-white">
+                                    <div class="card-body">
+                                        <h4 class="card-title text-white">Current Package</h4>
+                                        <p class="card-text">Active</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-warning text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Pending Withdrwals</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-info text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Total Royality Bonus</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <!-- Statistics Card -->
 
                         <!--/ Statistics Card -->
-                    </div>
+
 
                 </section>
                 <!-- Dashboard Ecommerce ends -->

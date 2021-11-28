@@ -46,9 +46,10 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function index($id)
     {
         //dd($id,Auth::id());
-        //$g_set = GeneralSettings::first();
-      //  $data=$g_set['royality_bonus'];
-        //dd($data);
+      //  $g_set = GeneralSettings::first();
+       //$data=$g_set['royality_bonus'];
+       //$data=$g_set->pair_percentage;
+       //dd($data);
       $users=User::where('sponsor',Auth::id())->get();
 
       return view('users.pages.referrals',compact('users'));

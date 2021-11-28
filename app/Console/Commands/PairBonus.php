@@ -55,5 +55,7 @@ class PairBonus extends Command
             PairCount::where('user_id', $user['user_id'])->where('status',0)
                 ->update(['status' => 1]);
         }
+          $this->info('Successfully added Pair bonus.');
     }
+
 }
