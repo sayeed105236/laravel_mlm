@@ -47,7 +47,8 @@
                     </li>
                 </ul>-->
             </li>
-              <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Wallet</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('profile.show') }}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
+
           <!--  <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>
@@ -60,6 +61,18 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>
             </li>-->
+            <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="Invoice">Package</span></a>
+                <ul class="menu-content">
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Buy Package</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">My Package</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Upgrade Package</span></a>
+                    </li>
+
+
+                </ul>
+              </li>
             <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Invoice">Network</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="/home/referrals/{{Auth::user()->id}}"><i data-feather='archive'></i><span class="menu-item text-truncate" data-i18n="List">My Referrals</span></a>
@@ -69,26 +82,37 @@
 
                 </ul>
             </li>
+              <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Fund Management</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
             <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Invoice">Report</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{url(route('income-report'))}}"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Income Report</span></a>
                     </li>
                     <li><a class="d-flex align-items-center" href="{{url(route('transfer-report'))}}"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Transfer Report</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Level Report</span></a>
-                    </li>
+
+
                     <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Order Report</span></a>
                     </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Payment Report</span></a>
+                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Withdraw Report</span></a>
                     </li>
 
                 </ul>
-                  <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Package Management</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Settings</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
+              </li>
+
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Settings</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
+                    <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='phone-call'></i><span class="menu-title text-truncate" data-i18n="Invoice">Support</span></a>
+                        <ul class="menu-content">
+                            <li><a class="d-flex align-items-center" href="#"><i data-feather='archive'></i><span class="menu-item text-truncate" data-i18n="List">Open Ticket</span></a>
+                            </li>
+                            <li><a class="d-flex align-items-center" href="#"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">My Ticket</span></a>
+                            </li>
+
+                        </ul>
+                    </li>
 
 
 
-            </li>
+
           <!--  <li class=" nav-item"><a class="d-flex align-items-center" href="app-file-manager.html"><i data-feather="save"></i><span class="menu-title text-truncate" data-i18n="File Manager">File Manager</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="shopping-cart"></i><span class="menu-title text-truncate" data-i18n="eCommerce">eCommerce</span></a>

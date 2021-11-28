@@ -38,7 +38,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="basic-default-email">Enter Amount</label>
-                                <input type="number" min="{{$value}}" id="basic-default-email" name="amount"
+                                <input type="round" min="{{$value}}" id="basic-default-email" name="amount"
                                        class="form-control" placeholder="Enter Amount ($)" required/>
                             </div>
 

@@ -20,6 +20,7 @@ class CreateGeneralSettingsTable extends Migration
             $table->integer('pair_percentage')->nullable();
             $table->integer('royality_bonus')->nullable();
             $table->integer('min_withdraw')->nullable();
+            $table->integer('withdraw_charge')->nullable();
             $table->integer('activation_charge')->nullable();
             $table->integer('transfer_charge')->nullable();
             $table->integer('level_1')->nullable();

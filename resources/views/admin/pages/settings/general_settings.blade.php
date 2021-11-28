@@ -73,6 +73,7 @@
                                           <th>Percentage Per pair</th>
                                           <th>Royality Bonus</th>
                                           <th>Minimum Withdrawal</th>
+                                          <th>Withdrawal Charge</th>
                                           <th>Minimum Transfer</th>
                                           <th>Activation Charge</th>
                                           <th>Transfer Charge</th>
@@ -100,6 +101,7 @@
                                           </td>
                                           <td>{{$row->royality_bonus}}%</td>
                                           <td>{{$row->min_withdraw}}$</td>
+                                          <td>{{isset($row->withdraw_charge)}}%</td>
                                           <td>{{$row->min_transfer}}$</td>
                                           <td>{{$row->activation_charge}}%</td>
                                           <td>{{$row->transfer_charge}}%</td>
