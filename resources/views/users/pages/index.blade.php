@@ -9,6 +9,14 @@
             <div class="content-header row">
             </div>
             <div class="content-body">
+              @if(Session::has('Money_added'))
+            <div class="alert alert-success" role="alert">
+                <h4 class="alert-heading">Success</h4>
+                <div class="alert-body">
+                    {{Session::get('Money_added')}}
+                </div>
+            </div>
+            @endif
                 <!-- Dashboard Ecommerce Starts -->
                 <section id="dashboard-ecommerce">
                     <div class="row match-height">
@@ -50,7 +58,7 @@
                                     <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletWithdraw">Withdraw</button>
                                     <button type="button" class="btn btn-primary"  data-toggle="modal" data-target="#walletTransfer">Transfer</button>
                                   <!--  <button type="button" class="btn btn-primary">Purchase</button>-->
-                                    
+
 
                                 </div>
                             </div>

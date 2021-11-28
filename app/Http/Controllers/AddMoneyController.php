@@ -32,8 +32,10 @@ class AddMoneyController extends Controller
     $deposit->method='Deposit';
     $deposit->txn_id=$txn_id;
     $deposit->save();
+
     return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
   }
+
 
     public function moneyTransfer(Request $request)
     {
@@ -58,7 +60,7 @@ class AddMoneyController extends Controller
         $deposit->method ='Transfer';
         $deposit->status ='approve';
         $deposit->save();
-        return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
+        return back()->with('Money_Transfered','Money Transfer Successfully!!');
     }
     public function walletTransfer(Request $request)
     {

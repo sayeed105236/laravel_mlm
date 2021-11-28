@@ -46,6 +46,9 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function index($id)
     {
         //dd($id,Auth::id());
+        //$g_set = GeneralSettings::first();
+      //  $data=$g_set['royality_bonus'];
+        //dd($data);
       $users=User::where('sponsor',Auth::id())->get();
 
       return view('users.pages.referrals',compact('users'));
@@ -202,6 +205,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                 //return $data->notify(new UserCredential($email_data));
                 Session::flash('success','User has been Successfully Registered!!');
 
+
             });
         return response()->json(['success'=>'User has been Successfully Registered!!'],200);
 
@@ -212,8 +216,10 @@ class ReferralController extends Controller implements CreatesNewUsers
      */
     public function levelBonus($placement_id)
     {
+
         $g_set = GeneralSettings::first();
-        $data= $g_set->royalty_bonus;
+        $data=$g_set['royality_bonus'];
+
         $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
         $i=0;
         while($i < 5 && $placement_id != ''){
@@ -221,7 +227,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             $bonus_amount = new CashWallet();
             $bonus_amount->user_id = (int)$user->id;
-            $bonus_amount->bonus_amount = $income[$i]*$data/100;
+            $bonus_amount->bonus_amount = (float)$income[$i]*$data/100;
             $bonus_amount->method = 'Level Bonus';
             $bonus_amount->save();
 
