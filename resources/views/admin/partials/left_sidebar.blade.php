@@ -26,10 +26,10 @@
                             </g>
                         </svg>--></span>
                         <img
-                          src="{{asset('storage/Logo/'.basic_settings()[0]->image)}}"
+                          src="{{asset('storage/Logo/'.basic_settings()[1]->image)}}"
                           alt="image"
-                          height="50"
-                          width="50"
+                          height="25"
+                          width="150"
 
                         />
                 </a></li>

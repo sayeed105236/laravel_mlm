@@ -1,9 +1,9 @@
 <a href="/">
   <img
-    src="{{asset('storage/Logo/'.basic_settings()[0]->image)}}"
+    src="{{asset('storage/Logo/'.basic_settings()[1]->image)}}"
     alt="image"
-    height="120"
-    width="120"
+    height="250"
+    width="250"
 
   />
 </a>

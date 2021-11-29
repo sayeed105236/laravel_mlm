@@ -28,8 +28,8 @@
                         <img
                           src="{{asset('storage/Logo/'.basic_settings()[0]->image)}}"
                           alt="image"
-                          height="50"
-                          width="50"
+                          height="40"
+                          width="150"
 
                         />
                 </a></li>
