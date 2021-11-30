@@ -10,4 +10,8 @@ class FrontendController extends Controller
     {
       return view('home');
     }
+    public function tree()
+    {
+      return view('tree');
+    }
 }
