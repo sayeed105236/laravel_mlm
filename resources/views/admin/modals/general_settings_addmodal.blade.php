@@ -25,35 +25,35 @@
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-email">Pair Amount</label>
-                              <input type="number" id="basic-default-email" name="pair_amount" class="form-control" placeholder="Enter Pair Amount" />
+                              <input type="round" id="basic-default-email" name="pair_amount" class="form-control" placeholder="Enter Pair Amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Pair Percentage</label>
-                              <input type="number" id="basic-default-password" name="pair_percentage" class="form-control" placeholder="Enter percentage amount" />
+                              <input type="round" id="basic-default-password" name="pair_percentage" class="form-control" placeholder="Enter percentage amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Royality Bonus</label>
-                              <input type="number" id="basic-default-password" name="royality_bonus" class="form-control" placeholder="Enter royality bonus amount" />
+                              <input type="round" id="basic-default-password" name="royality_bonus" class="form-control" placeholder="Enter royality bonus amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Withdrwal Amount</label>
-                              <input type="number" id="basic-default-password" name="min_withdraw" class="form-control" placeholder="Enter minimum Withdrwal amount" />
+                              <input type="round" id="basic-default-password" name="min_withdraw" class="form-control" placeholder="Enter minimum Withdrwal amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Withdrwal Charge</label>
-                              <input type="number" id="basic-default-password" name="withdraw_charge" class="form-control" placeholder="Enter Withdrwal Charge" />
+                              <input type="round" id="basic-default-password" name="withdraw_charge" class="form-control" placeholder="Enter Withdrwal Charge" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Transfer Amount</label>
-                              <input type="number" id="basic-default-password" name="min_transfer" class="form-control" placeholder="Enter minimum Transfer amount" />
+                              <input type="round" id="basic-default-password" name="min_transfer" class="form-control" placeholder="Enter minimum Transfer amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Activation Charge</label>
-                              <input type="number" id="basic-default-password" name="activation_charge" class="form-control" placeholder="Enter Activation Charge" />
+                              <input type="round" id="basic-default-password" name="activation_charge" class="form-control" placeholder="Enter Activation Charge" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Transfer Charge</label>
-                              <input type="number" id="basic-default-password" name="transfer_charge" class="form-control" placeholder="Enter Transfer Charge" />
+                              <input type="round" id="basic-default-password" name="transfer_charge" class="form-control" placeholder="Enter Transfer Charge" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Level 1 Bonus Amount</label>

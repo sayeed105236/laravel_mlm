@@ -29,6 +29,7 @@ use App\Http\Controllers\BasicSettingsController;
 //});
 Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('auth');
 Route::get('/tree', [FrontendController::class,'tree']);
+Route::get('/flipcard', [FrontendController::class,'flipcard']);
 Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->middleware('auth');
 
 

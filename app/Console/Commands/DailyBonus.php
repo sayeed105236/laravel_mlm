@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use DateTime;
 use Illuminate\Console\Command;
 use function Sodium\add;
+use Auth;
 
 class DailyBonus extends Command
 {
@@ -47,6 +48,9 @@ class DailyBonus extends Command
 
         $users = User::with('packages')->get()->toArray();
         $sponsor_bonus= GeneralSettings::select('royality_bonus')->first();
+
+        //$daily_bonus= User::where('id',Auth::id())->first();
+        //dd($daily_bonus->packages->price);
         //dd($sponsor_bonus['royality_bonus']);
 
         foreach ($users as $user) {
@@ -58,12 +62,12 @@ class DailyBonus extends Command
                 if ($days <= $user['packages']['duration']){
                     CashWallet::create([
                         'user_id'=>$user['id'],
-                        'bonus_amount'=>$user['packages']['return_percentage'],
+                        'bonus_amount'=>($user['packages']['return_percentage']*$user['packages']['price'])/100,
                         'method'=>'daily bonus',
                     ]);
                     CashWallet::create([
                         'user_id'=>$user['sponsor'],
-                        'bonus_amount'=>$user['packages']['return_percentage']*$sponsor_bonus['royality_bonus']/100,
+                        'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
                         'method'=>'royality sponsor bonus',
                     ]);
                 }

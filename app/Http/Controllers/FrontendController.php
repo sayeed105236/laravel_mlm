@@ -14,4 +14,8 @@ class FrontendController extends Controller
     {
       return view('tree');
     }
+    public function flipcard()
+    {
+      return view('flipcard');
+    }
 }

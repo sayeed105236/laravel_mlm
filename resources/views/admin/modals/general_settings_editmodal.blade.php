@@ -19,39 +19,39 @@
                         <input type="hidden" name="id" value="{{$row->id}}">
                           <div class="form-group">
                               <label class="form-label" for="basic-default-name">Referral Percentage</label>
-                              <input type="number" class="form-control"  value="{{$row->referral_percentage}}" name="referral_percentage"  />
+                              <input type="round" class="form-control"  value="{{$row->referral_percentage}}" name="referral_percentage"  />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-email">Pair Amount</label>
-                              <input type="number"  name="pair_amount" value="{{$row->pair_amount}}" class="form-control"/>
+                              <input type="round"  name="pair_amount" value="{{$row->pair_amount}}" class="form-control"/>
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Pair Percentage</label>
-                              <input type="number" name="pair_percentage" value="{{$row->pair_percentage}}" class="form-control" />
+                              <input type="round" name="pair_percentage" value="{{$row->pair_percentage}}" class="form-control" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Royality Bonus</label>
-                              <input type="number" id="basic-default-password" name="royality_bonus"  value="{{$row->royality_bonus}}" class="form-control" placeholder="Enter royality bonus amount" />
+                              <input type="round" id="basic-default-password" name="royality_bonus"  value="{{$row->royality_bonus}}" class="form-control" placeholder="Enter royality bonus amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Withdrwal</label>
-                              <input type="number" name="min_withdraw" value="{{$row->min_withdraw}}" class="form-control" />
+                              <input type="round" name="min_withdraw" value="{{$row->min_withdraw}}" class="form-control" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Withdrwal Charge</label>
-                              <input type="number" id="basic-default-password" value="{{$row->withdraw_charge}}" name="withdraw_charge" class="form-control" placeholder="Enter Withdrwal Charge" />
+                              <input type="round" id="basic-default-password" value="{{$row->withdraw_charge}}" name="withdraw_charge" class="form-control" placeholder="Enter Withdrwal Charge" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Minimum Transfer Amount</label>
-                              <input type="number" name="min_transfer" value="{{$row->min_transfer}}" class="form-control" />
+                              <input type="round" name="min_transfer" value="{{$row->min_transfer}}" class="form-control" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Activation Charge</label>
-                              <input type="number" name="activation_charge" value="{{$row->activation_charge}}" class="form-control" />
+                              <input type="round" name="activation_charge" value="{{$row->activation_charge}}" class="form-control" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Transfer Charge</label>
-                              <input type="number" id="basic-default-password" value="{{$row->transfer_charge}}" name="transfer_charge" class="form-control" placeholder="Enter Transfer Charge" />
+                              <input type="round" id="basic-default-password" value="{{$row->transfer_charge}}" name="transfer_charge" class="form-control" placeholder="Enter Transfer Charge" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Level 1 Bonus Amount</label>

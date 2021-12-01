@@ -45,6 +45,8 @@ class ReferralController extends Controller implements CreatesNewUsers
   }
     public function index($id)
     {
+      //  $users = User::where('package_id')->get()->toArray();
+      //  dd($user['packages']);
         //dd($id,Auth::id());
       //  $g_set = GeneralSettings::first();
        //$data=$g_set['royality_bonus'];
