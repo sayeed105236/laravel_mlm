@@ -66,7 +66,7 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-success text-white">
                                     <div class="card-body">
-                                        <h4 class="card-title text-white">Total Earnings</h4>
+                                        <h4 class="card-title text-white">Gross Earnings</h4>
                                         <h2 class="card-text"><strong>{{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</strong></h2>
                                     </div>
                                 </div>
@@ -96,7 +96,7 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-info text-white">
                                     <div class="card-body">
-                                        <h4 class="card-title text-white">Total Refferals</h4>
+                                        <h4 class="card-title text-white">Refferals</h4>
                                         <?php
                                         $refferals = App\Models\User::where('sponsor',Auth::id())->get()->count('id');
                                         //dd($refferals);
@@ -114,7 +114,7 @@
                                       //dd($transferData);
 
                                        ?>
-                                      <h4 class="card-title text-white">Total Daily Bonus</h4>
+                                      <h4 class="card-title text-white">Daily Revenue</h4>
                                       <h2 class="card-text"><strong>${{$total_daily_bonus}}</strong></h2>
                                     </div>
                                 </div>
@@ -140,7 +140,7 @@
                                       //dd($total_level_bonus);
 
                                        ?>
-                                      <h4 class="card-title text-white">Total Sponsor Bonus</h4>
+                                      <h4 class="card-title text-white">Gross Sponsor Bonus</h4>
                                       <h2 class="card-text"><strong>${{$total_sponsor_bonus}}</strong></h2>
                                     </div>
                                 </div>
@@ -161,7 +161,7 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-warning text-white">
                                     <div class="card-body">
-                                      <h4 class="card-title text-white">Pending Withdrwals</h4>
+                                      <h4 class="card-title text-white">Carry Forward</h4>
                                       <h2 class="card-text"><strong>$00.00</strong></h2>
                                     </div>
                                 </div>
@@ -174,7 +174,7 @@
                                       //dd($total_royality_bonus);
 
                                        ?>
-                                      <h4 class="card-title text-white">Total Royality Bonus</h4>
+                                      <h4 class="card-title text-white">Sponsor Royality</h4>
                                       <h2 class="card-text"><strong>${{$total_royality_bonus}}</strong></h2>
                                     </div>
                                 </div>
