@@ -70,6 +70,11 @@ class DailyBonus extends Command
                         'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
                         'method'=>'royality sponsor bonus',
                     ]);
+                    CashWallet::create([
+                        'user_id'=>$user['sponsor'],
+                        'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
+                        'method'=>'royality sponsor bonus',
+                    ]);
                 }
 
             }
@@ -77,5 +82,6 @@ class DailyBonus extends Command
 
         $this->info('Successfully added daily bonus.');
 
+      //  $use=((($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100)*$income[$i]/100;
     }
 }

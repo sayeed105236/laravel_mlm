@@ -230,7 +230,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             $bonus_amount = new CashWallet();
             $bonus_amount->user_id = (int)$user->id;
-            $bonus_amount->bonus_amount = $income[$i]*$data/100;
+            $bonus_amount->bonus_amount = $income[$i]*$data/100; 
             $bonus_amount->method = 'Level Bonus';
             $bonus_amount->save();
 
