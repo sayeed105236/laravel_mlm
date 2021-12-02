@@ -39,7 +39,7 @@
                 <div class="row" id="table-hover-row">
                     <div class="col-12">
                         <div class="card">
-                          
+
                             <div class="card-header">
                                 <h4 class="card-title">Referral User Lists</h4>
 
@@ -57,7 +57,7 @@
                                     <th>#</th>
                                     <th>Name</th>
                                     <th>User Name</th>
-                                    <th>Sponsor Name</th>
+                                    <th>Sponsor User Name</th>
                                     <th>Package Name</th>
                                     <th>Purchased Amount</th>
                                     <th>Actions</th>
@@ -70,7 +70,7 @@
                                         <td>{{$user->id}}</td>
                                         <td>{{$user->name ?? ''}}</td>
                                         <td>{{$user->user_name ?? ''}}</td>
-                                        <td>{{(isset($user->sponsors)) ? $user->sponsors->name : ''}}</td>
+                                        <td>{{(isset($user->sponsors)) ? $user->sponsors->user_name : ''}}</td>
 
                                         <td>{{$user->packages->package_name ?? ''}}</td>
                                         <td>{{$user->packages->price ?? ''}}</td>

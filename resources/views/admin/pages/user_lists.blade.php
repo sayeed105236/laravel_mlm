@@ -43,7 +43,7 @@
                                         <th>#</th>
                                           <th>Name</th>
                                           <th>Email</th>
-                                          <th>Sponsor Name</th>
+                                          <th>Sponsor User Name</th>
                                           <th>Position</th>
                                           <th>Purchased Packages</th>
                                           <th>Price</th>
@@ -52,6 +52,9 @@
                                       </tr>
                                   </thead>
                                   <tbody>
+
+
+
                                     @foreach($users as $row)
                                       <tr>
                                         <td>{{$loop->index+1}}</td>
@@ -61,11 +64,24 @@
                                           </td>
                                           <td>{{$row->email}}</td>
                                           <td>
-                                            {{$row->sponsor}}
+
+
+                                            {{$row->sponsors->user_name}}
                                           </td>
-                                          <td>{{$row->position}}</td>
-                                          <td></td>
-                                          <td>{{$row->price}} $</td>
+                                          <td>
+                                            @if($row->position==1)
+                                            Left
+                                            @else
+                                              Right
+
+                                              @endif
+
+                                            </td>
+                                          <td>
+
+                                            {{$row->packages->package_name}}
+                                          </td>
+                                          <td>{{$row->packages->price}} $</td>
                                           <td>{{$row->created_at}}</td>
 
 

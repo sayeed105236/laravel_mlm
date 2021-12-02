@@ -101,7 +101,7 @@
                                           </td>
                                           <td>{{$row->royality_bonus}}%</td>
                                           <td>{{$row->min_withdraw}}$</td>
-                                          <td>{{isset($row->withdraw_charge)}}%</td>
+                                          <td>{{($row->withdraw_charge)}}%</td>
                                           <td>{{$row->min_transfer}}$</td>
                                           <td>{{$row->activation_charge}}%</td>
                                           <td>{{$row->transfer_charge}}%</td>
