@@ -29,6 +29,7 @@ class User extends Authenticatable
         'email',
         'number',
         'gender',
+        'country',
         'birth',
         'package_id',
         'parent_id',

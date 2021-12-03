@@ -122,6 +122,7 @@ class ReferralController extends Controller implements CreatesNewUsers
             'birth' => 'required|date_format:Y-m-d|before:today|before:'.\Carbon\Carbon::today()->subYears(18),
             'gender' => 'required',
             'package_id' => 'required',
+            'country'=>'required',
             'sponsor' => 'required',
             'position' => 'required',
             'placement_id' => 'required',
@@ -164,6 +165,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                     'email' => $request['email'],
                     'sponsor' => $request['sponsor'],
                     'birth' => $request['birth'],
+                    'country' => $request['country'],
                     'number' => $request['number'],
                     'gender' => $request['gender'],
                     //'parent_id' => $request['sponsor'],
@@ -230,7 +232,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             $bonus_amount = new CashWallet();
             $bonus_amount->user_id = (int)$user->id;
-            $bonus_amount->bonus_amount = $income[$i]*$data/100; 
+            $bonus_amount->bonus_amount = $income[$i]*$data/100;
             $bonus_amount->method = 'Level Bonus';
             $bonus_amount->save();
 
@@ -326,6 +328,7 @@ class ReferralController extends Controller implements CreatesNewUsers
             'email' => $input['email'],
             'number' => $input['number'],
             'birth' => $input['birth'],
+              'country' => $input['country'],
             'gender' => $input['gender'],
             'sponsor' => $input['sponsor'],
             'position' => $input['position'],
