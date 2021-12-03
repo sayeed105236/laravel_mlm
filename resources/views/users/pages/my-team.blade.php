@@ -122,7 +122,7 @@
             border-color: #94a0b4;
         }
     </style>
-    <div class="app-content content ">
+    <div class="app-content content" style="margin-bottom: 20px">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
         <div class="content-wrapper">
@@ -145,32 +145,32 @@
             </div>
             <div class="content-body">
                 <!-- Content start -->
-                <div class="container" style="margin-left:250px;">
-                    <div class="tree">
-                                    <ul>
-                                        @foreach($users as $user)
-                                            <li>
-                                                <a href="#">
-                                                    <div class="avatar bg-light-info mr-2" style="margin-left:20px;">
-                                                        <div class="avatar-content">
-                                                            <i data-feather="user" class="avatar-icon"></i>
+                <div class="container">
+                    <div class="tree" style="width: 1200px; overflow-x: scroll; overflow-y: scroll">
+                        <ul>
+                            @foreach($users as $user)
+                                <li>
+                                    <a href="#">
+                                        <div class="avatar bg-light-info mr-2" style="margin-left:20px;">
+                                            <div class="avatar-content">
+                                                <i data-feather="user" class="avatar-icon"></i>
 
-                                                        </div>
+                                            </div>
 
-                                                    </div>
-                                                    <br>
-                                                    <h5>{{ $user->name }}</h5>
+                                        </div>
+                                        <br>
+                                        <h5>{{ $user->name }}</h5>
 
 
-                                                </a>
+                                    </a>
 
-                                                @if(count($user->placements))
+                                    @if(count($user->placements))
 
-                                                    @include('users.pages.manageChild',['childs' => $user->placements])
-                                                @endif
-                                            </li>
-                                        @endforeach
-                                    </ul>
+                                        @include('users.pages.manageChild',['childs' => $user->placements])
+                                    @endif
+                                </li>
+                            @endforeach
+                        </ul>
                     </div>
                 </div>
 
@@ -182,16 +182,5 @@
 
 
         </div>
-
-
     </div>
-    </div>
-
-
-
-
-
 @endsection
-@push('scripts')
-
-@endpush
