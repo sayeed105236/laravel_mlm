@@ -218,29 +218,29 @@ class ReferralController extends Controller implements CreatesNewUsers
     /**
      * Level bonus
      */
-    public function levelBonus($placement_id)
-    {
+  //  public function levelBonus($placement_id)
+  //  {
 
-        $g_set = GeneralSettings::first();
-        $data=$g_set['royality_bonus'];
+      //  $g_set = GeneralSettings::first();
+      //  $data=$g_set['royality_bonus'];
 
-        $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
-        $i=0;
-        while($i < 5 && $placement_id != ''){
-            $user = User::where('user_name',$placement_id)->first('id');
+    //    $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
+    //    $i=0;
+    //    while($i < 5 && $placement_id != ''){
+      //      $user = User::where('user_name',$placement_id)->first('id');
 
-            $bonus_amount = new CashWallet();
-            $bonus_amount->user_id = (int)$user->id;
-            $bonus_amount->bonus_amount = $income[$i]*$data/100;
-            $bonus_amount->method = 'Level Bonus';
-            $bonus_amount->save();
+      //      $bonus_amount = new CashWallet();
+      //      $bonus_amount->user_id = (int)$user->id;
+      //      $bonus_amount->bonus_amount = $income[$i]*$data/100;
+      //      $bonus_amount->method = 'Level Bonus';
+      //      $bonus_amount->save();
 
-            $next_id= $this->find_placement_id($placement_id);
-            $placement_id = $next_id;
-            $i++;
-        }
+      //      $next_id= $this->find_placement_id($placement_id);
+      //      $placement_id = $next_id;
+      //      $i++;
+      //  }
 
-    }
+  //  }
 
     public function binary_count($placement_id,$pos)
     {
