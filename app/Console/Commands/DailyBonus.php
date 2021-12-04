@@ -75,7 +75,7 @@ class DailyBonus extends Command
                     }
                     $placement_id= $user['placement_id'];
                     $g_set = GeneralSettings::first();
-                    $data=$g_set['royality_bonus'];
+                    $data=($user['packages']['return_percentage']*$user['packages']['price'])/100;
 
                     $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
 

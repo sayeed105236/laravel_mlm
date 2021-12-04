@@ -326,8 +326,8 @@
                                     @if($lev_three_left_l_l)
                                         <td>
                                             <a class="text-center green_tree"
-                                               href="{{$lev_three_left_l_l->id}}" data-toggle="popover" title="6" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
-                                                <strong>  {{$lev_three_left_l_l->user_name}}</strong><br /><span class="text-sm-center"> 6</span ></a> </td>
+                                               href="{{$lev_three_left_l_l->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                <strong>  {{$lev_three_left_l_l->user_name}}</strong><br /><span class="text-sm-center"> </span ></a> </td>
                                     @else
                                         <td>
                                             <a target="_blank" href="#" data-toggle="tooltip" title="Click to register below: 9"><img src="https://downassam.com/demo/public/images/new_user.png" alt="New User"></a>
@@ -335,9 +335,10 @@
                                     @endif
 
                                     @if($lev_three_left_l_r)
+
                                         <td>
-                                            <a class="text-center green_tree" href="{{$lev_three_left_l_r->id}}" data-toggle="popover" title="6" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
-                                                <strong>  {{$lev_three_left_l_r->user_name}}</strong><br /><span class="text-sm-center"> 6</span ></a>
+                                            <a class="text-center green_tree" href="{{$lev_three_left_l_r->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                <strong>  {{$lev_three_left_l_r->user_name}}</strong><br /><span class="text-sm-center"> </span ></a>
                                         </td>
                                     @else
                                         <td>
@@ -345,10 +346,10 @@
                                         </td>
                                     @endif
 
-                                    @if($lev_three_left_r_r)
+                                    @if($lev_three_left_r_l)
                                         <td>
-                                            <a class="text-center green_tree" href="{{$lev_three_left_r_r->id}}" data-toggle="popover" title="6" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
-                                                <strong> {{$lev_three_left_r_r->user_name}}</strong><br /><span class="text-sm-center"> 6</span ></a>
+                                            <a class="text-center green_tree" href="{{$lev_three_left_r_l->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                <strong> {{$lev_three_left_r_l->user_name}}</strong><br /><span class="text-sm-center"> </span ></a>
                                         </td>
                                     @else
                                         <td>
@@ -357,8 +358,8 @@
                                     @endif
                                     @if($lev_three_left_r_r)
                                         <td>
-                                            <a class="text-center green_tree" href="{{$lev_three_left_r_r->id}}" data-toggle="popover" title="6" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
-                                                <strong> {{$lev_three_left_r_r->user_name}}</strong><br /><span class="text-sm-center"> 6</span ></a>
+                                            <a class="text-center green_tree" href="{{$lev_three_left_r_r->id}}" data-toggle="popover" title="" data-content="<span>Name:</span> YUSUFF<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-11-26<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00" data-trigger="hover" data-html="true"> <img class="rounded-circle" src="https://downassam.com/demo/public/images/red_user.png" alt="YUSUFF"><br />
+                                                <strong> {{$lev_three_left_r_r->user_name}}</strong><br /><span class="text-sm-center"> </span ></a>
                                         </td>
                                     @else
                                         <td>
@@ -403,16 +404,16 @@
                                         </td>
                                     @endif
 
-                                    @if($lev_three_right_r_r)
+                                    @if($lev_three_right_r_l)
                                         <td>
                                             <a class="text-center green_tree"
-                                               href="{{$lev_three_right_r_r->id}}"
+                                               href="{{$lev_three_right_r_l->id}}"
                                                data-toggle="popover" title=""
                                                data-content="<span>Name:</span> Mohammed Saleem<br/><span>Sponsor:</span> <br/><span>Registration Date:</span> 2021-10-06<br/><span>Own Investment:</span> ₹ 0.00<br/><span>Total Active Left:</span> 0<br/><span>Total Active Right:</span> 0<br/><span>Left Investments:</span> ₹ 0.00<br/><span>Right Investments:</span> ₹ 0.00"
                                                data-trigger="hover" data-html="true"> <img class="rounded-circle"
                                                                                            src="https://downassam.com/demo/public/images/red_user.png"
                                                                                            alt="Mohammed Saleem"><br/><strong>
-                                                    {{$lev_three_right_r_r->user_name}}
+                                                    {{$lev_three_right_r_l->user_name}}
                                                 </strong><br/><span class="text-sm-center"></span></a><br/>
                                         </td>
                                     @else

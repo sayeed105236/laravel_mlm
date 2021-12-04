@@ -183,7 +183,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                         ->update(['right_side' => $data->user_name]);
                 }
                 //level distribution
-                $this->levelBonus($placement_id);
+              //  $this->levelBonus($placement_id);
                 //pair bonus
                 $this->binary_count($placement_id,$position_id);
 
@@ -288,7 +288,8 @@ class ReferralController extends Controller implements CreatesNewUsers
             $data = PairCount::where('user_id',$user->id)->where('date',Carbon::today())->get()->toArray();
             $date= date('Y-m-d');
             if(count($data) > 0){
-                DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' user_id = '$user->id'");
+              //  DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
+                DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
             }else{
                 $insert= new PairCount();
                 $insert->user_id = $user->id;
