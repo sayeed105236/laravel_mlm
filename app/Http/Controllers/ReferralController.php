@@ -59,11 +59,10 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function MyTeam(User $query,$id)
     {
 
-        $users = User::with('placements')->where('id', Auth::id())->get();
+        $user = User::with('placements')->where('id', $id)->first();
         //$allChildren = User::pluck('name','id')->all();
 //dd($users);
-
-        return view('users.pages.my-team',compact(['users']));
+        return view('users.pages.my-team',compact(['user']));
     }
 
     public function checkPosition(Request $request){
