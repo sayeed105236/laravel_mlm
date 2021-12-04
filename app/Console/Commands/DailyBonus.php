@@ -60,45 +60,42 @@ class DailyBonus extends Command
                 $days  = $date2->diff($date1)->format('%a');
 
                 if ($days <= $user['packages']['duration']){
+
                     CashWallet::create([
                         'user_id'=>$user['id'],
                         'bonus_amount'=>($user['packages']['return_percentage']*$user['packages']['price'])/100,
                         'method'=>'daily bonus',
                     ]);
-                    CashWallet::create([
-                        'user_id'=>$user['sponsor'],
-                        'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
-                        'method'=>'royality sponsor bonus',
-                    ]);
-                  //  CashWallet::create([
-                  //      'user_id'=>$user['sponsor'],
-                //        'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
-                  //      'method'=>'royality sponsor bonus',
-                  //  ]);
+                    if ($user['sponsor']){
+                        CashWallet::create([
+                            'user_id'=>$user['sponsor'],
+                            'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
+                            'method'=>'royality sponsor bonus',
+                        ]);
+                    }
+                    $placement_id= $user['placement_id'];
+                    $g_set = GeneralSettings::first();
+                    $data=$g_set['royality_bonus'];
 
-                  //  $g_set = GeneralSettings::first();
-                  //  $data=$g_set['royality_bonus'];
-//
-                //    $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
-                //    $i=0;
-                //    while($i < 5 && $user['sponsor'] != ''){
-                //        $user_info = User::where('sponsor',$user['sponsor'])->last();
+                    $income=[$g_set->level_1,$g_set->level_2,$g_set->level_3,$g_set->level_4,$g_set->level_5];
 
-                    //    $bonus_amount = new CashWallet();
-                  //      $bonus_amount->user_id = (int)$user_info->id;
-                    //    $bonus_amount->bonus_amount = $income[$i]*$data/100;
-                    //    $bonus_amount->method = 'Level Bonus';
-                    //    $bonus_amount->save();
+                    $i=0;
+                    while($i < 5 && $placement_id != ''){
 
-                    //    $next_id=$this->find_placement_id();
-                    //    $placement_id = $next_id;
-                    //    $i++;
-                  //  }
-                  //  CashWallet::create([
-                  //      'user_id'=>$user['sponsor'],
-                  //      'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
-                  //      'method'=>'royality sponsor bonus',
-                //    ]);
+                        $user = User::where('user_name',$placement_id)->first('id');
+
+                        $bonus_amount = new CashWallet();
+                        $bonus_amount->user_id = (int)$user->id;
+                        $bonus_amount->bonus_amount = $income[$i]*$data/100;
+                        $bonus_amount->method = 'Level Bonus';
+                        $bonus_amount->save();
+
+                        $next_id= $this->find_placement_id($placement_id);
+                       // dd($next_id,$placement_id);
+                        $placement_id = $next_id;
+                        $i++;
+                    }
+
                 }
 
             }
@@ -108,4 +105,10 @@ class DailyBonus extends Command
 
       //  $use=((($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100)*$income[$i]/100;
     }
+    public function find_placement_id($placement_id){
+
+        $user_id = User::where('user_name',$placement_id)->first();
+        return $user_id->placement_id;
+    }
+
 }
