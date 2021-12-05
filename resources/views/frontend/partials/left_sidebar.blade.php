@@ -40,6 +40,39 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='check-circle'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Registration</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+                  <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Upgrade Package</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+
+                      <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Invoice">Webwork</span></a>
+                          <ul class="menu-content">
+                              <li><a class="d-flex align-items-center" href="/home/referrals/{{Auth::user()->id}}"><i data-feather='archive'></i><span class="menu-item text-truncate" data-i18n="List">My Sponsors</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="/home/my-team/{{Auth::user()->id}}"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">My Team</span></a>
+                              </li>
+
+                          </ul>
+                      </li>
+                      <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Invoice">Fund Management</span></a>
+                          <ul class="menu-content">
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather='repeat'></i><span class="menu-item text-truncate" data-i18n="List">Transfer</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather='download'></i><span class="menu-item text-truncate" data-i18n="Preview">Withdraw</span></a>
+                              </li>
+
+                          </ul>
+                      </li>
+                      <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='book-open'></i><span class="menu-title text-truncate" data-i18n="eCommerce">History</span></a>
+                          <ul class="menu-content">
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Registration History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Upgrade History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Transfer History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Withdraw History</span></a>
+                              </li>
+                          </ul>
+                      </li>
             <!--    <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
                     </li>
@@ -47,7 +80,7 @@
                     </li>
                 </ul>-->
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="{{ route('profile.show') }}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
+            <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('profile.show') }}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
 
           <!--  <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
             </li>
@@ -61,27 +94,7 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>
             </li>-->
-            <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="Invoice">Package</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Buy Package</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">My Package</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Upgrade Package</span></a>
-                    </li>
 
-
-                </ul>
-              </li>
-            <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Invoice">Network</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="/home/referrals/{{Auth::user()->id}}"><i data-feather='archive'></i><span class="menu-item text-truncate" data-i18n="List">My Referrals</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="/home/my-team/{{Auth::user()->id}}"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">My Team</span></a>
-                    </li>
-
-                </ul>
-            </li>
               <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Fund Management</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
             <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Invoice">Report</span></a>
                 <ul class="menu-content">
