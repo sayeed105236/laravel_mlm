@@ -206,7 +206,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                 $bonus_amount->save();
 
 
-           //     $data->notify(new UserCredential($email_data));
+                $data->notify(new UserCredential($email_data));
                 Session::flash('success','User has been Successfully Registered!!');
 
 
