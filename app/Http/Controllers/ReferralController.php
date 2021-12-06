@@ -59,7 +59,7 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function MyTeam(User $query,$id)
     {
 
-        $user = User::with('placements')->where('id', $id)->first();
+        $user = User::where('id', $id)->first();
         //$allChildren = User::pluck('name','id')->all();
 //dd($users);
         return view('users.pages.my-team',compact(['user']));
@@ -68,7 +68,7 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function checkPosition(Request $request){
 
         //$user->setPosition($request['position']);
-        $check_position = User::where('sponsor',$request['sponsor'])->where('position',$request['position'])->first();
+        $check_position = User::where('sponsor',$request['sponsor'])->where('position',$request['position'])->orderBy('id','desc')->first();
        // dd($check_position);
         if(is_null($check_position)){
             $first = User::where('id',$request['sponsor'])->first();
@@ -206,7 +206,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                 $bonus_amount->save();
 
 
-                $data->notify(new UserCredential($email_data));
+           //     $data->notify(new UserCredential($email_data));
                 Session::flash('success','User has been Successfully Registered!!');
 
 
