@@ -55,23 +55,23 @@
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Level 1 Bonus Amount</label>
-                              <input type="number" id="basic-default-password" value="{{$row->level_1}}" name="level_1" class="form-control" placeholder="Enter Level 1 Bonus Amount" />
+                              <input type="round" id="basic-default-password" value="{{$row->level_1}}" name="level_1" class="form-control" placeholder="Enter Level 1 Bonus Amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Level 2 Bonus Amount</label>
-                              <input type="number" id="basic-default-password" value="{{$row->level_2}}" name="level_2" class="form-control" placeholder="Enter Level 2 Bonus Amount" />
+                              <input type="round" id="basic-default-password" value="{{$row->level_2}}" name="level_2" class="form-control" placeholder="Enter Level 2 Bonus Amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Level 3 Bonus Amount</label>
-                              <input type="number" id="basic-default-password" value="{{$row->level_3}}" name="level_3" class="form-control" placeholder="Enter Level 3 Bonus Amount" />
+                              <input type="round" id="basic-default-password" value="{{$row->level_3}}" name="level_3" class="form-control" placeholder="Enter Level 3 Bonus Amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Level 4 Bonus Amount</label>
-                              <input type="number" id="basic-default-password" value="{{$row->level_4}}" name="level_4" class="form-control" placeholder="Enter Level 4 Bonus Amount" />
+                              <input type="round" id="basic-default-password" value="{{$row->level_4}}" name="level_4" class="form-control" placeholder="Enter Level 4 Bonus Amount" />
                           </div>
                           <div class="form-group">
                               <label class="form-label" for="basic-default-password">Level 5 Bonus Amount</label>
-                              <input type="number" id="basic-default-password" value="{{$row->level_5}}" name="level_5" class="form-control" placeholder="Enter Level 5 Bonus Amount" />
+                              <input type="round" id="basic-default-password" value="{{$row->level_5}}" name="level_5" class="form-control" placeholder="Enter Level 5 Bonus Amount" />
                           </div>
 
 

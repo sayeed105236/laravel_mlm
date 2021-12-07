@@ -30,7 +30,9 @@ use App\Http\Controllers\BasicSettingsController;
 Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('auth');
 Route::get('/tree', [FrontendController::class,'tree']);
 Route::get('/flipcard', [FrontendController::class,'flipcard']);
+Route::get('/home/registration-history/{id}', [FrontendController::class,'Manage'])->name('registration-history')->middleware('auth');
 Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->middleware('auth');
+Route::get('/home/registration/{id}', [UserDashboardController::class,'registration'])->name('registration-page')->middleware('auth');
 
 
 //user refferals routes

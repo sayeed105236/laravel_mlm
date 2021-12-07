@@ -40,7 +40,7 @@
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
             <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather="home"></i><span class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
-                <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='check-circle'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Registration</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+                <li class=" nav-item"><a class="d-flex align-items-center" href="/home/registration/{{Auth::user()->id}}"><i data-feather='check-circle'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Registration</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
                   <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='grid'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Upgrade Package</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
                       <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Invoice">Webwork</span></a>
@@ -63,7 +63,7 @@
                       </li>
                       <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='book-open'></i><span class="menu-title text-truncate" data-i18n="eCommerce">History</span></a>
                           <ul class="menu-content">
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Registration History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/registration-history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Registration History</span></a>
                               </li>
                               <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Upgrade History</span></a>
                               </li>

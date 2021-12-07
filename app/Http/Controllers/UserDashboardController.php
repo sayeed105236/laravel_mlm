@@ -27,5 +27,9 @@ class UserDashboardController extends Controller
 
       return view('users.pages.index',compact('data'));
     }
+    public function registration($id)
+    {
+      return view('users.pages.registration');
+    }
 
 }
