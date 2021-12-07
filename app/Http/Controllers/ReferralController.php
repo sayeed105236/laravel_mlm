@@ -69,7 +69,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
         //$user->setPosition($request['position']);
         $check_position = User::where('sponsor',$request['sponsor'])->where('position',$request['position'])->orderBy('id','desc')->first();
-       // dd($check_position);
+       //dd($check_position);
         if(is_null($check_position)){
             $first = User::where('id',$request['sponsor'])->first();
             return  $first->user_name;
@@ -83,8 +83,8 @@ class ReferralController extends Controller implements CreatesNewUsers
         if(count($all)>0)
         {
             foreach($all as $subcat){
-
                 if(count($subcat->childrenRecursive) > 0){
+                    //dd($subcat->childrenRecursive());
                     foreach ($subcat->childrenRecursive as $item){
                        return $this->check($item);
                     }
@@ -92,6 +92,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                     return $subcat->user_name;
                 }
             }
+            //dd($all);
         }
         else
         {
@@ -99,10 +100,11 @@ class ReferralController extends Controller implements CreatesNewUsers
         }
 
     }
-   function check($subcat){
+   public function check($subcat){
        if(count($subcat->childrenRecursive) > 0){
            foreach ($subcat->childrenRecursive as $item){
-               return $item->user_name;
+           return  $this->check($item);
+               //return $item->user_name;
            }
        }else{
            return $subcat->user_name;
