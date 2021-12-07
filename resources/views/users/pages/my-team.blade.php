@@ -73,7 +73,7 @@
                         <h2 class="content-header-title float-left mb-0">My Team</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="/">Home</a>
+                                <li class="breadcrumb-item"><a href="/home/dashboard/{{Auth::user()->id}}">Home</a>
                                 </li>
                                 <li class="breadcrumb-item active">My Team
                                 </li>
