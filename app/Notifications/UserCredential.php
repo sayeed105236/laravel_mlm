@@ -56,8 +56,8 @@ class UserCredential extends Notification
 
         return (new MailMessage())
             ->subject('Account Credentials')
-            ->from('noreply@mlm.com', 'mlm')
-            ->view('emails.user-password', ['name' => $notifiable->name,'user_name' => $notifiable->user_name, 'user_password' => $this->password]);
+            ->from('noreply@coinexxpro.com', 'CoinexxPro-Forex-and-Crypto-Asset-Management')
+            ->view('emails.user-password', ['name' => $notifiable->name,'email' => $notifiable->email,'user_name' => $notifiable->user_name, 'user_password' => $this->password]);
     }
 
     /**

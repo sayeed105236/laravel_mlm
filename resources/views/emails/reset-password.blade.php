@@ -11,7 +11,7 @@
 
                         <p style="line-height: 24px; margin-bottom:15px;">
                             Welcome {{$name}}! <br/>
-                            You are registered in CS Online Portal system.
+                            You are registered in CoinexxPro-Forex-and-Crypto-Asset-Management
                         </p>
 
                         <p style="line-height: 24px; margin-bottom:20px;">
@@ -51,4 +51,3 @@
         </td>
     </div>
 @endsection
-                        

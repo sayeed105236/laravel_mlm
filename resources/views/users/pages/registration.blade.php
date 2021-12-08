@@ -413,7 +413,7 @@
                                           </div>
                                   @endif
                                   <button type="submit" class="btn btn-primary" id="btnSubmit">
-                                      Add User
+                                      Register Now
                                   </button>
                               </div>
 

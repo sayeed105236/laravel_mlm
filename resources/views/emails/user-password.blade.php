@@ -10,25 +10,36 @@
 {{--                    <h4 style="text-align: center;"> <span style="border-bottom: 1px solid dimgray;">{{ app_name() }}</span></h4>--}}
 
                     <p style="line-height: 24px; margin-bottom:15px;">
-                        Welcome {{$name}}! <br/>
-                        You are registered in MLM system.
+                        Dear{{$name}}! <br/>
+                        Congratulations!
+                        .
                     </p>
+                      <p style="line-height: 24px; margin-bottom:15px;">
+                        Your account has been setup and you are ready to begin earning with Coinexxpro.
+                          </p>
 
                     <p style="line-height: 24px; margin-bottom:20px;">
                         Please don't share your credentials with anyone and after login change your password. Your account temporary login credential below-
                     </p>
                     <div style="text-align: center; color: black; font-weight: bold; border: 1px solid black; padding: 15px ">
                         <p>User Name: {{$user_name}}</p>
+                        <p>User Email: {{$email}}</p>
                         <p>User Password: {{$user_password}}</p>
                     </div>
 
                     <p style="line-height: 24px; margin-bottom:20px;margin-top:20px">
                         Thank you for using our application!
+                          If you need any further assistance, please contact our support team
                     </p>
 
                     <p style="line-height: 24px">
                         Regards, <br/>
-                        MLM
+
+
+                        ---
+                        CoinexxPro
+                        www.coinexxpro.com
+
                         {{--@yield('title', app_name())--}}
                     </p>
 
