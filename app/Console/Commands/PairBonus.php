@@ -45,9 +45,9 @@ class PairBonus extends Command
         //return Command::SUCCESS;
 
 
-        //$users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',1)->groupBy('user_id')->get()->toArray();
+        $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->groupBy('user_id')->get()->toArray();
 
-        $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->where('date',Carbon::today())->groupBy('user_id')->get()->toArray();
+       // $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->where('date',Carbon::today())->groupBy('user_id')->get()->toArray();
         //  dd($users);
         $g_set = GeneralSettings::first();
       //  dd($g_set['pair_amount']);
