@@ -9,6 +9,8 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Fortify\TwoFactorAuthenticatable;
 use Laravel\Jetstream\HasProfilePhoto;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\CashWallet;
+//use App\Models\AddMoney;
 
 class User extends Authenticatable
 {
@@ -97,6 +99,11 @@ class User extends Authenticatable
     public function childrenRecursive()
     {
         return $this->position()->with('childrenRecursive');
+    }
+
+    public function receiver_cash()
+    {
+        return $this->belongsTo(CashWallet::class,'receiver_id');
     }
 
 

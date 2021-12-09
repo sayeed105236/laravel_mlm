@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+//use App\Models\AddMoney;
 
 class AddMoney extends Model
 {
@@ -16,5 +17,9 @@ class AddMoney extends Model
 
          return $this->belongsTo(User::class, 'user_id');
 
+    }
+    public function receiver()
+    {
+        return $this->belongsTo(User::class,'receiver_id');
     }
 }

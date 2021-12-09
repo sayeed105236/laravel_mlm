@@ -84,7 +84,9 @@
                               </li>
                               <li><a class="d-flex align-items-center" href="/home/club_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Club Bonus History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Transfer History</span></a>
+                              <li><a class="d-flex align-items-center" href="{{url(route('income-report'))}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Income History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="{{url(route('transfer-report'))}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Transfer History</span></a>
                               </li>
                               <li><a class="d-flex align-items-center" href="/home/withdraw_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Withdraw History</span></a>
                               </li>
@@ -112,8 +114,8 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>
             </li>-->
 
-              <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Fund Management</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>
-            <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Invoice">Report</span></a>
+            <!--  <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Fund Management</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>-->
+          <!--  <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Invoice">Report</span></a>
                 <ul class="menu-content">
                     <li><a class="d-flex align-items-center" href="{{url(route('income-report'))}}"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Income Report</span></a>
                     </li>
@@ -127,7 +129,7 @@
                     </li>
 
                 </ul>
-              </li>
+              </li>-->
 
                     <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Settings</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
                     <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='phone-call'></i><span class="menu-title text-truncate" data-i18n="Invoice">Support</span></a>

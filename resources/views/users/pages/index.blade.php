@@ -228,5 +228,24 @@
         </div>
     </div>
     <!-- END: Content-->
+<script type="text/javascript">
 
+  //alert('success');
+  //console.log(this.getAttribute('id'));
+  //console.log(e.target.options[e.target.selectedIndex].getAttribute('id'));
+//var wallet=  document.getElementById("wallet_id");
+//wallet.innerHTML= id.value;
+document.getElementById('DestinationOptions').addEventListener('change', function(e) {
+    var wallet2= e.target.options[e.target.selectedIndex].getAttribute('id');
+    //console.log(wallet2);
+    var wallet=  document.getElementById("wallet_id").value=wallet2;
+    //console.log(wallet);
+    //wallet.innerHTML= wallet2;
+});
+
+//  document.getElementById('').value(id.value);
+
+
+
+</script>
 @endsection

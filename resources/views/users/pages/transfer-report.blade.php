@@ -10,12 +10,12 @@
             <div class="content-header-left col-md-9 col-12 mb-2">
                 <div class="row breadcrumbs-top">
                     <div class="col-12">
-                        <h2 class="content-header-title float-left mb-0">Transfer Cash Report</h2>
+                        <h2 class="content-header-title float-left mb-0">Register Wallet Transfer History</h2>
                         <div class="breadcrumb-wrapper">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/home/dashboard/{{Auth::user()->id}}">Home</a>
                                 </li>
-                                <li class="breadcrumb-item active">My Transfer Cash Report
+                                <li class="breadcrumb-item active">My Transfer History
                                 </li>
                             </ol>
                         </div>
@@ -44,7 +44,7 @@
                                     <tr>
                                         <td>{{$key}}</td>
                                         <td>{{$transfer->user->user_name}}</td>
-                                          <td></td>
+                                          <td>{{$transfer->receiver->user_name ?? ''}}</td>
                                         <td>{{$transfer->amount ?? ''}}</td>
 
                                         <td>{{$transfer->method ?? ''}}</td>

@@ -50,6 +50,7 @@ class AddMoneyController extends Controller
         $g_set = GeneralSettings::first();
         $deduct = new AddMoney;
         $deduct->user_id = Auth::id();
+        $deduct->receiver_id=$request->user_id;
         $deduct->amount = -($request->amount+ ($request->amount)*$g_set->transfer_charge/100);
         $deduct->method ='Transfer';
         $deduct->status ='approve';
@@ -57,6 +58,8 @@ class AddMoneyController extends Controller
 
         $deposit = new AddMoney;
         $deposit->user_id = $request->user_id;
+      //  $deposit->receiver_id=$request->user_id;
+
         $deposit->amount =$request->amount;
         $deposit->method ='Transfer';
         $deposit->status ='approve';
@@ -75,6 +78,7 @@ class AddMoneyController extends Controller
         $g_set = GeneralSettings::first();
         $deduct = new CashWallet;
         $deduct->user_id = Auth::id();
+        $deduct->receiver_id=$request->user_id;
 
         $deduct->bonus_amount = -($request->bonus_amount+ ($request->bonus_amount)*$g_set->transfer_charge/100);
         $deduct->method ='Wallet Transfer';
