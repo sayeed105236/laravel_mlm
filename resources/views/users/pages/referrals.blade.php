@@ -60,25 +60,21 @@
                                     <th>Sponsor User Name</th>
                                     <th>Package Name</th>
                                     <th>Purchased Amount</th>
-                                    <th>Actions</th>
+
                                 </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($users as $user)
 
                                     <tr>
-                                        <td>{{$user->id}}</td>
+                                        <td>{{$loop->index+1}}</td>
                                         <td>{{$user->name ?? ''}}</td>
                                         <td>{{$user->user_name ?? ''}}</td>
                                         <td>{{(isset($user->sponsors)) ? $user->sponsors->user_name : ''}}</td>
 
                                         <td>{{$user->packages->package_name ?? ''}}</td>
                                         <td>{{$user->packages->price ?? ''}}</td>
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target="#PaymentMethodEditModal"><i
-                                                    data-feather='edit'></i></a>
-                                            <a href="#"><i data-feather='trash-2'></i></a>
-                                        </td>
+                                        
                                     </tr>
                                 @endforeach
                                 </tbody>

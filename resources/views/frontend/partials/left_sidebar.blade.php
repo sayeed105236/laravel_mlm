@@ -54,7 +54,9 @@
                       </li>
                       <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Invoice">Fund Management</span></a>
                           <ul class="menu-content">
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather='repeat'></i><span class="menu-item text-truncate" data-i18n="List">Transfer</span></a>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather='repeat'></i><span class="menu-item text-truncate" data-i18n="List">Register Wallet Transfer</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather='repeat'></i><span class="menu-item text-truncate" data-i18n="List">Cash Wallet Transfer</span></a>
                               </li>
                               <li><a class="d-flex align-items-center" href="#"><i data-feather='download'></i><span class="menu-item text-truncate" data-i18n="Preview">Withdraw</span></a>
                               </li>
@@ -66,6 +68,21 @@
                               <li><a class="d-flex align-items-center" href="/home/registration-history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Registration History</span></a>
                               </li>
                               <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Upgrade History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="/home/sponsor_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Sponsor Bonus History</span></a>
+
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Daily Revenue History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Royalty Bonus History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Level Bonus History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Pair Bonus History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Team Bonus History</span></a>
+                              </li>
+                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Club Bonus History</span></a>
                               </li>
                               <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Transfer History</span></a>
                               </li>

@@ -26,7 +26,9 @@
           </div>
             @endif
                 <!-- Dashboard Ecommerce Starts -->
+
                 <section id="dashboard-ecommerce">
+                  <h4>"Welcome Mr. {{Auth::user()->name}} to CoinexxPro"</h4>
 
                         <!-- Medal Card -->
                         <!--/ Medal Card -->
@@ -176,6 +178,38 @@
                                        ?>
                                       <h4 class="card-title text-white">Sponsor Royality</h4>
                                       <h2 class="card-text"><strong>${{$total_royality_bonus}}</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-secondary text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Team Bonus</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-secondary text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Club Bonus</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-secondary text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Gross Left Sale</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xl-3">
+                                <div class="card bg-secondary text-white">
+                                    <div class="card-body">
+                                      <h4 class="card-title text-white">Gross Right Sale</h4>
+                                      <h2 class="card-text"><strong>$00.00</strong></h2>
                                     </div>
                                 </div>
                             </div>

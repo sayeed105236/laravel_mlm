@@ -44,7 +44,7 @@
                             <div class="form-group">
                                 <label class="form-label" for="basic-default-email">Phone Number</label>
                                 <input type="number" id="number" name="number" class="form-control"
-                                       placeholder="+8801554555554" required/>
+                                       placeholder="Enter your phone Number" required/>
 
                             </div>
                             <div class="form-group">

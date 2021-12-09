@@ -31,6 +31,7 @@ Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('
 Route::get('/tree', [FrontendController::class,'tree']);
 Route::get('/flipcard', [FrontendController::class,'flipcard']);
 Route::get('/home/registration-history/{id}', [FrontendController::class,'Manage'])->name('registration-history')->middleware('auth');
+Route::get('/home/sponsor_bonus_history/{id}', [FrontendController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
 Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->name('user-dashboard')->middleware('auth');
 Route::get('/home/registration/{id}', [UserDashboardController::class,'registration'])->name('registration-page')->middleware('auth');
 

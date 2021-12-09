@@ -12,12 +12,12 @@
         <div class="content-header-left col-md-9 col-12 mb-2">
              <div class="row breadcrumbs-top">
                 <div class="col-12">
-                    <h2 class="content-header-title float-left mb-0">Registration History</h2>
+                    <h2 class="content-header-title float-left mb-0">Sponsor Bonus History</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="/home/dashboard/{{Auth::user()->id}}">Home</a>
                             </li>
-                            <li class="breadcrumb-item active">registration history
+                            <li class="breadcrumb-item active">sponsor bonus history
                             </li>
                         </ol>
                     </div>
@@ -31,7 +31,7 @@
                   <div class="col-12">
                       <div class="card">
                           <div class="card-header">
-                              <h4 class="card-title">Registration History</h4>
+                              <h4 class="card-title">Sponsor Bonus History</h4>
                           </div>
                           </div>
                           <div class="table-responsive">
@@ -42,12 +42,9 @@
                                         <th>Date</th>
 
                                           <th>User Name</th>
-                                          <th>Package</th>
-                                          <th>Sponsor's User Name</th>
-                                          <th>Email</th>
-
+                                          <th>Package Name</th>
                                           <th>Amount</th>
-
+                                          <th>Gross/Total</th>
 
 
 
@@ -67,14 +64,10 @@
                                               <span class="font-weight-bold">{{$row->user_name}}</span>
                                           </td>
                                           <td>{{$row->packages->package_name}}</td>
-                                          <td>{{$row->sponsors->user_name}}</td>
+                                          <td></td>
 
-                                          <td>{{$row->email}}</td>
-                                          <td>
+                                          <td></td>
 
-
-                                            {{$row->packages->price}}$
-                                          </td>
 
 
 
