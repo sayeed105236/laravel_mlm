@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\AddMoney;
 use Illuminate\Support\Facades\Auth;
 use App\Models\GeneralSettings;
+use App\Models\CashWallet;
 
 class AddMoneyController extends Controller
 {
@@ -68,16 +69,24 @@ class AddMoneyController extends Controller
         $request->validate([
 
             'user_id' => 'required',
-            'amount' => 'required',
+            'bonus_amount' => 'required',
 
         ]);
-
-        $deduct = new AddMoney;
+        $g_set = GeneralSettings::first();
+        $deduct = new CashWallet;
         $deduct->user_id = Auth::id();
-        $deduct->amount = -($request->amount);
+
+        $deduct->bonus_amount = -($request->bonus_amount+ ($request->bonus_amount)*$g_set->transfer_charge/100);
         $deduct->method ='Wallet Transfer';
-        $deduct->status ='pending';
+        $deduct->status ='approve';
         $deduct->save();
+
+        $deposit_cash_wallet = new CashWallet;
+        $deposit_cash_wallet->user_id = $request->user_id;
+        $deposit_cash_wallet->bonus_amount =$request->bonus_amount;
+        $deposit_cash_wallet->method ='Cash Wallet Transfer';
+        $deposit_cash_wallet->status ='approve';
+        $deposit_cash_wallet->save();
         return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
     }
     public function walletWithdraw(Request $request)

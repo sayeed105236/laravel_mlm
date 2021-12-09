@@ -62,10 +62,10 @@
 
                                           <td>
 
-                                              <span class="font-weight-bold">{{$row->user_name}}</span>
+                                              <span class="font-weight-bold"></span>
                                           </td>
-                                          <td>{{$row->packages->package_name}}</td>
-                                          <td>{{$row->sponsors->user_name}}</td>
+                                          <td></td>
+                                          <td></td>
 
 
 

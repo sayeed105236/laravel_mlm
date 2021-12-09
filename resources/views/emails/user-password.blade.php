@@ -10,7 +10,7 @@
 {{--                    <h4 style="text-align: center;"> <span style="border-bottom: 1px solid dimgray;">{{ app_name() }}</span></h4>--}}
 
                     <p style="line-height: 24px; margin-bottom:15px;">
-                        Dear{{$name}}! <br/>
+                        Dear {{$name}}! <br/>
                         Congratulations!
                         .
                     </p>

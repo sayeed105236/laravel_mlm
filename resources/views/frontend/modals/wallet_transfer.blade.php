@@ -7,7 +7,7 @@
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel18">Transfer Money</h4>
+                    <h4 class="modal-title" id="myModalLabel18">Transfer Money To Cash Wallet</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -33,7 +33,7 @@
 
                             <div class="form-group">
                                 <label class="form-label" for="basic-default-email">Enter Amount</label>
-                                <input type="number" min="1" id="basic-default-email" name="amount"
+                                <input type="number" min="1" id="basic-default-email" name="bonus_amount"
                                        class="form-control" placeholder="Enter Amount ($)" required/>
                             </div>
 

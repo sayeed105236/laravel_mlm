@@ -61,6 +61,7 @@
                                         <h4 class="card-text">Available Balance: {{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</h4>
                                         <a class="btn btn-danger" data-toggle="modal" data-target="#walletWithdraw"><i data-feather='arrow-down-circle'></i></a>
                                         <a class="btn btn-info" data-toggle="modal" data-target="#walletTransfer" ><i data-feather='send'></i></a>
+                                        @include('frontend.modals.wallet_transfer')
                                           <p class="card-text font-small-3">Minimum Withdrawal: 10$</p>
                                     </div>
                                 </div>

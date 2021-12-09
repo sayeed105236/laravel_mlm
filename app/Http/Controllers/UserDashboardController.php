@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\AddMoney;
 use Illuminate\Support\Facades\Auth;
+use App\Models\CashWallet;
 
 class UserDashboardController extends Controller
 {
@@ -38,38 +39,38 @@ class UserDashboardController extends Controller
     }
     public function sponsor_bonus($id)
     {
-      $users=User::all();
-      return view('users.pages.sponsor_bonus',compact('users'));
+      $incomeData = CashWallet::where('user_id',Auth::id())->where('method','Sponsor Bonus')->get();
+      return view('users.pages.sponsor_bonus',compact('incomeData'));
     }
     public function daily_bonus($id)
     {
-      $users=User::all();
-      return view('users.pages.daily_revenue_history',compact('users'));
+        $incomeData = CashWallet::where('user_id',Auth::id())->where('method','daily bonus')->get();
+      return view('users.pages.daily_revenue_history',compact('incomeData'));
     }
     public function royality_bonus($id)
     {
-      $users=User::all();
-      return view('users.pages.royality_bonus_history',compact('users'));
+      $incomeData = CashWallet::where('user_id',Auth::id())->where('method','royality sponsor bonus')->get();
+      return view('users.pages.royality_bonus_history',compact('incomeData'));
     }
     public function level_bonus($id)
     {
-      $users=User::all();
-      return view('users.pages.level_bonus_history',compact('users'));
+        $incomeData = CashWallet::where('user_id',Auth::id())->where('method','Level Bonus')->get();
+      return view('users.pages.level_bonus_history',compact('incomeData'));
     }
     public function pair_bonus($id)
     {
-      $users=User::all();
-      return view('users.pages.pair_bonus_history',compact('users'));
+      $incomeData = CashWallet::where('user_id',Auth::id())->where('method','Pair Bonus')->get();
+      return view('users.pages.pair_bonus_history',compact('incomeData'));
     }
     public function team_bonus($id)
     {
-      $users=User::all();
-      return view('users.pages.team_bonus_history',compact('users'));
+        $incomeData = CashWallet::where('user_id',Auth::id())->where('method','Team Bonus')->get();
+      return view('users.pages.team_bonus_history',compact('incomeData'));
     }
     public function club_bonus($id)
     {
-      $users=User::all();
-      return view('users.pages.club_bonus_history',compact('users'));
+      $incomeData = CashWallet::where('user_id',Auth::id())->where('method','Club Bonus')->get();
+      return view('users.pages.club_bonus_history',compact('incomeData'));
     }
     public function withdraw_history($id)
     {
