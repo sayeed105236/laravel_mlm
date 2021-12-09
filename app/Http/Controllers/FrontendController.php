@@ -19,14 +19,5 @@ class FrontendController extends Controller
     {
       return view('flipcard');
     }
-    public function Manage($id)
-    {
-      $users=User::all();
-      return view('users.pages.registration_history',compact('users'));
-    }
-    public function sponsor_bonus($id)
-    {
-      $users=User::all();
-      return view('users.pages.sponsor_bonus',compact('users'));
-    }
+  
 }

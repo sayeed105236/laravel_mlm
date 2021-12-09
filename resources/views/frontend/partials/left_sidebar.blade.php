@@ -72,21 +72,21 @@
                               <li><a class="d-flex align-items-center" href="/home/sponsor_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Sponsor Bonus History</span></a>
 
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Daily Revenue History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/daily_revenue_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Daily Revenue History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Royalty Bonus History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/royality_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Royalty Bonus History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Level Bonus History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/level_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Level Bonus History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Pair Bonus History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/pair_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Pair Bonus History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Team Bonus History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/team_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Team Bonus History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Club Bonus History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/club_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Club Bonus History</span></a>
                               </li>
                               <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Transfer History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Withdraw History</span></a>
+                              <li><a class="d-flex align-items-center" href="/home/withdraw_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Withdraw History</span></a>
                               </li>
                           </ul>
                       </li>

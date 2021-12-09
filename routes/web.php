@@ -30,8 +30,16 @@ use App\Http\Controllers\BasicSettingsController;
 Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('auth');
 Route::get('/tree', [FrontendController::class,'tree']);
 Route::get('/flipcard', [FrontendController::class,'flipcard']);
-Route::get('/home/registration-history/{id}', [FrontendController::class,'Manage'])->name('registration-history')->middleware('auth');
-Route::get('/home/sponsor_bonus_history/{id}', [FrontendController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
+Route::get('/home/registration-history/{id}', [UserDashboardController::class,'Manage'])->name('registration-history')->middleware('auth');
+Route::get('/home/sponsor_bonus_history/{id}', [UserDashboardController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
+Route::get('/home/daily_revenue_history/{id}', [UserDashboardController::class,'daily_bonus'])->name('daily-bonus-history')->middleware('auth');
+Route::get('/home/royality_bonus_history/{id}', [UserDashboardController::class,'royality_bonus'])->name('royality_bonus_history')->middleware('auth');
+Route::get('/home/level_bonus_history/{id}', [UserDashboardController::class,'level_bonus'])->name('level_bonus_history')->middleware('auth');
+Route::get('/home/pair_bonus_history/{id}', [UserDashboardController::class,'pair_bonus'])->name('pair_bonus_history')->middleware('auth');
+Route::get('/home/team_bonus_history/{id}', [UserDashboardController::class,'team_bonus'])->name('team_bonus_history')->middleware('auth');
+Route::get('/home/club_bonus_history/{id}', [UserDashboardController::class,'club_bonus'])->name('club_bonus_history')->middleware('auth');
+Route::get('/home/withdraw_history/{id}', [UserDashboardController::class,'withdraw_history'])->name('withdraw_history')->middleware('auth');
+Route::get('/home/transfer_history/{id}', [UserDashboardController::class,'transfer_history'])->name('transfer_history')->middleware('auth');
 Route::get('/home/dashboard/{id}', [UserDashboardController::class,'index'])->name('user-dashboard')->middleware('auth');
 Route::get('/home/registration/{id}', [UserDashboardController::class,'registration'])->name('registration-page')->middleware('auth');
 
