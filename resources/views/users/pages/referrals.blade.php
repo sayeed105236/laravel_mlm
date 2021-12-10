@@ -54,7 +54,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>SL</th>
                                     <th>Name</th>
                                     <th>User Name</th>
                                     <th>Sponsor User Name</th>
@@ -74,7 +74,7 @@
 
                                         <td>{{$user->packages->package_name ?? ''}}</td>
                                         <td>{{$user->packages->price ?? ''}}</td>
-                                        
+
                                     </tr>
                                 @endforeach
                                 </tbody>

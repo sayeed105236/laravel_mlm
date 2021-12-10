@@ -38,7 +38,7 @@
                               <table class="table table-hover">
                                   <thead>
                                       <tr>
-                                        <th>#</th>
+                                        <th>SL</th>
                                         <th>Date</th>
 
                                           <th>User Name</th>
@@ -55,7 +55,7 @@
 
 
 
-                                    @foreach($users as $row)
+                                    @foreach($incomeData as $row)
                                       <tr>
                                         <td>{{$loop->index+1}}</td>
                                           <td>{{$row->created_at}}</td>

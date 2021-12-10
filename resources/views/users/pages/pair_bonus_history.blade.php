@@ -38,7 +38,7 @@
                               <table class="table table-hover">
                                   <thead>
                                       <tr>
-                                        <th>#</th>
+                                        <th>SL</th>
                                         <th>Date</th>
 
                                           <th>User Name</th>

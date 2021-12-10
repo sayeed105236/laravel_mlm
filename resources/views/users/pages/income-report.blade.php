@@ -31,7 +31,7 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>SL</th>
                                     <th>User Name</th>
                                     <th>Income</th>
                                     <th>Method</th>
