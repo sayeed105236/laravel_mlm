@@ -66,12 +66,27 @@
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
-            <x-jet-input id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+            <x-jet-input disabled id="email" type="email" class="mt-1 block w-full" wire:model.defer="state.email" />
+
+            <x-jet-input-error for="email" class="mt-2" />
+        </div>
+        <div class="col-span-6 sm:col-span-4">
+            <x-jet-label for="image" value="{{ __('Profile Photo') }}" />
+            <x-jet-input  id="photo" type="file" class="mt-1 block w-full" wire:model.defer="state.photo" />
+
             <x-jet-input-error for="email" class="mt-2" />
         </div>
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="gender" value="{{ __('Gender') }}" />
-            <x-jet-input id="gender" type="text" class="mt-1 block w-full" wire:model.defer="state.gender" autocomplete="gender" />
+
+            <select class="mt-1 block w-full" wire:model.defer="state.gender" autocomplete="gender" id="gender" name="gender">
+                <option label="Choose Gender"></option>
+
+
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+
+            </select>
             <x-jet-input-error for="gender" class="mt-2" />
         </div>
         <div class="col-span-6 sm:col-span-4">

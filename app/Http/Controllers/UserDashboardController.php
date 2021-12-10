@@ -30,7 +30,11 @@ class UserDashboardController extends Controller
     }
     public function registration($id)
     {
-      return view('users.pages.registration');
+      $data['user']=User::all();
+      $data['deposit']=AddMoney::where('user_id',Auth::id())->first();
+
+      $data['sum_deposit']=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+      return view('users.pages.registration',compact('data'));
     }
     public function Manage($id)
     {

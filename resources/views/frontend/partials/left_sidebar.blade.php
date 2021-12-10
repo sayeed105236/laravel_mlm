@@ -69,23 +69,8 @@
                               </li>
                               <li><a class="d-flex align-items-center" href="#"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Upgrade History</span></a>
                               </li>
-                              <li><a class="d-flex align-items-center" href="/home/sponsor_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Sponsor Bonus History</span></a>
 
-                              </li>
-                              <li><a class="d-flex align-items-center" href="/home/daily_revenue_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Daily Revenue History</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="/home/royality_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Royalty Bonus History</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="/home/level_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Level Bonus History</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="/home/pair_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Pair Bonus History</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="/home/team_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Team Bonus History</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="/home/club_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Club Bonus History</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="{{url(route('income-report'))}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Income History</span></a>
-                              </li>
+
                               <li><a class="d-flex align-items-center" href="{{url(route('transfer-report'))}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Wish List">Transfer History</span></a>
                               </li>
                               <li><a class="d-flex align-items-center" href="/home/withdraw_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Checkout">Withdraw History</span></a>
@@ -99,6 +84,34 @@
                     </li>
                 </ul>-->
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='book-open'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Income History</span></a>
+                <ul class="menu-content">
+
+                    <li><a class="d-flex align-items-center" href="/home/sponsor_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Sponsor Bonus History</span></a>
+
+                    </li>
+                    <li><a class="d-flex align-items-center" href="/home/daily_revenue_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Daily Revenue History</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="/home/royality_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Royalty Bonus History</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="/home/level_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Level Bonus History</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="/home/pair_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Pair Bonus History</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="/home/team_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Team Bonus History</span></a>
+                    </li>
+                    <li><a class="d-flex align-items-center" href="/home/club_bonus_history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Details">Club Bonus History</span></a>
+                    </li>
+                    
+                </ul>
+            </li>
+  <!--    <ul class="menu-content">
+          <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
+          </li>
+          <li class="active"><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
+          </li>
+      </ul>-->
+  </li>
             <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('profile.show') }}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
 
           <!--  <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>

@@ -35,7 +35,7 @@
                 <!-- Content start -->
 
 
-
+                <h4 class="text-center">Register Wallet Balance: <strong>{{$data['sum_deposit'] ? '$'.number_format((float)$data['sum_deposit'], 2, '.', '') : '$00.00'}}</strong></h4>
                 <section id="input-group-basic">
                     <div class="row">
                         <!-- Basic -->
