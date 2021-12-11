@@ -50,7 +50,7 @@ class AddMoneyController extends Controller
 
         $g_set = GeneralSettings::first();
         $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
-        $calculated_amount= -($request->amount+ ($request->amount)*$g_set->transfer_charge/100);
+        $calculated_amount= ($request->amount+ ($request->amount)*$g_set->transfer_charge/100);
         //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
 
         if ($sum_deposit < $calculated_amount) {
@@ -89,7 +89,7 @@ class AddMoneyController extends Controller
         $g_set = GeneralSettings::first();
 
         $sum_deposit=CashWallet::where('user_id',Auth::id())->sum('bonus_amount');
-        $calculated_amount= -($request->bonus_amount+ ($request->bonus_amount)*$g_set->transfer_charge/100);
+        $calculated_amount= ($request->bonus_amount+ ($request->bonus_amount)*$g_set->transfer_charge/100);
         //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
 
         if ($sum_deposit < $calculated_amount) {
