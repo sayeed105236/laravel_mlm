@@ -47,13 +47,14 @@ class AddMoneyController extends Controller
             'amount' => 'required',
 
         ]);
-        
+
         $g_set = GeneralSettings::first();
         $deduct = new AddMoney;
         $deduct->user_id = Auth::id();
         $deduct->receiver_id=$request->user_id;
         $deduct->amount = -($request->amount+ ($request->amount)*$g_set->transfer_charge/100);
         $deduct->method ='Transfer';
+        $deduct->type ='Debit';
         $deduct->status ='approve';
         $deduct->save();
 
@@ -63,6 +64,7 @@ class AddMoneyController extends Controller
 
         $deposit->amount =$request->amount;
         $deposit->method ='Transfer';
+        $deposit->type ='Credit';
         $deposit->status ='approve';
         $deposit->save();
         return back()->with('Money_Transfered','Money Transfer Successfully!!');
@@ -82,14 +84,16 @@ class AddMoneyController extends Controller
         $deduct->receiver_id=$request->user_id;
 
         $deduct->bonus_amount = -($request->bonus_amount+ ($request->bonus_amount)*$g_set->transfer_charge/100);
-        $deduct->method ='Wallet Transfer';
+        $deduct->method ='Transfer';
+        $deduct->type ='Debit';
         $deduct->status ='approve';
         $deduct->save();
 
         $deposit_cash_wallet = new CashWallet;
         $deposit_cash_wallet->user_id = $request->user_id;
         $deposit_cash_wallet->bonus_amount =$request->bonus_amount;
-        $deposit_cash_wallet->method ='Wallet Transfer';
+        $deposit_cash_wallet->method ='Transfer';
+        $deposit_cash_wallet->type ='Credit';
         $deposit_cash_wallet->status ='approve';
         $deposit_cash_wallet->save();
         return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
