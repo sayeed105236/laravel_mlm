@@ -47,8 +47,16 @@ class AddMoneyController extends Controller
             'amount' => 'required',
 
         ]);
-        
+
         $g_set = GeneralSettings::first();
+        $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+        $calculated_amount= -($request->amount+ ($request->amount)*$g_set->transfer_charge/100);
+        //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
+
+        if ($sum_deposit < $calculated_amount) {
+
+            throw new \Exception("Insufficient Balance", 404);
+        };
         $deduct = new AddMoney;
         $deduct->user_id = Auth::id();
         $deduct->receiver_id=$request->user_id;
@@ -77,6 +85,15 @@ class AddMoneyController extends Controller
 
         ]);
         $g_set = GeneralSettings::first();
+
+        $sum_deposit=CashWallet::where('user_id',Auth::id())->sum('bonus_amount');
+        $calculated_amount= -($request->bonus_amount+ ($request->bonus_amount)*$g_set->transfer_charge/100);
+        //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
+
+        if ($sum_deposit < $calculated_amount) {
+
+            throw new \Exception("Insufficient Balance", 404);
+        };
         $deduct = new CashWallet;
         $deduct->user_id = Auth::id();
         $deduct->receiver_id=$request->user_id;
@@ -102,6 +119,13 @@ class AddMoneyController extends Controller
             'amount' => 'required',
 
         ]);
+        $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
+        $calculated_amount= -($request->amount);
+
+        if ($sum_deposit < $calculated_amount) {
+
+            throw new \Exception("Insufficient Balance", 404);
+        };
 
         $deduct = new AddMoney;
         $deduct->user_id = Auth::id();
