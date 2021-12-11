@@ -52,7 +52,7 @@
 
                           </ul>
                       </li>
-                      <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Invoice">Fund Management</span></a>
+                    <!--  <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Invoice">Fund Management</span></a>
                           <ul class="menu-content">
                               <li><a class="d-flex align-items-center" href="#"><i data-feather='repeat'></i><span class="menu-item text-truncate" data-i18n="List">Register Wallet Transfer</span></a>
                               </li>
@@ -62,7 +62,7 @@
                               </li>
 
                           </ul>
-                      </li>
+                      </li>-->
                       <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='book-open'></i><span class="menu-title text-truncate" data-i18n="eCommerce">History</span></a>
                           <ul class="menu-content">
                               <li><a class="d-flex align-items-center" href="/home/registration-history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Registration History</span></a>
