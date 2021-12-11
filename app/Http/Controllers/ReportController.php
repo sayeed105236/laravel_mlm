@@ -22,7 +22,7 @@ class ReportController extends Controller
 
     public function CashwallettransferReport()
     {
-        $cashwallettransferData = CashWallet::where('user_id',Auth::id())->where('method','Wallet Transfer')->get();
+        $cashwallettransferData = CashWallet::where('user_id',Auth::id())->where('method','Transfer')->get();
         return view('users.pages.cashwallet-transfer-report',compact(['cashwallettransferData']));
     }
 }

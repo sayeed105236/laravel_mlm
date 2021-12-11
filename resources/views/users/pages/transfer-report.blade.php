@@ -47,7 +47,7 @@
                                           <td>{{$transfer->receiver->user_name ?? ''}}</td>
                                         <td>{{$transfer->amount ?? ''}}</td>
 
-                                        <td>{{$transfer->method ?? ''}}</td>
+                                        <td>{{$transfer->type ?? ''}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
