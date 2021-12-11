@@ -47,6 +47,7 @@ class AddMoneyController extends Controller
             'amount' => 'required',
 
         ]);
+        
         $g_set = GeneralSettings::first();
         $deduct = new AddMoney;
         $deduct->user_id = Auth::id();

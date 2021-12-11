@@ -157,6 +157,19 @@
                         </ul>
                     </li>
 
+                      <li class="nav-item container" style="margin-left:5px;">
+                      <form method="POST" action="{{ route('logout') }}">
+                          @csrf
+
+                          <a class="d-flex align-items-center"  href="{{ route('logout') }}"
+                                         onclick="event.preventDefault();
+                                          this.closest('form').submit();"><i data-feather='power'></i>
+                                          <span class="menu-title text-truncate" data-i18n="Dashboards">
+                              Logout
+                          </a>
+                      </form>
+                      </li>
+
 
 
 
