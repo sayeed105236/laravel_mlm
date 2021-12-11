@@ -11,7 +11,7 @@
                     <p style="line-height: 24px; margin-bottom:15px;">
                         Hello!
                     </p>
-                    
+
                     <p style="line-height: 24px; margin-bottom:20px;">
                         Your Password has successfully been changed to : {{ $password }}
                     </p>
@@ -22,7 +22,9 @@
 
                     <p style="line-height: 24px">
                         Regards,</br>
-                        @yield('title', app_name())
+                        ---
+                        CoinexxPro
+                        www.coinexxpro.com
                     </p>
 
                     <br/>
@@ -34,4 +36,3 @@
     </td>
 </div>
 @endsection
-                        

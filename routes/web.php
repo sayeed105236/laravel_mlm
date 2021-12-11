@@ -99,3 +99,4 @@ Route::post('/admin/payment-method/update', [PaymentMethodController::class,'Upd
 //Report
 Route::get('/user/income-report', [ReportController::class,'incomeReport'])->name('income-report')->middleware('auth');
 Route::get('/user/transfer-report', [ReportController::class,'transferReport'])->name('transfer-report')->middleware('auth');
+Route::get('/user/cashwallet-transfer-report', [ReportController::class,'CashwallettransferReport'])->name('cashwallet-transfer-report')->middleware('auth');

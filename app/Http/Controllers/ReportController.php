@@ -19,4 +19,10 @@ class ReportController extends Controller
         $transferData = AddMoney::where('user_id',Auth::id())->where('method','Transfer')->get();
         return view('users.pages.transfer-report',compact(['transferData']));
     }
+
+    public function CashwallettransferReport()
+    {
+        $cashwallettransferData = CashWallet::where('user_id',Auth::id())->where('method','Wallet Transfer')->get();
+        return view('users.pages.cashwallet-transfer-report',compact(['cashwallettransferData']));
+    }
 }

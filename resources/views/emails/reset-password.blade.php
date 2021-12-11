@@ -7,7 +7,7 @@
                 <tr>
                     <td align="left" style="color: #888888; width:20px; font-size: 16px; line-height: 24px;">
                         <!-- section text ======-->
-                        <h4 style="text-align: center;"> <span style="border-bottom: 1px solid dimgray;">{{ app_name() }}</span></h4>
+                        <h4 style="text-align: center;"> <span style="border-bottom: 1px solid dimgray;">CoinexxPro-Forex-and-Crypto-Asset-Management</span></h4>
 
                         <p style="line-height: 24px; margin-bottom:15px;">
                             Welcome {{$name}}! <br/>
@@ -28,7 +28,9 @@
 
                         <p style="line-height: 24px">
                             Regards, <br/>
-                            bKash
+                            ---
+                            CoinexxPro
+                            www.coinexxpro.com
                             {{--@yield('title', app_name())--}}
                         </p>
 

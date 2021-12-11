@@ -11,7 +11,7 @@
                     <p style="line-height: 24px; margin-bottom:15px;">
                         Hello!
                     </p>
-                    
+
                     <p style="line-height: 24px; margin-bottom:20px;">
                         Click here to confirm your account:
                     </p>
@@ -42,13 +42,15 @@
 
                     <p style="line-height: 24px">
                         Regards,</br>
-                        @yield('title', app_name())
+                        ---
+                        CoinexxPro
+                        www.coinexxpro.com
                     </p>
 
                     <br/>
 
                     <p class="small" style="line-height: 24px; margin-bottom:20px;">
-                            If you’re having trouble clicking the "Confirm Account" button, copy and paste the URL below into your web browser: 
+                            If you’re having trouble clicking the "Confirm Account" button, copy and paste the URL below into your web browser:
                     </p>
 
                     <p class="small" style="line-height: 24px; margin-bottom:20px;">

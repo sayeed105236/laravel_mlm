@@ -88,7 +88,7 @@ class AddMoneyController extends Controller
         $deposit_cash_wallet = new CashWallet;
         $deposit_cash_wallet->user_id = $request->user_id;
         $deposit_cash_wallet->bonus_amount =$request->bonus_amount;
-        $deposit_cash_wallet->method ='Cash Wallet Transfer';
+        $deposit_cash_wallet->method ='Wallet Transfer';
         $deposit_cash_wallet->status ='approve';
         $deposit_cash_wallet->save();
         return back()->with('Money_added','Your request is Accepted. Wait for Confirmation!!');
