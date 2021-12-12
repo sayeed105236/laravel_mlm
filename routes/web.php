@@ -12,6 +12,7 @@ use App\Http\Controllers\PaymentMethodController;
 use App\Http\Controllers\ReferralController;
 use App\Http\Controllers\GeneralSettingsController;
 use App\Http\Controllers\BasicSettingsController;
+use App\Http\Controllers\UserPaymentMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +58,12 @@ Route::middleware(['auth:sanctum', 'verified','authadmin'])->get('/admin/dashboa
     return view('admin.pages.index');
 })->name('admin.pages.dashboard');
 
+
+// User Payment Method
+Route::get('/home/payment-method/{id}', [UserPaymentMethodController::class,'index'])->name('user-payment-method')->middleware('auth');
+Route::post('/home/payment-method/store', [UserPaymentMethodController::class,'Store'])->name('user-payment-method-store')->middleware('auth');
+Route::get('/home/payment-method/delete/{id}', [UserPaymentMethodController::class,'Delete'])->middleware('auth');
+Route::post('/home/payment-method/update', [UserPaymentMethodController::class,'Update'])->name('user-payment-method-update')->middleware('auth');
 
 //Admin add package Routes
 Route::get('/admin/package', [PackageController::class,'index'])->name('package-manage')->middleware('authadmin');

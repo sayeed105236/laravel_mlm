@@ -93,8 +93,8 @@ class AddMoneyController extends Controller
         //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
 
         if ($sum_deposit < $calculated_amount) {
-
-            throw new \Exception("Insufficient Balance", 200);
+          return response(['Message'=>'Insufficient Balance'], 400);
+          //  throw new \Exception("Insufficient Balance", 200);
         };
         $deduct = new CashWallet;
         $deduct->user_id = Auth::id();
