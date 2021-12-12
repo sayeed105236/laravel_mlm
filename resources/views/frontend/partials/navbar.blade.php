@@ -18,7 +18,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user">
                   <div class="dropdown-item">
                       <!-- Account Management -->
-                      <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.admin-show')">
+                      <x-jet-responsive-nav-link href="/home/profile-settings/{{Auth::user()->id}}" :active="request()->routeIs('profile.admin-show')">
                           {{ __('Profile') }}
                       </x-jet-responsive-nav-link>
 

@@ -30,7 +30,7 @@ use App\Http\Controllers\UserPaymentMethodController;
 //});
 Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('auth');
 Route::get('/tree', [FrontendController::class,'tree']);
-Route::get('/flipcard', [FrontendController::class,'flipcard']);
+Route::get('/home/profile-settings/{id}', [FrontendController::class,'flipcard']);
 Route::get('/home/registration-history/{id}', [UserDashboardController::class,'Manage'])->name('registration-history')->middleware('auth');
 Route::get('/home/sponsor_bonus_history/{id}', [UserDashboardController::class,'sponsor_bonus'])->name('sponsor-bonus-history')->middleware('auth');
 Route::get('/home/daily_revenue_history/{id}', [UserDashboardController::class,'daily_bonus'])->name('daily-bonus-history')->middleware('auth');
@@ -88,6 +88,9 @@ Route::get('/admin/basic-settings/delete/{id}', [BasicSettingsController::class,
 Route::get('/admin/add-money/requests', [AdminShowPaymentController::class,'Manage'])->name('deposit-manage')->middleware('authadmin');
 Route::get('/admin/add-money-approve/{id}', [AdminShowPaymentController::class,'approve'])->middleware('authadmin');
 Route::get('/admin/add-money-delete/{id}', [AdminShowPaymentController::class,'destroy'])->middleware('authadmin');
+Route::get('/admin/withdraw-money/requests', [AdminShowPaymentController::class,'WithdrawManage'])->name('withdraw-manage')->middleware('authadmin');
+Route::get('/admin/withdraw-money-approve/{id}', [AdminShowPaymentController::class,'Withdrawapprove'])->middleware('authadmin');
+Route::get('/admin/withdraw-money-delete/{id}', [AdminShowPaymentController::class,'Withdrawdestroy'])->middleware('authadmin');
 
 //user list routes
 Route::get('/admin/user_lists', [UserListController::class,'Manage'])->name('user-list')->middleware('authadmin');

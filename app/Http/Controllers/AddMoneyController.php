@@ -7,6 +7,7 @@ use App\Models\AddMoney;
 use Illuminate\Support\Facades\Auth;
 use App\Models\GeneralSettings;
 use App\Models\CashWallet;
+use App\Models\Withdraw;
 
 class AddMoneyController extends Controller
 {
@@ -123,18 +124,34 @@ class AddMoneyController extends Controller
             'amount' => 'required',
 
         ]);
-        $sum_deposit=AddMoney::where('user_id',Auth::id())->where('status','approve')->sum('amount');
-        $calculated_amount= -($request->amount);
+        $g_set = GeneralSettings::first();
+
+        $sum_deposit=CashWallet::where('user_id',Auth::id())->sum('bonus_amount');
+        $calculated_amount= ($request->amount+ ($request->amount)*$g_set->withdraw_charge/100);
+        //dd($sum_deposit < $calculated_amount,$sum_deposit,$calculated_amount);
 
         if ($sum_deposit < $calculated_amount) {
-
-            throw new \Exception("Insufficient Balance", 404);
+          return response(['Message'=>'Insufficient Balance'], 400);
+          //  throw new \Exception("Insufficient Balance", 200);
         };
 
-        $deduct = new AddMoney;
+        $user_id = $request->user_id;
+        $amount = $request->amount;
+        $payment_method_id=$request->payment_method_id;
+
+        $withdraw = new Withdraw();
+        $withdraw-> user_id = $user_id;
+        $withdraw-> amount =$amount;
+        $withdraw->payment_method_id=$payment_method_id;
+
+
+        $withdraw->save();
+
+        $deduct = new Cashwallet;
         $deduct->user_id = Auth::id();
-        $deduct->amount = -($request->amount);
+        $deduct->bonus_amount = -($request->amount+ ($request->amount)*$g_set->withdraw_charge/100);
         $deduct->method ='Withdraw';
+
         $deduct->status ='pending';
         $deduct->save();
 

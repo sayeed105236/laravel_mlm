@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\AddMoney;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CashWallet;
+use App\Models\Withdraw;
 
 class UserDashboardController extends Controller
 {
@@ -78,8 +79,8 @@ class UserDashboardController extends Controller
     }
     public function withdraw_history($id)
     {
-      $users=User::all();
-      return view('users.pages.withdraw_history',compact('users'));
+      $withdraw=Withdraw::where('user_id',Auth::id())->get();
+      return view('users.pages.withdraw_history',compact('withdraw'));
     }
     public function transfer_history($id)
     {

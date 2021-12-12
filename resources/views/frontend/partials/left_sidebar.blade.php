@@ -106,7 +106,7 @@
 
                     <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="Invoice">Settings</span></a>
                         <ul class="menu-content">
-                              <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('profile.show') }}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
+                              <li class="nav-item"><a class="d-flex align-items-center" href="/home/profile-settings/{{Auth::user()->id}}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
                             <li><a class="d-flex align-items-center" href="/home/payment-method/{{Auth::user()->id}}"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">Payment Method</span></a>
                             </li>
 

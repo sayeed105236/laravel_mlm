@@ -42,8 +42,9 @@
                                         <th>Date</th>
 
                                           <th>User Name</th>
+                                          <th>Payment Method</th>
                                           <th>Amount</th>
-                                          <th>Gross/Total</th>
+                                          <th>Status</th>
 
 
 
@@ -55,17 +56,18 @@
 
 
 
-                                    @foreach($users as $row)
+                                    @foreach($withdraw as $row)
                                       <tr>
                                         <td>{{$loop->index+1}}</td>
                                           <td>{{$row->created_at}}</td>
 
                                           <td>
 
-                                              <span class="font-weight-bold">{{$row->user_name}}</span>
+                                              <span class="font-weight-bold">{{$row->user->user_name}}</span>
                                           </td>
-                                          <td>{{$row->packages->package_name}}</td>
-                                          <td>{{$row->sponsors->user_name}}</td>
+                                          <td>{{$row->payment_method->payment->name}}</td>
+                                          <td>{{$row->amount}}$</td>
+                                          <td>{{ $row->status }}</td>
 
 
 

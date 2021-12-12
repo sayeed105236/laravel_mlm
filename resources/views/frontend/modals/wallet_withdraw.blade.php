@@ -17,23 +17,29 @@
 
                         <form id="jquery-val-form" action="{{route('wallet-withdraw')}}" method="post">
                             @csrf
-                            <div class="form-group">
-                                <label for="select-country">Transfer User</label>
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                            <?php
+                            $payment= App\Models\UserPayment::all();
 
-                                <select class="select2Me form-control form-control-lg" name="user_id" required>
+                             ?>
+                            <div class="form-group">
+                                <label for="select-country">Select Payment Method</label>
+
+                                <select id="DestinationOptions2" class="select2Me form-control form-control-lg" name="payment_method_id" required>
                                     <option label="select a user"></option>
 
-                                    @foreach ( $data['user'] as $row)
-                                        <option value="{{$row->id}}">{{$row->user_name}}</option>
+                                    @foreach ( $payment as $row)
+                                        <option id="{{$row->payment->wallet_id}}" value="{{$row->id}}">{{$row->payment->name}}</option>
                                     @endforeach
 
                                 </select>
 
                             </div>
+                            
 
                             <div class="form-group">
                                 <label class="form-label" for="basic-default-email">Enter Amount</label>
-                                <input type="number" min="1" id="basic-default-email" name="amount"
+                                <input type="number" min="10" id="basic-default-email" name="amount"
                                        class="form-control" placeholder="Enter Amount ($)" required/>
                             </div>
 

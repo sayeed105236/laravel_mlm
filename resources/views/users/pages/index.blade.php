@@ -62,6 +62,7 @@
                                         <a class="btn btn-danger" data-toggle="modal" data-target="#walletWithdraw"><i data-feather='arrow-down-circle'></i></a>
                                         <a class="btn btn-info" data-toggle="modal" data-target="#walletTransfer" ><i data-feather='send'></i></a>
                                         @include('frontend.modals.wallet_transfer')
+                                          @include('frontend.modals.wallet_withdraw')
                                           <p class="card-text font-small-3">Minimum Withdrawal: 10$</p>
                                     </div>
                                 </div>
@@ -88,10 +89,14 @@
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
+                              <?php
+                              $withdraw=App\Models\Withdraw::where('user_id',\Auth::id())->where('status','approve')->get()->sum('amount');
+
+                              ?>
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
                                         <h4 class="card-title text-white">Gross Withdraw</h4>
-                                          <h2 class="card-text"><strong>$00.00</strong></h2>
+                                          <h2 class="card-text"><strong>{{isset($withdraw) ? '$'.number_format((float)$withdraw, 2, '.', '') : '$00.00'}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
@@ -244,6 +249,26 @@ document.getElementById('DestinationOptions').addEventListener('change', functio
     var wallet2= e.target.options[e.target.selectedIndex].getAttribute('id');
     //console.log(wallet2);
     var wallet=  document.getElementById("wallet_id").value=wallet2;
+    //console.log(wallet);
+    //wallet.innerHTML= wallet2;
+});
+
+//  document.getElementById('').value(id.value);
+
+
+
+</script>
+<script type="text/javascript">
+
+  //alert('success');
+  //console.log(this.getAttribute('id'));
+  //console.log(e.target.options[e.target.selectedIndex].getAttribute('id'));
+//var wallet=  document.getElementById("wallet_id");
+//wallet.innerHTML= id.value;
+document.getElementById('DestinationOptions2').addEventListener('change', function(e) {
+    var wallet3= e.target.options[e.target.selectedIndex].getAttribute('id');
+    //console.log(wallet2);
+    var wallet4=  document.getElementById("wallet_id").value=wallet3;
     //console.log(wallet);
     //wallet.innerHTML= wallet2;
 });
