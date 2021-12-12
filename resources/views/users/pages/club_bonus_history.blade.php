@@ -55,7 +55,7 @@
 
 
 
-                                    @foreach($users as $row)
+                                    @foreach($incomeData as $row)
                                       <tr>
                                         <td>{{$loop->index+1}}</td>
                                           <td>{{$row->created_at}}</td>
