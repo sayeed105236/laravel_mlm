@@ -85,24 +85,25 @@
                                     <!-- general tab -->
                                     <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
                                         <!-- header media -->
+                                          <form  action="{{route('user-profile-update')}}" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                         <div class="media">
-                                            <a href="javascript:void(0);" class="mr-25">
-                                                <img src="{{asset('app-assets/images/portrait/small/avatar-s-11.jpg')}}" id="account-upload-img" class="rounded mr-50" alt="profile image" height="80" width="80" />
+                                            <a href="#" class="mr-25">
+                                                <img src="{{asset('app-assets/images/portrait/small/avatar-s-11.jpg')}}" id="image" class="rounded mr-50" alt="profile image" height="80" width="80" />
                                             </a>
                                             <!-- upload and reset button -->
-                                            <div class="media-body mt-75 ml-1">
-                                                <label for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>
-                                                <input type="file" id="account-upload" hidden accept="image/*" />
-
-                                                <p>Allowed JPG, GIF or PNG. Max size of 800kB</p>
+                                            <div class="form-group">
+                                                <label class="form-label" for="basic-default-password">Upload</label>
+                                                <input type="file" id="image" name="filename" class="form-control-file" />
                                             </div>
+
                                             <!--/ upload and reset button -->
                                         </div>
                                         <!--/ header media -->
 
                                         <!-- form -->
 
-                                        <form class="validate-form mt-2" submit="updatePassword">
+
                                             <div class="row">
                                               <div class="col-12 col-sm-6">
                                                   <div class="form-group">
@@ -113,7 +114,7 @@
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label for="account-username">Username</label>
-                                                        <input type="text" disabled value="{{Auth::user()->user_name}}" class="form-control" id="user_name" name="user_name" placeholder="Username" value="johndoe" />
+                                                        <input type="text" disabled value="{{Auth::user()->user_name}}" class="form-control"  placeholder="Username" value="johndoe" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6">
@@ -125,7 +126,7 @@
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label for="account-e-mail">E-mail</label>
-                                                        <input type="email" disabled value="{{Auth::user()->email}}" class="form-control" id="email" name="email" placeholder="Email" value="granger007@hogward.com" />
+                                                        <input type="email" disabled value="{{Auth::user()->email}}" class="form-control" placeholder="Email" value="granger007@hogward.com" />
                                                     </div>
                                                 </div>
 

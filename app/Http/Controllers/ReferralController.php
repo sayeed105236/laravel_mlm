@@ -342,4 +342,41 @@ class ReferralController extends Controller implements CreatesNewUsers
         $data->notify(new UserCredential($email_data));
 
     }
+    public function UpdateUser(Request $request)
+    {
+      dd($request);
+      $address = $request->address;
+      $name=$request->name;
+      $number=$request->number;
+      $birth=$request->birth;
+      $gender=$request->gender;
+      $nominee = $request->nominee;
+      $nominee_email = $request->nominee_email;
+      $image=$request->file('file');
+      $filename=null;
+      if ($image) {
+          $filename = time() . $image->getClientOriginalName();
+
+          Storage::disk('public')->putFileAs(
+              '/User',
+              $image,
+              $filename
+          );
+      }
+
+
+      $user = User::find($request->id);
+      $user->address = $address;
+      $user->name =$name;
+      $user->number =$number;
+      $user->birth =$birth;
+      $user->gender =$gender;
+      $user->nominee =$nominee;
+      $user->nominee_email =$nominee_email;
+      $user->image=$filename;
+
+      $user->save();
+
+        return back()->with('profile_updated','Profile has been updated successfully!');
+    }
 }

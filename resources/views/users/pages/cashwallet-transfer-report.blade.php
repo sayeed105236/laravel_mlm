@@ -33,7 +33,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>User Name</th>
-                                    <th>Receiver Name</th>
+
                                     <th>Amount</th>
                                     <th>Type</th>
                                 </tr>
@@ -44,7 +44,7 @@
                                     <tr>
                                         <td>{{$key}}</td>
                                         <td>{{$transfer->user->user_name}}</td>
-                                          <td>{{$transfer->receiver->user_name ?? ''}}</td>
+                                          
                                         <td>{{$transfer->bonus_amount ?? ''}}</td>
 
                                         <td>{{$transfer->type ?? ''}}</td>

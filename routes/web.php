@@ -106,6 +106,12 @@ Route::post('/admin/payment-method/store', [PaymentMethodController::class,'Stor
 Route::get('/admin/payment-method/delete/{id}', [PaymentMethodController::class,'Delete'])->middleware('authadmin');
 Route::post('/admin/payment-method/update', [PaymentMethodController::class,'Update'])->name('payment-method-update')->middleware('authadmin');
 
+
+//
+Route::post('/home/user_profile_update/update', [ReferralController::class,'UpdateUser'])->name('user-profile-update')->middleware('auth');
+
+
+
 //Report
 Route::get('/user/income-report', [ReportController::class,'incomeReport'])->name('income-report')->middleware('auth');
 Route::get('/user/transfer-report', [ReportController::class,'transferReport'])->name('transfer-report')->middleware('auth');
