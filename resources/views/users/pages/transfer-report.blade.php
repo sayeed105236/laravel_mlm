@@ -32,6 +32,7 @@
                                 <thead>
                                 <tr>
                                     <th>#</th>
+                                    <th>Date</th>
                                     <th>User Name</th>
 
                                     <th>Amount</th>
@@ -43,6 +44,7 @@
 
                                     <tr>
                                         <td>{{$key}}</td>
+                                        <td>{{$transfer->created_at}}</td>
                                         <td>{{$transfer->user->user_name}}</td>
                                           <!--<td>{{$transfer->receiver->user_name ?? ''}}</td>-->
                                         <td>{{$transfer->amount ?? ''}}</td>
