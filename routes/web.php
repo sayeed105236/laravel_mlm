@@ -109,6 +109,7 @@ Route::post('/admin/payment-method/update', [PaymentMethodController::class,'Upd
 
 //
 Route::post('/home/user_profile_update/update', [ReferralController::class,'UpdateUser'])->name('user-profile-update')->middleware('auth');
+Route::post('/home/user-password/change-password-store',[ReferralController::class,'changePassStore'])->name('change-password-store')->middleware('auth');
 
 
 

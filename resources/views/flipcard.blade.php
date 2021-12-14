@@ -42,8 +42,10 @@
                             <li class="nav-item">
                                 <a class="nav-link active" id="account-pill-general" data-toggle="pill" href="#account-vertical-general" aria-expanded="true">
                                     <i data-feather="user" class="font-medium-3 mr-1"></i>
-                                    <span class="font-weight-bold">Personal Details</span>
+                                    <span class="font-weight-bold">Profile Information</span>
+
                                 </a>
+                                  @include('frontend.modals.user_edit')
                             </li>
                             <!-- change password -->
                             <li class="nav-item">
@@ -85,122 +87,86 @@
                                     <!-- general tab -->
                                     <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
                                         <!-- header media -->
-                                          <form  action="{{route('user-profile-update')}}" method="POST" enctype="multipart/form-data">
-                                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                                         <div class="media">
-                                            <a href="#" class="mr-25">
-                                                <img src="{{asset('app-assets/images/portrait/small/avatar-s-11.jpg')}}" id="image" class="rounded mr-50" alt="profile image" height="80" width="80" />
+                                            <a href="javascript:void(0);" class="mr-25">
+                                                <img src="{{asset('storage/User/'.Auth::user()->image)}}" id="account-upload-img" class="rounded mr-50" alt="profile image" height="80" width="80" />
                                             </a>
                                             <!-- upload and reset button -->
-                                            <div class="form-group">
-                                                <label class="form-label" for="basic-default-password">Upload</label>
-                                                <input type="file" id="image" name="filename" class="form-control-file" />
-                                            </div>
+                                            <div class="media-body mt-75 ml-1">
+                                                <a data-toggle="modal" data-target="#EditUserModal" class="btn btn-sm btn-primary mb-75 mr-75">Edit</a>
 
+
+
+                                            </div>
                                             <!--/ upload and reset button -->
                                         </div>
                                         <!--/ header media -->
 
                                         <!-- form -->
-
-
+                                        <form class="validate-form mt-2">
                                             <div class="row">
-                                              <div class="col-12 col-sm-6">
-                                                  <div class="form-group">
-                                                      <label for="account-username">Applicant Name</label>
-                                                      <input type="text" value="{{Auth::user()->name}}" class="form-control" id="name" name="name" placeholder="Username" value="johndoe" />
-                                                  </div>
-                                              </div>
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="account-username">Username</label>
-                                                        <input type="text" disabled value="{{Auth::user()->user_name}}" class="form-control"  placeholder="Username" value="johndoe" />
+                                                        <label for="account-username">Applicant Name</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->name}}" placeholder="Username" value="johndoe" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="account-username">Applicant National Id</label>
-                                                        <input type="number" class="form-control" id="national_id" name="national_id" placeholder="National Id" value="************" />
+                                                        <label for="account-name">User Name</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->user_name}}" placeholder="Name" value="John Doe" />
                                                     </div>
                                                 </div>
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label for="account-e-mail">E-mail</label>
-                                                        <input type="email" disabled value="{{Auth::user()->email}}" class="form-control" placeholder="Email" value="granger007@hogward.com" />
+                                                        <input type="email" disabled class="form-control" value="{{Auth::user()->email}}" placeholder="Email" value="granger007@hogward.com" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-company">National Id</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->national_id}}"  placeholder="Company name" value="Crystal Technologies" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-company">Phone Number</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->number}}"  placeholder="Company name" value="Crystal Technologies" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-company">Date of Birth</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->birth}}"  placeholder="Company name" value="Crystal Technologies" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-company">Gender</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->gender}}"  placeholder="Company name" value="Crystal Technologies" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-company">Address</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->address}}"  placeholder="Company name" value="Crystal Technologies" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-company">Nominee Name</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->nominee}}"  placeholder="Company name" value="Crystal Technologies" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-company">Nominee Email</label>
+                                                        <input type="text" disabled class="form-control" value="{{Auth::user()->nominee_email}}"  placeholder="Company name" value="Crystal Technologies" />
                                                     </div>
                                                 </div>
 
 
-                                                  <div class="col-12 col-sm-6">
-                                                <div class="form-group">
-                                                    <label class="form-label" for="basic-default-email">Phone Number</label>
-                                                    <input type="number" value="{{Auth::user()->number}}" id="number" name="number" class="form-control"
-                                                           placeholder="Enter your phone Number" />
-
-                                                </div>
-                                                </div>
-                                                <div class="col-12 col-sm-6">
-                                                  <div class="form-group">
-                                                      <label for="basicSelect">Gender</label>
-                                                      <select class="form-control" id="basicSelect" name="gender">
-                                                          <option label="Choose Gender"></option>
-
-
-                                                          <option value="male">Male</option>
-                                                          <option value="female">Female</option>
-
-                                                      </select>
-                                                  </div>
-
-                                                  </div>
-                                                    <div class="col-12 col-sm-6">
-                                                      <div class="form-group">
-                                                          <label class="form-label" for="basic-default-email">Date Of Birth</label>
-                                                          <input type="date" id="birth" name="birth" class="form-control" placeholder=""
-                                                                 required/>
-
-                                                      </div>
-
-
-                                                      </div>
-                                                      <div class="col-12 col-sm-6">
-                                                        <div class="form-group">
-                                                            <label class="form-label" for="basic-default-email">Personal Address</label>
-                                                            <input type="text" id="address" name="address" class="form-control" placeholder=""
-                                                                   required/>
-
-                                                        </div>
-
-
-                                                        </div>
-                                                        <div class="col-12 col-sm-6">
-                                                          <div class="form-group">
-                                                              <label class="form-label" for="basic-default-email">Nominee Name</label>
-                                                              <input type="text" id="nominee" name="nominee" class="form-control" placeholder=""
-                                                                     required/>
-
-                                                          </div>
-
-
-                                                          </div>
-                                                          <div class="col-12 col-sm-6">
-                                                            <div class="form-group">
-                                                                <label class="form-label" for="basic-default-email">Nominee Email</label>
-                                                                <input type="email" id="nominee_email" name="nominee_email" class="form-control" placeholder=""
-                                                                       required/>
-
-                                                            </div>
-
-
-                                                            </div>
-
-
-
-
-                                                <div class="col-12">
-                                                    <button type="submit" class="btn btn-primary mt-2 mr-1">Save changes</button>
-                                                    <button type="reset" class="btn btn-outline-secondary mt-2">Cancel</button>
-                                                </div>
                                             </div>
                                         </form>
                                         <!--/ form -->
@@ -210,13 +176,17 @@
                                     <!-- change password -->
                                     <div class="tab-pane fade" id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
                                         <!-- form -->
-                                        <form class="validate-form">
+                                        <form class="validate-form" form action="{{route('change-password-store')}}" method="POST">
+                                          @csrf
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label for="account-old-password">Old Password</label>
                                                         <div class="input-group form-password-toggle input-group-merge">
-                                                            <input type="password" class="form-control" id="current_password" type="password" class="mt-1 block w-full" wire:model.defer="state.current_password" autocomplete="current-password" />
+                                                              <input name="old_password" class="form-control" type="password" value="">
+                                                              @error('old_password')
+                                                              <span class="text-danger">{{ $message }}</span>
+                                                          @enderror
                                                             <div class="input-group-append">
                                                                 <div class="input-group-text cursor-pointer">
                                                                     <i data-feather="eye"></i>
@@ -231,7 +201,10 @@
                                                     <div class="form-group">
                                                         <label for="account-new-password">New Password</label>
                                                         <div class="input-group form-password-toggle input-group-merge">
-                                                            <input type="password" class="form-control" id="password" type="password" class="mt-1 block w-full" wire:model.defer="state.password" autocomplete="new-password" />
+                                                              <input name="new_password" class="form-control" type="password" value="">
+                                                              @error('new_password')
+                                                              <span class="text-danger">{{ $message }}</span>
+                                                          @enderror
                                                             <div class="input-group-append">
                                                                 <div class="input-group-text cursor-pointer">
                                                                     <i data-feather="eye"></i>
@@ -244,7 +217,10 @@
                                                     <div class="form-group">
                                                         <label for="account-retype-new-password">Retype New Password</label>
                                                         <div class="input-group form-password-toggle input-group-merge">
-                                                            <input type="password" class="form-control" id="password_confirmation" type="password" class="mt-1 block w-full" wire:model.defer="state.password_confirmation" autocomplete="new-password" />
+                                                          <input name="password_confirmation" class="form-control" type="password" value="">
+                                                          @error('password_confirmation')
+                                                          <span class="text-danger">{{ $message }}</span>
+                                                      @enderror
                                                             <div class="input-group-append">
                                                                 <div class="input-group-text cursor-pointer"><i data-feather="eye"></i></div>
                                                             </div>
@@ -252,8 +228,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
-
-                                                    <button submit="updatePassword" class="btn btn-primary mr-1 mt-1">Save changes</button>
+                                                    <button type="submit" class="btn btn-primary mr-1 mt-1">Save changes</button>
                                                     <button type="reset" class="btn btn-outline-secondary mt-1">Cancel</button>
                                                 </div>
                                             </div>
@@ -262,6 +237,217 @@
                                     </div>
                                     <!--/ change password -->
 
+                                    <!-- information -->
+                                    <div class="tab-pane fade" id="account-vertical-info" role="tabpanel" aria-labelledby="account-pill-info" aria-expanded="false">
+                                        <!-- form -->
+                                        <form class="validate-form">
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form-group">
+                                                        <label for="accountTextarea">Bio</label>
+                                                        <textarea class="form-control" id="accountTextarea" rows="4" placeholder="Your Bio data here..."></textarea>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-birth-date">Birth date</label>
+                                                        <input type="text" class="form-control flatpickr" placeholder="Birth date" id="account-birth-date" name="dob" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="accountSelect">Country</label>
+                                                        <select class="form-control" id="accountSelect">
+                                                            <option>USA</option>
+                                                            <option>India</option>
+                                                            <option>Canada</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-website">Website</label>
+                                                        <input type="text" class="form-control" name="website" id="account-website" placeholder="Website address" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-phone">Phone</label>
+                                                        <input type="text" class="form-control" id="account-phone" placeholder="Phone number" value="(+656) 254 2568" name="phone" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <button type="submit" class="btn btn-primary mt-1 mr-1">Save changes</button>
+                                                    <button type="reset" class="btn btn-outline-secondary mt-1">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!--/ form -->
+                                    </div>
+                                    <!--/ information -->
+
+                                    <!-- social -->
+                                    <div class="tab-pane fade" id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
+                                        <!-- form -->
+                                        <form class="validate-form">
+                                            <div class="row">
+                                                <!-- social header -->
+                                                <div class="col-12">
+                                                    <div class="d-flex align-items-center mb-2">
+                                                        <i data-feather="link" class="font-medium-3"></i>
+                                                        <h4 class="mb-0 ml-75">Social Links</h4>
+                                                    </div>
+                                                </div>
+                                                <!-- twitter link input -->
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-twitter">Twitter</label>
+                                                        <input type="text" id="account-twitter" class="form-control" placeholder="Add link" value="https://www.twitter.com" />
+                                                    </div>
+                                                </div>
+                                                <!-- facebook link input -->
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-facebook">Facebook</label>
+                                                        <input type="text" id="account-facebook" class="form-control" placeholder="Add link" />
+                                                    </div>
+                                                </div>
+                                                <!-- google plus input -->
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-google">Google+</label>
+                                                        <input type="text" id="account-google" class="form-control" placeholder="Add link" />
+                                                    </div>
+                                                </div>
+                                                <!-- linkedin link input -->
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-linkedin">LinkedIn</label>
+                                                        <input type="text" id="account-linkedin" class="form-control" placeholder="Add link" value="https://www.linkedin.com" />
+                                                    </div>
+                                                </div>
+                                                <!-- instagram link input -->
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-instagram">Instagram</label>
+                                                        <input type="text" id="account-instagram" class="form-control" placeholder="Add link" />
+                                                    </div>
+                                                </div>
+                                                <!-- Quora link input -->
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <label for="account-quora">Quora</label>
+                                                        <input type="text" id="account-quora" class="form-control" placeholder="Add link" />
+                                                    </div>
+                                                </div>
+
+                                                <!-- divider -->
+                                                <div class="col-12">
+                                                    <hr class="my-2" />
+                                                </div>
+
+                                                <div class="col-12 mt-1">
+                                                    <!-- profile connection header -->
+                                                    <div class="d-flex align-items-center mb-3">
+                                                        <i data-feather="user" class="font-medium-3"></i>
+                                                        <h4 class="mb-0 ml-75">Profile Connections</h4>
+                                                    </div>
+
+                                                    <div class="row">
+                                                        <!-- twitter user -->
+                                                        <div class="col-6 col-md-3 text-center mb-1">
+                                                            <p class="font-weight-bold">Your Twitter</p>
+                                                            <div class="avatar mb-1">
+                                                                <span class="avatar-content">
+                                                                    <img src="../../../app-assets/images/avatars/11-small.png" alt="avatar img" width="40" height="40" />
+                                                                </span>
+                                                            </div>
+                                                            <p class="mb-0">@johndoe</p>
+                                                            <a href="javascript:void(0)">Disconnect</a>
+                                                        </div>
+                                                        <!-- facebook button -->
+                                                        <div class="col-6 col-md-3 text-center mb-1">
+                                                            <p class="font-weight-bold mb-2">Your Facebook</p>
+                                                            <button class="btn btn-outline-primary">Connect</button>
+                                                        </div>
+                                                        <!-- google user -->
+                                                        <div class="col-6 col-md-3 text-center mb-1">
+                                                            <p class="font-weight-bold">Your Google</p>
+                                                            <div class="avatar mb-1">
+                                                                <span class="avatar-content">
+                                                                    <img src="../../../app-assets/images/avatars/3-small.png" alt="avatar img" width="40" height="40" />
+                                                                </span>
+                                                            </div>
+                                                            <p class="mb-0">@luraweber</p>
+                                                            <a href="javascript:void(0)">Disconnect</a>
+                                                        </div>
+                                                        <!-- github button -->
+                                                        <div class="col-6 col-md-3 text-center mb-2">
+                                                            <p class="font-weight-bold mb-1">Your GitHub</p>
+                                                            <button class="btn btn-outline-primary">Connect</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <!-- submit and cancel button -->
+                                                    <button type="submit" class="btn btn-primary mr-1 mt-1">Save changes</button>
+                                                    <button type="reset" class="btn btn-outline-secondary mt-1">Cancel</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        <!--/ form -->
+                                    </div>
+                                    <!--/ social -->
+
+                                    <!-- notifications -->
+                                    <div class="tab-pane fade" id="account-vertical-notifications" role="tabpanel" aria-labelledby="account-pill-notifications" aria-expanded="false">
+                                        <div class="row">
+                                            <h6 class="section-label mx-1 mb-2">Activity</h6>
+                                            <div class="col-12 mb-2">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" checked id="accountSwitch1" />
+                                                    <label class="custom-control-label" for="accountSwitch1">
+                                                        Email me when someone comments onmy article
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" checked id="accountSwitch2" />
+                                                    <label class="custom-control-label" for="accountSwitch2">
+                                                        Email me when someone answers on my form
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="accountSwitch3" />
+                                                    <label class="custom-control-label" for="accountSwitch3">Email me hen someone follows me</label>
+                                                </div>
+                                            </div>
+                                            <h6 class="section-label mx-1 mt-2">Application</h6>
+                                            <div class="col-12 mt-1 mb-2">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" checked id="accountSwitch4" />
+                                                    <label class="custom-control-label" for="accountSwitch4">News and announcements</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-2">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" checked id="accountSwitch6" />
+                                                    <label class="custom-control-label" for="accountSwitch6">Weekly product updates</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-12 mb-75">
+                                                <div class="custom-control custom-switch">
+                                                    <input type="checkbox" class="custom-control-input" id="accountSwitch5" />
+                                                    <label class="custom-control-label" for="accountSwitch5">Weekly blog digest</label>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <!--/ notifications -->
                                 </div>
                             </div>
                         </div>
