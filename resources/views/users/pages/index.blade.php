@@ -207,28 +207,7 @@
                             </div>
 
 
-                            <?php
-                            $users= App\Models\User::where('id',Auth::user()->id);
-                            foreach ($users as $user){
-                                $left_side_balance=$right_side_balance=null;
-                                $user_info = User::findOrFail($user['user_id']);
-                                $left_side = $user_info->left_side;
-                                $right_side = $user_info->right_side;
-                                if ($left_side){
-                                    $user_package_info_l = User::where('user_name', $left_side)->with('packages')->first();
-                                    if ($user_package_info_l){
-                                       $left_side_balance= $user_package_info_l->packages->price;
-                                    }
-                                }
-
-                                if ($right_side){
-                                    $user_package_info_r = User::where('user_name', $right_side)->with('packages')->first();
-                                    if ($user_package_info_r){
-                                        $right_side_balance= $user_package_info_r->packages->price;
-                                    }
-                                }
-
-                             ?>
+                          
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
