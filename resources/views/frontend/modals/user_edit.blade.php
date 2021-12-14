@@ -125,7 +125,7 @@
                     <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     <!--<button type="button" id="submitForm" class="btn btn-primary">Add User</button>-->
                     <button type="submit" class="btn btn-primary" id="btnSubmit">
-                        Add User
+                        Update
                     </button>
                 </div>
                 </form>
