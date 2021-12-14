@@ -35,11 +35,15 @@
                                 </select>
 
                             </div>
-                            
 
+                            <?php
+                            $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
+                            $g_sett= App\Models\GeneralSettings::first();
+                            //dd($g_sett['min_withdraw']);
+                            ?>
                             <div class="form-group">
                                 <label class="form-label" for="basic-default-email">Enter Amount</label>
-                                <input type="number" min="10" id="basic-default-email" name="amount"
+                                <input type="number" min="{{$g_sett['min_withdraw']}}" id="basic-default-email" name="amount"
                                        class="form-control" placeholder="Enter Amount ($)" required/>
                             </div>
 

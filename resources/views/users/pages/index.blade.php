@@ -53,7 +53,8 @@
                                     <div class="card-body">
                                       <?php
                                       $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
-
+                                      $g_sett= App\Models\GeneralSettings::first();
+                                      //dd($g_sett['min_withdraw']);
                                       ?>
                                         <h4 class="card-title text-white">Cash Wallet</h4>
 
@@ -63,7 +64,7 @@
                                         <a class="btn btn-info" data-toggle="modal" data-target="#walletTransfer" ><i data-feather='send'></i></a>
                                         @include('frontend.modals.wallet_transfer')
                                           @include('frontend.modals.wallet_withdraw')
-                                          <p class="card-text font-small-3">Minimum Withdrawal: 10$</p>
+                                          <p class="card-text font-small-3">Minimum Withdrawal: {{$g_sett['min_withdraw']}}$</p>
                                     </div>
                                 </div>
                             </div>
@@ -207,20 +208,27 @@
                             </div>
 
 
-                          
+
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
-                                      <h4 class="card-title text-white">Gross Left Sale</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h4 class="card-title text-white">Left Count</h4>
+                                      <?php
+
+                                      $left_count=App\Models\User::where('id',Auth::id())->first();
+                                      $right_count=App\Models\User::where('id',Auth::id())->first();
+                                      //dd($left_count->left_count);
+                                       ?>
+                                      <h2 class="card-text"><strong>{{$left_count->left_count}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
-                                      <h4 class="card-title text-white">Gross Right Sale</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h4 class="card-title text-white">Right Count</h4>
+
+                                      <h2 class="card-text"><strong>{{$right_count->right_count}}</strong></h2>
                                     </div>
                                 </div>
                             </div>

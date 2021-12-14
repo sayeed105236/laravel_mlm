@@ -291,8 +291,8 @@ class ReferralController extends Controller implements CreatesNewUsers
             $data = PairCount::where('user_id',$user->id)->where('date',Carbon::today())->get()->toArray();
             $date= date('Y-m-d');
             if(count($data) > 0){
-              //  DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
-                DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
+               DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
+              //  DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
             }else{
                 $insert= new PairCount();
                 $insert->user_id = $user->id;
@@ -332,7 +332,7 @@ class ReferralController extends Controller implements CreatesNewUsers
             'number' => $input['number'],
 
             'country' => $input['country'],
-            
+
             'sponsor' => $input['sponsor'],
             'position' => $input['position'],
             'package_id' => $input['package_id'],
