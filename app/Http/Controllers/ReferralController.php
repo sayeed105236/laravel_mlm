@@ -285,6 +285,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
     public function is_pair_generate($placement_id)
     {
+        
         $user = User::where('user_name',$placement_id)->first();
 
         if ($user->left_count == $user->right_count){
@@ -292,7 +293,7 @@ class ReferralController extends Controller implements CreatesNewUsers
             $date= date('Y-m-d');
             if(count($data) > 0){
                DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
-              //  DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
+            //    DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
             }else{
                 $insert= new PairCount();
                 $insert->user_id = $user->id;
