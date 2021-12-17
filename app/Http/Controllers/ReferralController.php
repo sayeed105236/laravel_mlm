@@ -54,6 +54,7 @@ class ReferralController extends Controller implements CreatesNewUsers
        //$data=$g_set->pair_percentage;
        //dd($data);
       $users=User::where('sponsor',Auth::id())->get();
+      
 
       return view('users.pages.referrals',compact('users'));
     }
@@ -285,7 +286,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
     public function is_pair_generate($placement_id)
     {
-        
+
         $user = User::where('user_name',$placement_id)->first();
 
         if ($user->left_count == $user->right_count){

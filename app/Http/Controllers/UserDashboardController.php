@@ -19,7 +19,10 @@ class UserDashboardController extends Controller
   }
     public function index($id)
     {
+    //  $users=User::where('sponsor',Auth::id())->select('package_id','position')->get();
 
+
+    //  dd($users[0]->packages->price,$users[1]->packages->price,$users[2]->packages->price);
 
       $data['user']=User::all();
       $data['deposit']=AddMoney::where('user_id',Auth::id())->first();
