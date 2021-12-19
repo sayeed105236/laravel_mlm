@@ -42,7 +42,7 @@ class UserDashboardController extends Controller
     }
     public function Manage($id)
     {
-      $users=User::all();
+      $users=User::where('sponsor',Auth::id())->get();
       return view('users.pages.registration_history',compact('users'));
     }
     public function sponsor_bonus($id)

@@ -380,8 +380,8 @@
                                           </select>
                                       </div>
                                       <div class="form-group">
-                                          <label class="form-label" for="basic-default-email">Placement ID</label>
-                                          <input type="text" id="placement_id" name="placement_id" class="form-control"
+                                          
+                                          <input type="hidden" id="placement_id" name="placement_id" class="form-control"
                                                 required readonly />
 
                                       </div>
