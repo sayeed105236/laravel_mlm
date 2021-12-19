@@ -32,7 +32,7 @@ class ReportController extends Controller
             'search' => 'required'
         ]);
 
-        $sponsor = User::where("name","LIKE","%".$request->search."%") ->take(3)->get();
+        $sponsor = User::where("user_name","LIKE","%".$request->search."%") ->take(3)->get();
                 return view('search-user',compact('sponsor'));
     }
 }

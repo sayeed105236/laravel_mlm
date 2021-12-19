@@ -353,7 +353,7 @@
                                       </div>
 
 
-                                      <!-- <div class="form-group">
+                                       <div class="form-group">
                                           <label for="basicSelect">Select Sponsor</label>
                                           <select class="select2Me form-control form-control-lg" name="sponsor" id="sponsor">
                                               <option label="Choose Sponsor"></option>
@@ -363,13 +363,13 @@
 
                                                   @endforeach
                                           </select>
-                                      </div> -->
-                                      <form id="sform" action="/search" >
+                                      </div>
+                                      <!--<form id="sform" action="/search" >
                                       <div class="form-group">
                                         <label for="basicSelect" class="form-label">Select Sponsor</label>
                                         <input type="text" name="sponsor" name="query" id="search" id="sponsor" class="form-control"/>
                                       </div>
-                                    </form>
+                                    </form>-->
                                     <div id="suggestUser"></div>
                                       <div class="form-group">
                                           <label for="basicSelect">Select Position</label>
