@@ -84,8 +84,13 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $earnings = App\Models\CashWallet::where('user_id',Auth::id())->where('note','Bonus')->get()->sum('bonus_amount');
+                                      //dd($transferData);
+
+                                       ?>
                                         <h4 class="card-title text-white">Gross Earnings</h4>
-                                        <h2 class="card-text"><strong>{{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</strong></h2>
+                                        <h2 class="card-text"><strong>{{isset($earnings) ? '$'.number_format((float)$earnings, 2, '.', '') : '$00.00'}}</strong></h2>
                                     </div>
                                 </div>
                             </div>

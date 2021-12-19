@@ -54,7 +54,7 @@ class ReferralController extends Controller implements CreatesNewUsers
        //$data=$g_set->pair_percentage;
        //dd($data);
       $users=User::where('sponsor',Auth::id())->get();
-      
+
 
       return view('users.pages.referrals',compact('users'));
     }
@@ -207,6 +207,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                 $bonus_amount->user_id = $request['sponsor'];
                 $bonus_amount->bonus_amount = (($sponsor_amount->price)* $referral_bonus->referral_percentage)/100;
                 $bonus_amount->method = 'Sponsor Bonus';
+                $bonus_amount->note = 'Bonus';
                 $bonus_amount->save();
 
 

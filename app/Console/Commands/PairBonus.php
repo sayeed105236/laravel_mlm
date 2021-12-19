@@ -80,6 +80,7 @@ class PairBonus extends Command
             $bonus_amount->user_id = $user['user_id'];
             $bonus_amount->bonus_amount = $user['no_of_pair'] *$constant* $g_set->pair_amount*$g_set->pair_percentage/100;
             $bonus_amount->method = 'Pair Bonus';
+            $bonus_amount->note = 'Bonus';
 
             $bonus_amount->save();
 
