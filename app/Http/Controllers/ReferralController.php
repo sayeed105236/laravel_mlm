@@ -61,17 +61,15 @@ class ReferralController extends Controller implements CreatesNewUsers
 
         $user = User::where('id', $id)->first();
         //$allChildren = User::pluck('name','id')->all();
-//dd($users);
         return view('users.pages.my-team',compact(['user']));
     }
 
     public function checkPosition(Request $request){
 
-        //$user->setPosition($request['position']);
-        $check_position = User::where('sponsor',$request['sponsor'])->where('position',$request['position'])->orderBy('id','desc')->first();
-       //dd($check_position);
+        $check_position = User::where('placement_id',$request['sponsor'])->where('position',$request['position'])->orderBy('id','desc')->first();
+
         if(is_null($check_position)){
-            $first = User::where('id',$request['sponsor'])->orderBy('id','desc')->first();
+            $first = User::where('user_name',$request['sponsor'])->orderBy('id','desc')->first();
             return  $first->user_name;
         }else{
             $all = $check_position->childrenRecursive;
