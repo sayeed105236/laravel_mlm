@@ -26,6 +26,13 @@
           </div>
             @endif
                 <!-- Dashboard Ecommerce Starts -->
+                @if(session()->has('error'))
+
+                 <h3 class="alert alert-danger" style="font-weight: 700;">
+                     {{ session()->get('error') }}
+                 </h3>
+
+             @endif
 
                 <section id="dashboard-ecommerce">
                   <h4>"Welcome Mr. {{Auth::user()->name}} to CoinexxPro"</h4>
