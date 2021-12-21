@@ -44,7 +44,7 @@ class PairBonus extends Command
     public function handle()
     {
         //return Command::SUCCESS;
-        $users=User::selectRaw('max(u.user_name) sponsor_name,max(users.sponsor) sponsor,max(users.position) position,count(users.sponsor),max(users.user_name) user_name,max(package_name) package_name,sum(price) price')
+        $users=User::selectRaw('max(no_of_pairs) no_of_pairs,max(u.user_name) sponsor_name,max(users.sponsor) sponsor,max(users.position) position,count(users.sponsor),max(users.user_name) user_name,max(package_name) package_name,sum(price) price')
             ->join('users as u', 'users.sponsor', '=', 'u.id')
             ->join('packages', 'users.package_id', '=', 'packages.id')
             ->groupBy('users.sponsor','users.position')
@@ -55,8 +55,9 @@ class PairBonus extends Command
         foreach ($users as $key => $element) {
             $results[$element['sponsor_name']][] = $element;
         }
+        dd($results);
         foreach ($results as $key => $result) {
-           dd($result);
+
         }
 
 
