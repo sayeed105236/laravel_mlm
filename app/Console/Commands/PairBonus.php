@@ -8,6 +8,7 @@ use App\Models\PairCount;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Auth;
 
 class PairBonus extends Command
 {
@@ -43,6 +44,20 @@ class PairBonus extends Command
     public function handle()
     {
         //return Command::SUCCESS;
+        $users=User::selectRaw('max(u.user_name) sponsor_name,max(users.sponsor) sponsor,max(users.position) position,count(users.sponsor),max(users.user_name) user_name,max(package_name) package_name,sum(price) price')
+            ->join('users as u', 'users.sponsor', '=', 'u.id')
+            ->join('packages', 'users.package_id', '=', 'packages.id')
+            ->groupBy('users.sponsor','users.position')
+            ->where('users.position','!=',null)
+            ->get()->toArray();
+
+        $results = array();
+        foreach ($users as $key => $element) {
+            $results[$element['sponsor_name']][] = $element;
+        }
+        foreach ($results as $key => $result) {
+           dd($result);
+        }
 
 
         $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->groupBy('user_id')->get()->toArray();
