@@ -360,7 +360,7 @@
                                               <option label="Choose Sponsor"></option>
                                               @foreach ($users as $user)
 
-                                                  <option value="{{ $user->user_name }}">{{ ucwords($user->user_name) }}</option>
+                                                  <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
                                               @endforeach
                                           </select>
                                       </div>

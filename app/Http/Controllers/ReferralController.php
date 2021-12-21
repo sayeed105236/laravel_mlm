@@ -67,11 +67,12 @@ class ReferralController extends Controller implements CreatesNewUsers
     }
 
     public function checkPosition(Request $request){
+        $userName = User::where('id',$request['sponsor'])->pluck('user_name')->first();
 
-        $check_position = User::where('placement_id',$request['sponsor'])->where('position',$request['position'])->orderBy('id','desc')->first();
+        $check_position = User::where('placement_id',$userName)->where('position',$request['position'])->orderBy('id','desc')->first();
 
         if(is_null($check_position)){
-            $first = User::where('user_name',$request['sponsor'])->orderBy('id','desc')->first();
+            $first = User::where('user_name',$userName)->orderBy('id','desc')->first();
             return  $first->user_name;
         }else{
             $all = $check_position->childrenRecursive;
@@ -116,7 +117,7 @@ class ReferralController extends Controller implements CreatesNewUsers
     public function userAdd(Request $request)
     {
          $request->validate([
-             'name' => 'required|min:8',
+             'name' => 'required|min:4',
              'user_name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'number' => 'required',
