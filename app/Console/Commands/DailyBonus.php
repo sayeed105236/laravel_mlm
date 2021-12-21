@@ -65,12 +65,14 @@ class DailyBonus extends Command
                         'user_id'=>$user['id'],
                         'bonus_amount'=>($user['packages']['return_percentage']*$user['packages']['price'])/100,
                         'method'=>'daily bonus',
+                        'note'=>'Bonus',
                     ]);
                     if ($user['sponsor']){
                         CashWallet::create([
                             'user_id'=>$user['sponsor'],
                             'bonus_amount'=>(($user['packages']['return_percentage']*$user['packages']['price'])/100)*$sponsor_bonus['royality_bonus']/100,
                             'method'=>'royality sponsor bonus',
+                            'note'=>'Bonus',
                         ]);
                     }
                     $placement_id= $user['placement_id'];
@@ -88,6 +90,7 @@ class DailyBonus extends Command
                         $bonus_amount->user_id = (int)$user->id;
                         $bonus_amount->bonus_amount = $income[$i]*$data/100;
                         $bonus_amount->method = 'Level Bonus';
+                        $bonus_amount->note = 'Bonus';
                         $bonus_amount->save();
 
                         $next_id= $this->find_placement_id($placement_id);

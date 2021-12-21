@@ -48,6 +48,8 @@
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('deposit-manage')}}"><i data-feather='shopping-cart'></i><span class="menu-title text-truncate" data-i18n="Email">Deposit Request</span></a>
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('withdraw-manage')}}"><i data-feather='shopping-cart'></i><span class="menu-title text-truncate" data-i18n="Email">Withdrawal Request</span></a>
+            </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('user-list')}}"><i data-feather='users'></i><span class="menu-title text-truncate" data-i18n="Email">Users</span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="{{route('payment-method')}}"><i data-feather='credit-card'></i></i><span class="menu-title text-truncate" data-i18n="Email">Payment Method</span></a>

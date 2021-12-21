@@ -66,8 +66,8 @@
                                   />
                                 </a>
 
-                                <h4 class="card-title mb-1">Welcome to Coinexxpro! 👋</h4>
-                                <p class="card-text mb-2">Please sign-in to your account and start earning</p>
+                                <h4 class="card-title mb-1 text-center">Welcome to Coinexxpro! 👋</h4>
+
 
                                 <form class="auth-login-form mt-2" action="{{ route('login') }}" method="POST" >
                                   @csrf
@@ -79,11 +79,7 @@
                                     <div class="form-group">
                                         <div class="d-flex justify-content-between">
                                             <label for="login-password" value="{{ __('Password') }}">Password</label>
-                                              @if (Route::has('password.request'))
-                                            <a href="{{ route('password.request') }}">
-                                                <small>Forgot Password?</small>
-                                            </a>
-                                            @endif
+
                                         </div>
                                         <div class="input-group input-group-merge form-password-toggle">
                                             <input type="password" class="form-control form-control-merge" id="password" name="password" required autocomplete="current-password" tabindex="2" placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" aria-describedby="login-password" />
@@ -96,6 +92,22 @@
                                         <div class="custom-control custom-checkbox">
                                             <input class="custom-control-input" type="checkbox" id="remember_me" name="remember" tabindex="3" />
                                             <label class="custom-control-label" for="remember-me"> Remember Me </label>
+
+                                              <div class="container">
+                                          <div class="row">
+                                              <div class="col-md-12 text-right">
+                                                @if (Route::has('password.request'))
+                                                <a class="text-right" href="{{ route('password.request') }}">
+                                                    <small>Forgot Password?</small>
+                                                </a>
+                                                  @endif
+
+                                              </div>
+                                          </div>
+                                            </div>
+
+
+
                                         </div>
                                     </div>
                                     <button class="btn btn-primary btn-block" tabindex="4">Sign in</button>

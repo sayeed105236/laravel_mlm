@@ -50,7 +50,7 @@
                                       @csrf
 
                                       <div class="form-group">
-                                          <label class="form-label" for="basic-default-email">Name</label>
+                                          <label class="form-label" for="basic-default-email">Applicant Name</label>
                                           <input type="text" id="name" name="name" class="form-control" placeholder="Enter Name"
                                                  required/>
 
@@ -76,23 +76,8 @@
                                                  placeholder="Enter Your Phone Number" required/>
 
                                       </div>
-                                      <div class="form-group">
-                                          <label class="form-label" for="basic-default-email">Date Of Birth</label>
-                                          <input type="date" id="birth" name="birth" class="form-control" placeholder=""
-                                                 required/>
-
-                                      </div>
-                                      <div class="form-group">
-                                          <label for="basicSelect">Gender</label>
-                                          <select class="form-control" id="basicSelect" name="gender">
-                                              <option label="Choose Gender"></option>
 
 
-                                              <option value="male">Male</option>
-                                              <option value="female">Female</option>
-
-                                          </select>
-                                      </div>
                                       <div class="form-group">
                                           <label for="basicSelect">Select Country</label>
                                           <select class="select2Me form-control form-control-lg" name="country" id="country">
@@ -368,18 +353,24 @@
                                       </div>
 
 
-                                      <div class="form-group">
+                                       <div class="form-group">
                                           <label for="basicSelect">Select Sponsor</label>
                                           <select class="select2Me form-control form-control-lg" name="sponsor" id="sponsor">
                                               <option label="Choose Sponsor"></option>
                                               @foreach ($users as $user)
 
                                                   <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
-                                              @endforeach
+
+                                                  @endforeach
                                           </select>
                                       </div>
-
-
+                                      <!--<form id="sform" action="/search" >
+                                      <div class="form-group">
+                                        <label for="basicSelect" class="form-label">Select Sponsor</label>
+                                        <input type="text" name="sponsor" name="query" id="search" id="sponsor" class="form-control"/>
+                                      </div>
+                                    </form>-->
+                                    <div id="suggestUser"></div>
                                       <div class="form-group">
                                           <label for="basicSelect">Select Position</label>
                                           <select class="select2Me form-control" name="position" id="position">
@@ -525,4 +516,22 @@
             });
         });
     </script>
+
+    <script>
+  $("body").on("keyup","#search",function(){
+    let searchData = $("#search").val();
+    if(searchData.length>0){
+      $.ajax({
+        type:'POST',
+        url:"{{ url('/find-users') }}",
+        data:{search:searchData},
+        headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+        success:function(result){
+            $('#suggestUser').html(result)
+        }
+      });
+    }
+    if(searchData.length<1) $('#suggestUser').html("")
+  })
+</script>
 @endpush

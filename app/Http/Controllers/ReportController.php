@@ -6,6 +6,7 @@ use App\Models\AddMoney;
 use App\Models\CashWallet;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class ReportController extends Controller
 {
@@ -24,5 +25,14 @@ class ReportController extends Controller
     {
         $cashwallettransferData = CashWallet::where('user_id',Auth::id())->where('method','Transfer')->get();
         return view('users.pages.cashwallet-transfer-report',compact(['cashwallettransferData']));
+    }
+    public function findUser(Request $request)
+    {
+        $request->validate([
+            'search' => 'required'
+        ]);
+
+        $sponsor = User::where("user_name","LIKE","%".$request->search."%") ->take(3)->get();
+                return view('search-user',compact('sponsor'));
     }
 }

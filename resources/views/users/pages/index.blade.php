@@ -53,7 +53,8 @@
                                     <div class="card-body">
                                       <?php
                                       $bonus_amount=App\Models\CashWallet::where('user_id',\Auth::id())->get()->sum('bonus_amount');
-
+                                      $g_sett= App\Models\GeneralSettings::first();
+                                      //dd($g_sett['min_withdraw']);
                                       ?>
                                         <h4 class="card-title text-white">Cash Wallet</h4>
 
@@ -62,7 +63,8 @@
                                         <a class="btn btn-danger" data-toggle="modal" data-target="#walletWithdraw"><i data-feather='arrow-down-circle'></i></a>
                                         <a class="btn btn-info" data-toggle="modal" data-target="#walletTransfer" ><i data-feather='send'></i></a>
                                         @include('frontend.modals.wallet_transfer')
-                                          <p class="card-text font-small-3">Minimum Withdrawal: 10$</p>
+                                          @include('frontend.modals.wallet_withdraw')
+                                          <p class="card-text font-small-3">Minimum Withdrawal: {{$g_sett['min_withdraw']}}$</p>
                                     </div>
                                 </div>
                             </div>
@@ -82,16 +84,25 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
+                                      <?php
+                                      $earnings = App\Models\CashWallet::where('user_id',Auth::id())->where('note','Bonus')->get()->sum('bonus_amount');
+                                      //dd($transferData);
+
+                                       ?>
                                         <h4 class="card-title text-white">Gross Earnings</h4>
-                                        <h2 class="card-text"><strong>{{isset($bonus_amount) ? '$'.number_format((float)$bonus_amount, 2, '.', '') : '$00.00'}}</strong></h2>
+                                        <h2 class="card-text"><strong>{{isset($earnings) ? '$'.number_format((float)$earnings, 2, '.', '') : '$00.00'}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
+                              <?php
+                              $withdraw=App\Models\Withdraw::where('user_id',\Auth::id())->where('status','approve')->get()->sum('amount');
+
+                              ?>
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
                                         <h4 class="card-title text-white">Gross Withdraw</h4>
-                                          <h2 class="card-text"><strong>$00.00</strong></h2>
+                                          <h2 class="card-text"><strong>{{isset($withdraw) ? '$'.number_format((float)$withdraw, 2, '.', '') : '$00.00'}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
@@ -206,16 +217,23 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
-                                      <h4 class="card-title text-white">Gross Left Sale</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h4 class="card-title text-white">Left Count</h4>
+                                      <?php
+
+                                      $left_count=App\Models\User::where('id',Auth::id())->first();
+                                      $right_count=App\Models\User::where('id',Auth::id())->first();
+                                      //dd($left_count->left_count);
+                                       ?>
+                                      <h2 class="card-text"><strong>{{$left_count->left_count}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
-                                      <h4 class="card-title text-white">Gross Right Sale</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h4 class="card-title text-white">Right Count</h4>
+
+                                      <h2 class="card-text"><strong>{{$right_count->right_count}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
@@ -244,6 +262,26 @@ document.getElementById('DestinationOptions').addEventListener('change', functio
     var wallet2= e.target.options[e.target.selectedIndex].getAttribute('id');
     //console.log(wallet2);
     var wallet=  document.getElementById("wallet_id").value=wallet2;
+    //console.log(wallet);
+    //wallet.innerHTML= wallet2;
+});
+
+//  document.getElementById('').value(id.value);
+
+
+
+</script>
+<script type="text/javascript">
+
+  //alert('success');
+  //console.log(this.getAttribute('id'));
+  //console.log(e.target.options[e.target.selectedIndex].getAttribute('id'));
+//var wallet=  document.getElementById("wallet_id");
+//wallet.innerHTML= id.value;
+document.getElementById('DestinationOptions2').addEventListener('change', function(e) {
+    var wallet3= e.target.options[e.target.selectedIndex].getAttribute('id');
+    //console.log(wallet2);
+    var wallet4=  document.getElementById("wallet_id").value=wallet3;
     //console.log(wallet);
     //wallet.innerHTML= wallet2;
 });

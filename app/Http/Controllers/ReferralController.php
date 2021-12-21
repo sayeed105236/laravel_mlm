@@ -24,6 +24,7 @@ use Illuminate\Support\Facades\Session;
 use Illuminate\Validation\Validator;
 use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Fortify\Contracts\RegisterResponse;
+use Illuminate\Support\Facades\Storage;
 
 class ReferralController extends Controller implements CreatesNewUsers
 {
@@ -53,6 +54,7 @@ class ReferralController extends Controller implements CreatesNewUsers
        //$data=$g_set->pair_percentage;
        //dd($data);
       $users=User::where('sponsor',Auth::id())->get();
+
 
       return view('users.pages.referrals',compact('users'));
     }
@@ -118,8 +120,8 @@ class ReferralController extends Controller implements CreatesNewUsers
              'user_name' => 'required|unique:users',
             'email' => 'required|email|unique:users',
             'number' => 'required',
-            'birth' => 'required|date_format:Y-m-d|before:today|before:'.\Carbon\Carbon::today()->subYears(18),
-            'gender' => 'required',
+
+
             'package_id' => 'required',
             'country'=>'required',
             'sponsor' => 'required',
@@ -163,10 +165,10 @@ class ReferralController extends Controller implements CreatesNewUsers
                     'user_name' => $request['user_name'],
                     'email' => $request['email'],
                     'sponsor' => $request['sponsor'],
-                    'birth' => $request['birth'],
+
                     'country' => $request['country'],
                     'number' => $request['number'],
-                    'gender' => $request['gender'],
+
                     //'parent_id' => $request['sponsor'],
                     'placement_id' =>$placement_id,
                     'position' => $position_id,
@@ -203,6 +205,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                 $bonus_amount->user_id = $request['sponsor'];
                 $bonus_amount->bonus_amount = (($sponsor_amount->price)* $referral_bonus->referral_percentage)/100;
                 $bonus_amount->method = 'Sponsor Bonus';
+                $bonus_amount->note = 'Bonus';
                 $bonus_amount->save();
 
 
@@ -282,14 +285,15 @@ class ReferralController extends Controller implements CreatesNewUsers
 
     public function is_pair_generate($placement_id)
     {
+
         $user = User::where('user_name',$placement_id)->first();
 
         if ($user->left_count == $user->right_count){
             $data = PairCount::where('user_id',$user->id)->where('date',Carbon::today())->get()->toArray();
             $date= date('Y-m-d');
             if(count($data) > 0){
-              //  DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
-                DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
+               DB::statement("UPDATE pair_counts SET no_of_pair = `no_of_pair`+1 WHERE date = '$date' and user_id = '$user->id'");
+            //    DB::statement("UPDATE pair_counts SET no_of_pair = '$user->right_count' WHERE date = '$date' and user_id = '$user->id'");
             }else{
                 $insert= new PairCount();
                 $insert->user_id = $user->id;
@@ -327,9 +331,9 @@ class ReferralController extends Controller implements CreatesNewUsers
             'user_name' => $input['user_name'],
             'email' => $input['email'],
             'number' => $input['number'],
-            'birth' => $input['birth'],
-              'country' => $input['country'],
-            'gender' => $input['gender'],
+
+            'country' => $input['country'],
+
             'sponsor' => $input['sponsor'],
             'position' => $input['position'],
             'package_id' => $input['package_id'],
@@ -340,4 +344,83 @@ class ReferralController extends Controller implements CreatesNewUsers
         $data->notify(new UserCredential($email_data));
 
     }
+    public function UpdateUser(Request $request)
+    {
+      //dd($request);
+      $address = $request->address;
+      $name=$request->name;
+      $number=$request->number;
+      $national_id=$request->national_id;
+      $birth=$request->birth;
+      $gender=$request->gender;
+      $nominee = $request->nominee;
+      $nominee_email = $request->nominee_email;
+      $image=$request->file('file');
+      $filename=null;
+      if ($image) {
+          $filename = time() . $image->getClientOriginalName();
+
+          Storage::disk('public')->putFileAs(
+              '/User',
+              $image,
+              $filename
+          );
+      }
+
+
+      $user = User::find(Auth::user()->id);
+      $user->address = $address;
+      $user->name =$name;
+      $user->number =$number;
+      $user->birth =$birth;
+      $user->gender =$gender;
+      $user->nominee =$nominee;
+      $user->national_id=$national_id;
+      $user->nominee_email =$nominee_email;
+      $user->image=$filename;
+
+      $user->save();
+
+        return back()->with('profile_updated','Profile has been updated successfully!');
+    }
+    public function changePassStore(Request $request){
+      $request->validate([
+          'old_password' => 'required',
+          'new_password' => 'required|min:5',
+          'password_confirmation' => 'required|min:5',
+      ]);
+      $db_pass = Auth::user()->password;
+      $current_password = $request->old_password;
+      $newpass = $request->new_password;
+      $confirmpass = $request->password_confirmation;
+
+     if (Hash::check($current_password,$db_pass)) {
+      if ($newpass === $confirmpass) {
+          User::findOrFail(Auth::id())->update([
+            'password' => Hash::make($newpass)
+          ]);
+
+          Auth::logout();
+          $notification=array(
+            'message'=>'Your Password Change Success. Now Login With New Password',
+            'alert-type'=>'success'
+        );
+        return Redirect()->route('login')->with($notification);
+
+      }else {
+
+        $notification=array(
+            'message'=>'New Password And Confirm Password Not Same',
+            'alert-type'=>'error'
+        );
+        return Redirect()->back()->with($notification);
+      }
+   }else {
+    $notification=array(
+        'message'=>'Old Password Not Match',
+        'alert-type'=>'error'
+    );
+    return Redirect()->back()->with($notification);
+   }
+  }
 }

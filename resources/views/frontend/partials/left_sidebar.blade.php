@@ -52,17 +52,7 @@
 
                           </ul>
                       </li>
-                    <!--  <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Invoice">Fund Management</span></a>
-                          <ul class="menu-content">
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather='repeat'></i><span class="menu-item text-truncate" data-i18n="List">Register Wallet Transfer</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather='repeat'></i><span class="menu-item text-truncate" data-i18n="List">Cash Wallet Transfer</span></a>
-                              </li>
-                              <li><a class="d-flex align-items-center" href="#"><i data-feather='download'></i><span class="menu-item text-truncate" data-i18n="Preview">Withdraw</span></a>
-                              </li>
 
-                          </ul>
-                      </li>-->
                       <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='refresh-cw'></i><span class="menu-title text-truncate" data-i18n="eCommerce">History</span></a>
                           <ul class="menu-content">
                               <li><a class="d-flex align-items-center" href="/home/registration-history/{{Auth::user()->id}}"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Shop">Registration History</span></a>
@@ -82,12 +72,7 @@
 
                           </ul>
                       </li>
-            <!--    <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
-                    </li>
-                    <li class="active"><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
-                    </li>
-                </ul>-->
+
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather='book-open'></i><span class="menu-title text-truncate" data-i18n="eCommerce">Income History</span></a>
                 <ul class="menu-content">
@@ -110,50 +95,19 @@
 
                 </ul>
             </li>
-  <!--    <ul class="menu-content">
-          <li><a class="d-flex align-items-center" href="dashboard-analytics.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="Analytics">Analytics</span></a>
-          </li>
-          <li class="active"><a class="d-flex align-items-center" href="dashboard-ecommerce.html"><i data-feather="circle"></i><span class="menu-item text-truncate" data-i18n="eCommerce">eCommerce</span></a>
-          </li>
-      </ul>-->
+
   </li>
 
 
-          <!--  <li class=" navigation-header"><span data-i18n="Apps &amp; Pages">Apps &amp; Pages</span><i data-feather="more-horizontal"></i>
-            </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-email.html"><i data-feather="mail"></i><span class="menu-title text-truncate" data-i18n="Email">Email</span></a>
-            </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-chat.html"><i data-feather="message-square"></i><span class="menu-title text-truncate" data-i18n="Chat">Chat</span></a>
-            </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-todo.html"><i data-feather="check-square"></i><span class="menu-title text-truncate" data-i18n="Todo">Todo</span></a>
-            </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-calendar.html"><i data-feather="calendar"></i><span class="menu-title text-truncate" data-i18n="Calendar">Calendar</span></a>
-            </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="app-kanban.html"><i data-feather="grid"></i><span class="menu-title text-truncate" data-i18n="Kanban">Kanban</span></a>
-            </li>-->
-
-            <!--  <li class=" nav-item"><a class="d-flex align-items-center" href="/home/dashboard/{{Auth::user()->id}}"><i data-feather='credit-card'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Fund Management</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a><li>-->
-          <!--  <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Invoice">Report</span></a>
-                <ul class="menu-content">
-                    <li><a class="d-flex align-items-center" href="{{url(route('income-report'))}}"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="List">Income Report</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="{{url(route('transfer-report'))}}"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Transfer Report</span></a>
-                    </li>
 
 
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Order Report</span></a>
-                    </li>
-                    <li><a class="d-flex align-items-center" href="#"><i data-feather='list'></i><span class="menu-item text-truncate" data-i18n="Preview">Withdraw Report</span></a>
-                    </li>
 
-                </ul>
-              </li>-->
 
 
                     <li class=" nav-item"><a class="d-flex align-items-center"><i data-feather='settings'></i><span class="menu-title text-truncate" data-i18n="Invoice">Settings</span></a>
                         <ul class="menu-content">
-                              <li class="nav-item"><a class="d-flex align-items-center" href="{{ route('profile.show') }}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
-                            <li><a class="d-flex align-items-center" href="#"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">Payment Method</span></a>
+                              <li class="nav-item"><a class="d-flex align-items-center" href="/home/profile-settings/{{Auth::user()->id}}"><i data-feather='user-check'></i><span class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a></li>
+                            <li><a class="d-flex align-items-center" href="/home/payment-method/{{Auth::user()->id}}"><i data-feather='user-plus'></i><span class="menu-item text-truncate" data-i18n="Preview">Payment Method</span></a>
                             </li>
 
                         </ul>
