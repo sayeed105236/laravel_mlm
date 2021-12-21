@@ -353,15 +353,15 @@
                                       </div>
 
 
-                                       <div class="form-group">
+
+                                      <div class="form-group">
                                           <label for="basicSelect">Select Sponsor</label>
                                           <select class="select2Me form-control form-control-lg" name="sponsor" id="sponsor">
                                               <option label="Choose Sponsor"></option>
                                               @foreach ($users as $user)
 
-                                                  <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
-
-                                                  @endforeach
+                                                  <option value="{{ $user->user_name }}">{{ ucwords($user->user_name) }}</option>
+                                              @endforeach
                                           </select>
                                       </div>
                                       <!--<form id="sform" action="/search" >
@@ -371,20 +371,20 @@
                                       </div>
                                     </form>-->
                                     <div id="suggestUser"></div>
-                                      <div class="form-group">
-                                          <label for="basicSelect">Select Position</label>
-                                          <select class="select2Me form-control" name="position" id="position">
-                                              <option label="Choose position"></option>
-                                              <option value="2">Right</option>
-                                              <option value="1">Left</option>
-                                          </select>
-                                      </div>
-                                      <div class="form-group">
-                                          <label class="form-label" for="basic-default-email">Placement ID</label>
-                                          <input type="text" id="placement_id" name="placement_id" class="form-control"
-                                                required readonly />
+                                    <div class="form-group">
+                                        <label for="basicSelect">Select Position</label>
+                                        <select class="select2Me form-control" name="position" id="position">
+                                            <option label="Choose position"></option>
+                                            <option value="2">Right</option>
+                                            <option value="1">Left</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="form-label" for="basic-default-email">Placement ID</label>
+                                        <input type="text" id="placement_id" name="placement_id" class="form-control"
+                                              required readonly />
 
-                                      </div>
+                                    </div>
 
 
                                       @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
@@ -438,84 +438,84 @@
 @endsection
 @push('scripts')
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            selectToMe('');
-        });
-        $("#successMessage").delay(10000).slideUp(300);
-        $('#sponsor').on('change', function (e) {
-            $('#placement_id').val('');
-            $("#position").select2("val", "");
-        });
+<script type="text/javascript">
+    $(document).ready(function () {
+        selectToMe('');
+    });
+    $("#successMessage").delay(10000).slideUp(300);
+    $('#sponsor').on('change', function (e) {
+        $('#placement_id').val('');
+        $("#position").select2("val", "");
+    });
 
-        $('#position').on('change', function (e) {
-            var position = $(this).val();
-            if (position == '') {
-                return false;
+    $('#position').on('change', function (e) {
+        var position = $(this).val();
+        if (position == '') {
+            return false;
+        }
+        var sponsor = $('#sponsor').val();
+        if (sponsor == '') {
+            $(this).val('');
+            return alert('select a sponsor');
+        }
+        //var position=  $('#position').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-            var sponsor = $('#sponsor').val();
-            if (sponsor == '') {
-                $(this).val('');
-                return alert('select a sponsor');
+        });
+        $.ajax({
+            //url: $(this).attr('action'),
+            url: '{{route("referrals-checkposition")}}',
+            type: 'POST',
+            data: {sponsor: sponsor, position: position},
+            //dataType: 'json',
+            success: function (data) {
+                $('#placement_id').val(data);
+                //location.reload();
+            },
+            error: function (data) {
+                console.log(data);
             }
-            //var position=  $('#position').val();
-            $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
-            $.ajax({
-                //url: $(this).attr('action'),
-                url: '{{route("referrals-checkposition")}}',
-                type: 'POST',
-                data: {sponsor: sponsor, position: position},
-                //dataType: 'json',
-                success: function (data) {
-                    $('#placement_id').val(data);
-                    //location.reload();
-                },
-                error: function (data) {
-                    console.log(data);
-                }
-            });
-
         });
 
-        $('#registeruser').on('submit', function (e) {
-            e.preventDefault();
-            //disable the submit button
-            $("#btnSubmit").attr("disabled", true);
-            $('form').find('small').remove();
-            $('form').find('input').removeClass('is-invalid');
-            var registerForm = $("#registeruser");
-            var formData = registerForm.serialize();
+    });
 
-            $.ajaxSetup({
-                header: $('meta[name="_token"]').attr('content')
-            })
-            $.ajax({
-                url: $(this).attr('action'),
-                // url: '{{route("referrals-useradd")}}',
-                type: 'POST',
-                data: formData,
-                //dataType: 'json',
-                success: function (data) {
-                    //console.log(data);
-                     location.reload();
-                },
-                error: function (error_response,e) {
-                    $('#btnSubmit').attr("disabled", false);
-                    if (error_response.responseJSON.message === "Insufficient Balance"){
-                        alert("Insufficient Balance");
-                    }
-                    $.each(error_response.responseJSON.errors, function(key,value) {
-                        $('#' + key ).after('<small class="text-danger">' + value + '</small>').closest('input').removeClass('is-invalid').addClass('is-invalid');
+    $('#registeruser').on('submit', function (e) {
+        e.preventDefault();
+        //disable the submit button
+        $("#btnSubmit").attr("disabled", true);
+        $('form').find('small').remove();
+        $('form').find('input').removeClass('is-invalid');
+        var registerForm = $("#registeruser");
+        var formData = registerForm.serialize();
 
-                    });
+        $.ajaxSetup({
+            header: $('meta[name="_token"]').attr('content')
+        })
+        $.ajax({
+            url: $(this).attr('action'),
+            // url: '{{route("referrals-useradd")}}',
+            type: 'POST',
+            data: formData,
+            //dataType: 'json',
+            success: function (data) {
+                //console.log(data);
+                 location.reload();
+            },
+            error: function (error_response,e) {
+                $('#btnSubmit').attr("disabled", false);
+                if (error_response.responseJSON.message === "Insufficient Balance"){
+                    alert("Insufficient Balance");
                 }
-            });
+                $.each(error_response.responseJSON.errors, function(key,value) {
+                    $('#' + key ).after('<small class="text-danger">' + value + '</small>').closest('input').removeClass('is-invalid').addClass('is-invalid');
+
+                });
+            }
         });
-    </script>
+    });
+</script>
 
     <script>
   $("body").on("keyup","#search",function(){

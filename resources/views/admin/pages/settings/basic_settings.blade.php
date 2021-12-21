@@ -39,7 +39,7 @@
 
 
                                ?>
-                               <?php if ($data<2): ?>
+                               <?php if ($data<3): ?>
                                  <a href="#" class="btn btn-primary float-right" data-toggle="modal" data-target="#BSettingsAddModal">Add</a>
 
                                <?php endif; ?>
