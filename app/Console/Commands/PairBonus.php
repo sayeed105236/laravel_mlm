@@ -55,10 +55,27 @@ class PairBonus extends Command
         foreach ($users as $key => $element) {
             $results[$element['sponsor_name']][] = $element;
         }
+        //settings
+        $g_set = GeneralSettings::first();
         foreach ($results as $key => $result) {
-           dd($result);
-        }
+           if(count($result) == 2){
+               //$result[0]->price;
+               dd($result);
+               $min_price= min($result[0]['price'],$result[1]['price']);
 
+               $bonus_amount = new CashWallet();
+               $bonus_amount->user_id = $result[0]['sponsor'];
+               $bonus_amount->bonus_amount = $result[0]['no_of_pair'] *$constant* $g_set->pair_amount*$g_set->pair_percentage/100;
+               $bonus_amount->method = 'Pair Bonus';
+               $bonus_amount->note = 'Bonus';
+
+               $bonus_amount->save();
+
+               User::where('sponsor', $result[0]['sponsor'])
+                   ->update(['status' => 1]);
+           }
+        }
+        //end
 
         $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->groupBy('user_id')->get()->toArray();
 
