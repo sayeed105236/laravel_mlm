@@ -44,7 +44,7 @@ class PairBonus extends Command
     public function handle()
     {
         //return Command::SUCCESS;
-        $users=User::selectRaw('max(u.user_name) sponsor_name,max(users.sponsor) sponsor,max(users.position) position,count(users.sponsor),max(users.user_name) user_name,max(package_name) package_name,sum(price) price')
+        $users=User::selectRaw('max(no_of_pairs) no_of_pairs,max(u.user_name) sponsor_name,max(users.sponsor) sponsor,max(users.position) position,count(users.sponsor),max(users.user_name) user_name,max(package_name) package_name,sum(price) price')
             ->join('users as u', 'users.sponsor', '=', 'u.id')
             ->join('packages', 'users.package_id', '=', 'packages.id')
             ->groupBy('users.sponsor','users.position')
@@ -55,34 +55,32 @@ class PairBonus extends Command
         foreach ($users as $key => $element) {
             $results[$element['sponsor_name']][] = $element;
         }
+
         //settings
         $g_set = GeneralSettings::first();
         foreach ($results as $key => $result) {
-           if(count($result) == 2){
-               //$result[0]->price;
-               dd($result);
-               $min_price= min($result[0]['price'],$result[1]['price']);
+            if (count($result) == 2) {
+                //$result[0]->price;
+                dd($result);
+                $min_price = min($result[0]['price'], $result[1]['price']);
 
-               $bonus_amount = new CashWallet();
-               $bonus_amount->user_id = $result[0]['sponsor'];
-               $bonus_amount->bonus_amount = $result[0]['no_of_pair'] *$constant* $g_set->pair_amount*$g_set->pair_percentage/100;
-               $bonus_amount->method = 'Pair Bonus';
-               $bonus_amount->note = 'Bonus';
+                $bonus_amount = new CashWallet();
+                $bonus_amount->user_id = $result[0]['sponsor'];
+                $bonus_amount->bonus_amount = $result[0]['no_of_pair'] * $constant * $g_set->pair_amount * $g_set->pair_percentage / 100;
+                $bonus_amount->method = 'Pair Bonus';
+                $bonus_amount->note = 'Bonus';
 
-               $bonus_amount->save();
+                $bonus_amount->save();
 
-               User::where('sponsor', $result[0]['sponsor'])
-                   ->update(['status' => 1]);
-           }
+                User::where('sponsor', $result[0]['sponsor'])
+                    ->update(['status' => 1]);
+            }
         }
         //end
-
+/*
         $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->groupBy('user_id')->get()->toArray();
 
-       // $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->where('date',Carbon::today())->groupBy('user_id')->get()->toArray();
-        //  dd($users);
         $g_set = GeneralSettings::first();
-      //  dd($g_set['pair_amount']);
 
         foreach ($users as $user){
             $left_side_balance=$right_side_balance=null;
@@ -102,10 +100,8 @@ class PairBonus extends Command
                     $right_side_balance= $user_package_info_r->packages->price;
                 }
             }
-              //dd($left_side_balance,$right_side_balance);
               $constant= (($left_side_balance+$right_side_balance)/2)/($g_set['pair_amount']);
               $outstanding_balance= (($left_side_balance+$right_side_balance)/2)%($g_set['pair_amount']);
-              //dd($outstanding_balance);
 
 
             $bonus_amount = new CashWallet();
@@ -113,12 +109,12 @@ class PairBonus extends Command
             $bonus_amount->bonus_amount = $user['no_of_pair'] *$constant* $g_set->pair_amount*$g_set->pair_percentage/100;
             $bonus_amount->method = 'Pair Bonus';
             $bonus_amount->note = 'Bonus';
-
             $bonus_amount->save();
 
             PairCount::where('user_id', $user['user_id'])->where('status',0)
                 ->update(['status' => 1]);
         }
+*/
           $this->info('Successfully added Pair bonus.');
     }
 
