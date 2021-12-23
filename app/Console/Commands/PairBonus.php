@@ -49,6 +49,7 @@ class PairBonus extends Command
             ->join('packages', 'users.package_id', '=', 'packages.id')
             ->groupBy('users.sponsor','users.position')
             ->where('users.position','!=',null)
+            ->where('users.status',0)
             ->get()->toArray();
 
         $results = array();
@@ -61,12 +62,19 @@ class PairBonus extends Command
         foreach ($results as $key => $result) {
             if (count($result) == 2) {
                 //$result[0]->price;
-                dd($result);
+                //dd($g_set,$result);
                 $min_price = min($result[0]['price'], $result[1]['price']);
-
+                $check_pair_availability = $min_price/$g_set->pair_amount;
+                if ($check_pair_availability <= $g_set->pair_amount){
+                   $amount= $check_pair_availability;
+                }else{
+                    $amount = $g_set->pair_amount;
+                }
+                //dd($amount,$check_pair_availability,$g_set->pair_amount);
                 $bonus_amount = new CashWallet();
                 $bonus_amount->user_id = $result[0]['sponsor'];
-                $bonus_amount->bonus_amount = $result[0]['no_of_pair'] * $constant * $g_set->pair_amount * $g_set->pair_percentage / 100;
+                //$bonus_amount->bonus_amount = $result[0]['no_of_pair'] * $constant * $g_set->pair_amount * $g_set->pair_percentage / 100;
+                $bonus_amount->bonus_amount = $amount * 1.5;
                 $bonus_amount->method = 'Pair Bonus';
                 $bonus_amount->note = 'Bonus';
 

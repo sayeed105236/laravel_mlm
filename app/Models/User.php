@@ -47,6 +47,7 @@ class User extends Authenticatable
         'right_count',
         'left_side',
         'right_side',
+        'status',
     ];
 
     /**
