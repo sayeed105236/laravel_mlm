@@ -43,7 +43,7 @@
 
                                           <th>User Name</th>
                                           <th>Amount</th>
-                                          <th>Gross/Total</th>
+
 
 
 
@@ -65,7 +65,7 @@
                                               <span class="font-weight-bold"></span>
                                           </td>
                                           <td></td>
-                                          <td></td>
+                                        
 
 
 

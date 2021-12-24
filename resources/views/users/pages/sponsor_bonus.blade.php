@@ -44,7 +44,7 @@
                                           <th>User Name</th>
                                           <th>Package Name</th>
                                           <th>Amount</th>
-                                          <th>Gross/Total</th>
+
 
 
 
@@ -66,7 +66,7 @@
                                           <td>{{$row->user->packages->package_name}}</td>
                                           <td>{{$row->bonus_amount}}</td>
 
-                                          <td></td>
+                                          
 
 
 
