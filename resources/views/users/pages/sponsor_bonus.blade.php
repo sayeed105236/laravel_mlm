@@ -66,7 +66,7 @@
                                           <td>{{$row->user->packages->package_name}}</td>
                                           <td>{{$row->bonus_amount}}</td>
 
-                                          
+
 
 
 

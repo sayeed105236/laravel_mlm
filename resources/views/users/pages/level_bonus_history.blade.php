@@ -41,9 +41,9 @@
                                         <th>SL</th>
                                         <th>Date</th>
 
-                                          <th>User Name</th>
+
                                           <th>Amount</th>
-                                          <th>Gross/Total</th>
+
 
 
 
@@ -60,12 +60,9 @@
                                         <td>{{$loop->index+1}}</td>
                                           <td>{{$row->created_at}}</td>
 
-                                          <td>
-
-                                              <span class="font-weight-bold">{{$row->user_name}}</span>
-                                          </td>
+                                          
                                           <td>{{$row->bonus_amount}}</td>
-                                          <td></td>
+
 
 
 
