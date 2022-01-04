@@ -49,8 +49,11 @@ class CreateNewUser implements CreatesNewUsers
 
             ]);
 
+
           // return $data->notify(new UserCredential($email_data));
         });
 
     }
+  
+
 }
