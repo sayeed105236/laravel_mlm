@@ -23,4 +23,8 @@ class CashWallet extends Model
     {
         return $this->belongsTo(User::class,'received_from');
     }
+    public function packages()
+    {
+        return $this->belongsTo(Package::class,'package_id')->where('status','Active');
+    }
 }

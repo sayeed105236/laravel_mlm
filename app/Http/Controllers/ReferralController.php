@@ -127,6 +127,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
     public function userAdd(Request $request)
     {
+      //dd($request);
          $request->validate([
              'name' => 'required|min:4',
              'user_name' => 'required|unique:users',
@@ -215,7 +216,9 @@ class ReferralController extends Controller implements CreatesNewUsers
 
                 $bonus_amount = new CashWallet();
                 $bonus_amount->user_id = $request['sponsor'];
-                
+                $bonus_amount->received_from = $request['user_name'];
+                $bonus_amount->package_id =   $request['package_id'];
+
                 $bonus_amount->bonus_amount = (($sponsor_amount->price)* $referral_bonus->referral_percentage)/100;
                 $bonus_amount->method = 'Sponsor Bonus';
                 $bonus_amount->note = 'Bonus';

@@ -42,6 +42,7 @@
                                         <th>Date</th>
 
                                           <th>User Name</th>
+                                            <th>Affilate User Name</th>
                                           <th>Package Name</th>
                                           <th>Amount</th>
 
@@ -63,7 +64,17 @@
 
                                               <span class="font-weight-bold">{{$row->user->user_name}}</span>
                                           </td>
-                                          <td>{{$row->user->packages->package_name}}</td>
+                                          <td>
+                                            {{$row->received_from}}
+
+                                          </td>
+                                          <td>
+                                            @if($row->package_id > 0)
+                                              {{$row->packages->package_name}}</td>
+                                              @else NO DATA
+                                              @endif
+
+
                                           <td>{{$row->bonus_amount}}</td>
 
 
