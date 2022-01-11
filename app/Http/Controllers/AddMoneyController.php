@@ -73,6 +73,7 @@ class AddMoneyController extends Controller
       //  $deposit->receiver_id=$request->user_id;
 
         $deposit->amount =$request->amount;
+        $deposit->received_from= Auth::id();
         $deposit->method ='Transfer';
         $deposit->type ='Credit';
         $deposit->status ='approve';
@@ -111,6 +112,7 @@ class AddMoneyController extends Controller
         $deposit_cash_wallet = new CashWallet;
         $deposit_cash_wallet->user_id = $request->user_id;
         $deposit_cash_wallet->bonus_amount =$request->bonus_amount;
+        $deposit_cash_wallet->received_from= Auth::id();
         $deposit_cash_wallet->method ='Transfer';
         $deposit_cash_wallet->type ='Credit';
         $deposit_cash_wallet->status ='approve';

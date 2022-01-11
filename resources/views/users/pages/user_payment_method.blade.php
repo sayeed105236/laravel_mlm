@@ -22,6 +22,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="content-body">
                 @if(session()->has('success'))
                     <div class="demo-spacing-0">

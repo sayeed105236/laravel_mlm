@@ -19,6 +19,7 @@
                         <?php
                         $payment_method= App\Models\PaymentMethod::all();
                          ?>
+                         
                         <div class="form-group">
                             <label for="basicSelect">Select Payment Method</label>
                             <select class="form-control" id="basicSelect" name="payment_method_id">

@@ -31,21 +31,36 @@
                             <table class="table table-hover">
                                 <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>SL</th>
                                     <th>Date</th>
                                     <th>User Name</th>
+                                    <th>Send To</th>
+                                    <th>Received From</th>
 
                                     <th>Amount</th>
                                     <th>Type</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+
                                 @foreach($cashwallettransferData as $key=>$transfer)
 
                                     <tr>
-                                        <td>{{$key}}</td>
+                                        <td>{{$loop->index+1}}</td>
                                           <td>{{$transfer->created_at}}</td>
                                         <td>{{$transfer->user->user_name}}</td>
+                                        <td>
+                                          @if($transfer->receiver_id> 0)
+                                          {{($transfer->receiver->user_name)}}
+                                          @else NO DATA
+                                          @endif
+                                        </td>
+                                        <td>
+                                            @if($transfer->received_from> 0 )
+                                          {{($transfer->sender->user_name)}}
+                                            @else NO DATA
+                                            @endif
+                                        </td>
 
                                         <td>{{$transfer->bonus_amount ?? ''}}</td>
 

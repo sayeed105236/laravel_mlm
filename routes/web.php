@@ -48,6 +48,7 @@ Route::get('/home/registration/{id}', [UserDashboardController::class,'registrat
 //user refferals routes
 Route::get('/home/referrals/{id}', [ReferralController::class,'index'])->name('referrals')->middleware('auth');
 Route::post('/home/referrals-user', [ReferralController::class,'userAdd'])->name('referrals-useradd')->middleware('auth');
+Route::post('/home/get-sponsor', [ReferralController::class,'getSponsor'])->name('get-sponsor');
 Route::post('/home/check-position', [ReferralController::class,'checkPosition'])->name('referrals-checkposition');
 Route::get('/home/my-team/{id}', [ReferralController::class,'MyTeam'])->name('my-team')->middleware('auth');
 //Route::get('/home/my-team/{id}/', [ReferralController::class,'MyTeam'])->name('my-team')->middleware('auth');

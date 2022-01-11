@@ -28,6 +28,7 @@
                                 <select id="DestinationOptions2" class="select2Me form-control form-control-lg" name="payment_method_id" required>
                                     <option label="select a user"></option>
 
+
                                     @foreach ( $payment as $row)
                                         <option id="{{$row->payment->wallet_id}}" value="{{$row->id}}">{{$row->payment->name}}</option>
                                     @endforeach

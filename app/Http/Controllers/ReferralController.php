@@ -65,6 +65,17 @@ class ReferralController extends Controller implements CreatesNewUsers
         //$allChildren = User::pluck('name','id')->all();
         return view('users.pages.my-team',compact(['user']));
     }
+    public function getSponsor(Request $request)
+    {
+
+        $userName = User::where('user_name','like',$request->search)->select('id','user_name')->first();
+        if ($userName){
+            return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName],200);
+        }else{
+            return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
+        }
+
+    }
 
     public function checkPosition(Request $request){
         $userName = User::where('id',$request['sponsor'])->pluck('user_name')->first();
@@ -204,6 +215,7 @@ class ReferralController extends Controller implements CreatesNewUsers
 
                 $bonus_amount = new CashWallet();
                 $bonus_amount->user_id = $request['sponsor'];
+                
                 $bonus_amount->bonus_amount = (($sponsor_amount->price)* $referral_bonus->referral_percentage)/100;
                 $bonus_amount->method = 'Sponsor Bonus';
                 $bonus_amount->note = 'Bonus';
