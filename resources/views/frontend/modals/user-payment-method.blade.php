@@ -16,14 +16,15 @@
 
                       <form id="jquery-val-form" action="{{route('user-payment-method-store')}}" method="post">
                         @csrf
+                          <input type="hidden" name="user_id" value="{{Auth::id()}}">
                         <?php
                         $payment_method= App\Models\PaymentMethod::all();
                          ?>
-                         
+
                         <div class="form-group">
                             <label for="basicSelect">Select Payment Method</label>
                             <select class="form-control" id="basicSelect" name="payment_method_id">
-                                <option label="Choose Package"></option>
+                                <option label="Choose Payment Method"></option>
                                 @foreach ($payment_method as $row)
 
                                     <option value="{{$row->id}}">{{$row->name}}</option>

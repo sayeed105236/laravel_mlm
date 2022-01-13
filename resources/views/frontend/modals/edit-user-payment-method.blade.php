@@ -16,17 +16,19 @@
 
                       <form action="{{route('user-payment-method-update')}}" method="post">
                         @csrf
+
                         <input type="hidden" name="id" value="{{$row->id}}">
+                          <input type="hidden" name="user_id" value="{{Auth::id()}}">
                         <?php
                         $payment_method= App\Models\PaymentMethod::all();
                          ?>
                         <div class="form-group">
                             <label for="basicSelect">Select Payment Method</label>
                             <select class="form-control" id="basicSelect" name="payment_method_id">
-                                <option label="Choose Package"></option>
-                                @foreach ($payment_method as $row)
+                                <option label="Choose Payment Method"></option>
+                                @foreach ($payment_method as $payment)
 
-                                    <option value="{{$row->id}}">{{$row->name}}</option>
+                                    <option value="{{$payment->id}}">{{$payment->name}}</option>
                                 @endforeach
                             </select>
                         </div>

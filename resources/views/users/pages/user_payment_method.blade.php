@@ -64,6 +64,7 @@
                                     <th>Action</th>
 
 
+
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -71,7 +72,9 @@
                                   @foreach($payment as $row)
                                     <tr>
                                       <td>{{$loop->index+1}}</td>
+                                      
                                         <td>
+
 
                                             <span class="font-weight-bold">{{$row->payment->name}}</span>
                                         </td>

@@ -28,7 +28,10 @@ use App\Http\Controllers\UserPaymentMethodController;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
-Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('auth');
+Route::get('/', function () {
+    return view('auth.login');
+});
+//Route::get('/', [FrontendController::class,'index'])->name('home')->middleware('auth');
 Route::get('/tree', [FrontendController::class,'tree']);
 Route::get('/home/profile-settings/{id}', [FrontendController::class,'flipcard']);
 Route::get('/home/registration-history/{id}', [UserDashboardController::class,'Manage'])->name('registration-history')->middleware('auth');

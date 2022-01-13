@@ -59,8 +59,10 @@
                                           <th>User Name</th>
                                           <th>Requested Amount</th>
                                           <th>Payment Method</th>
+                                          <th>User Account Name</th>
                                           <th>Wallet Id</th>
                                           <th>Status</th>
+
 
                                           <th>Actions</th>
                                       </tr>
@@ -74,10 +76,14 @@
 
                                               <span class="font-weight-bold">{{$row->user->name}}</span>
                                            </td>
-                                          <td>{{$row->amount}}$</td>
-                                          <td>{{$row->payment_method->payment->name}}</td>
-                                          <td>{{$row->payment_method->payment->wallet_id}}</td>
-                                          <td>{{$row->amount}}</td>
+                                           <td>
+
+                                               <span class="font-weight-bold">{{$row->user->name}}</span>
+                                            </td>
+                                           <td>{{$row->amount}}$</td>
+                                           <td>{{$row->payment_method->payment->name}}</td>
+                                           <td>{{$row->payment_method->acc_name}}</td>
+                                           <td>{{$row->payment_method->wallet_id}}</td>
                                           <td>
                                             <span class="badge badge-pill badge-success">{{ $row->status }}</span>
                                             @if($row->status=='pending')
