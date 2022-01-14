@@ -76,10 +76,7 @@
 
                                               <span class="font-weight-bold">{{$row->user->name}}</span>
                                            </td>
-                                           <td>
-
-                                               <span class="font-weight-bold">{{$row->user->name}}</span>
-                                            </td>
+                                           
                                            <td>{{$row->amount}}$</td>
                                            <td>{{$row->payment_method->payment->name}}</td>
                                            <td>{{$row->payment_method->acc_name}}</td>
