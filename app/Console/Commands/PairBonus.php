@@ -4,7 +4,7 @@ namespace App\Console\Commands;
 
 use App\Models\CashWallet;
 use App\Models\GeneralSettings;
-use App\Models\PairCount;
+use App\Models\PairLog;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
@@ -41,89 +41,81 @@ class PairBonus extends Command
      *
      * @return int
      */
-    public function handle()
-    {
-        //return Command::SUCCESS;
-        $users=User::selectRaw('max(no_of_pairs) no_of_pairs,max(u.user_name) sponsor_name,max(users.sponsor) sponsor,max(users.position) position,count(users.sponsor),max(users.user_name) user_name,max(package_name) package_name,sum(price) price')
-            ->join('users as u', 'users.sponsor', '=', 'u.id')
-            ->join('packages', 'users.package_id', '=', 'packages.id')
-            ->groupBy('users.sponsor','users.position')
-            ->where('users.position','!=',null)
-            ->where('users.status',0)
-            ->get()->toArray();
+     public function handle()
+     {
 
-        $results = array();
-        foreach ($users as $key => $element) {
-            $results[$element['sponsor_name']][] = $element;
-        }
-
-        //settings
-        $g_set = GeneralSettings::first();
-        foreach ($results as $key => $result) {
-            if (count($result) == 2) {
-                //$result[0]->price;
-                //dd($g_set,$result);
-                $min_price = min($result[0]['price'], $result[1]['price']);
-                $check_pair_availability = $min_price/$g_set->pair_amount;
-                if ($check_pair_availability <= $g_set->pair_amount){
-                   $amount= $check_pair_availability;
-                }else{
-                    $amount = $g_set->pair_amount;
-                }
-                //dd($amount,$check_pair_availability,$g_set->pair_amount);
-                $bonus_amount = new CashWallet();
-                $bonus_amount->user_id = $result[0]['sponsor'];
-                //$bonus_amount->bonus_amount = $result[0]['no_of_pair'] * $constant * $g_set->pair_amount * $g_set->pair_percentage / 100;
-                $bonus_amount->bonus_amount = $amount * 1.5;
-                $bonus_amount->method = 'Pair Bonus';
-                $bonus_amount->note = 'Bonus';
-
-                $bonus_amount->save();
-
-                User::where('sponsor', $result[0]['sponsor'])
-                    ->update(['status' => 1]);
-            }
-        }
-        //end
-/*
-        $users = PairCount::selectRaw('user_id,sum(no_of_pair) no_of_pair')->where('status',0)->groupBy('user_id')->get()->toArray();
-
-        $g_set = GeneralSettings::first();
-
-        foreach ($users as $user){
-            $left_side_balance=$right_side_balance=null;
-            $user_info = User::findOrFail($user['user_id']);
-            $left_side = $user_info->left_side;
-            $right_side = $user_info->right_side;
-            if ($left_side){
-                $user_package_info_l = User::where('user_name', $left_side)->with('packages')->first();
-                if ($user_package_info_l){
-                   $left_side_balance= $user_package_info_l->packages->price;
-                }
-            }
-
-            if ($right_side){
-                $user_package_info_r = User::where('user_name', $right_side)->with('packages')->first();
-                if ($user_package_info_r){
-                    $right_side_balance= $user_package_info_r->packages->price;
-                }
-            }
-              $constant= (($left_side_balance+$right_side_balance)/2)/($g_set['pair_amount']);
-              $outstanding_balance= (($left_side_balance+$right_side_balance)/2)%($g_set['pair_amount']);
+         //return Command::SUCCESS;
+         $results= User::all();
+           $g_set = GeneralSettings::first();
 
 
-            $bonus_amount = new CashWallet();
-            $bonus_amount->user_id = $user['user_id'];
-            $bonus_amount->bonus_amount = $user['no_of_pair'] *$constant* $g_set->pair_amount*$g_set->pair_percentage/100;
-            $bonus_amount->method = 'Pair Bonus';
-            $bonus_amount->note = 'Bonus';
-            $bonus_amount->save();
 
-            PairCount::where('user_id', $user['user_id'])->where('status',0)
-                ->update(['status' => 1]);
-        }
-*/
-          $this->info('Successfully added Pair bonus.');
-    }
+ //dd($results);
+         foreach ($results as $key => $result) {
+           $left_count= $result->left_active;
+           $right_count= $result->right_active;
+
+             if ($left_count != 0 && $right_count !=0 ) {
+                 //dd($left_count,$right_count);
+
+
+                 $min_pair = min($left_count,$right_count );
+                 $check_pair_availability = $min_pair/$g_set->pair_amount;
+                 //dd($check_pair_availability );
+                 if ($check_pair_availability <= $g_set->pair_amount){
+                    $amount= $check_pair_availability;
+                 }else{
+                     $amount = $g_set->pair_amount;
+                 }
+
+                 //dd($min_pair);
+
+
+                   //
+                   // $bonus_amount = new AddMoney();
+                   // $bonus_amount->user_id = $result->id;
+                   // $bonus_amount->amount = $pair_bonus;
+                   // $bonus_amount->type = 'Credit';
+                   // $bonus_amount->method = 'Pair Bonus';
+                   // $bonus_amount->status = 'approve';
+                   // $bonus_amount->save();
+
+                   $bonus_amount = new CashWallet();
+                   $bonus_amount->user_id = $result->id;
+                   //$bonus_amount->bonus_amount = $result[0]['no_of_pair'] * $constant * $g_set->pair_amount * $g_set->pair_percentage / 100;
+                   $bonus_amount->bonus_amount = $amount * 1.5;
+                   $bonus_amount->method = 'Pair Bonus';
+                   $bonus_amount->note = 'Bonus';
+
+                   $bonus_amount->save();
+
+
+                   //store pair log
+
+                   $pair_log = new PairLog();
+                   $pair_log->sponsor_id = $result->id;
+                   $pair_log->pair = $check_pair_availability;
+                   $pair_log->status = 1;
+
+
+                   $pair_log->save();
+
+                   $update = User::find($result->id);
+                   if ($left_count<$right_count ) {
+                       $update->left_active= '0';
+                       $update->right_active= $right_count-$left_count;
+                       $update->save();
+                   }elseif ($left_count>=$right_count) {
+                     $update->left_active= $left_count-$right_count;
+                     $update->right_active= '0';
+                     $update->save();
+                   }
+
+
+
+             }
+         }
+         $this->info('Successfully added Pair bonus.');
+     }
 
 }

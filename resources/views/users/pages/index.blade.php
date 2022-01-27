@@ -213,8 +213,18 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
+                                      <?php
+                                        $carry=App\Models\User::where('id',Auth::id())->first();
+                                        if ($carry->left_active > $carry->right_active) {
+                                          $total_carry = $carry->left_active - $carry->right_active;
+                                        } elseif ($carry->left_active < $carry->right_active) {
+                                          $total_carry = $carry->right_active - $carry->left_active;
+                                        }else {
+                                          $total_carry = '0';
+                                        }
+                                       ?>
                                       <h4 class="card-title text-white">Carry Forward</h4>
-                                      <h2 class="card-text"><strong>$00.00</strong></h2>
+                                      <h2 class="card-text"><strong>${{$total_carry}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
@@ -224,23 +234,23 @@
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
-                                      <h4 class="card-title text-white">Left Count</h4>
+                                      <h4 class="card-title text-white">Left Total</h4>
                                       <?php
 
-                                      $left_count=App\Models\User::where('id',Auth::id())->first();
-                                      $right_count=App\Models\User::where('id',Auth::id())->first();
-                                      //dd($left_count->left_count);
+                                      $left_total=App\Models\User::where('id',Auth::id())->first();
+                                      $right_total=App\Models\User::where('id',Auth::id())->first();
+                                      //dd($left_total->left_total);
                                        ?>
-                                      <h2 class="card-text"><strong>{{$left_count->left_count}}</strong></h2>
+                                      <h2 class="card-text"><strong>{{$left_total->left_total}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 col-xl-3">
                                 <div class="card bg-secondary text-white">
                                     <div class="card-body">
-                                      <h4 class="card-title text-white">Right Count</h4>
+                                      <h4 class="card-title text-white">Right Total</h4>
 
-                                      <h2 class="card-text"><strong>{{$right_count->right_count}}</strong></h2>
+                                      <h2 class="card-text"><strong>{{$right_total->right_total}}</strong></h2>
                                     </div>
                                 </div>
                             </div>
@@ -278,6 +288,7 @@ document.getElementById('DestinationOptions').addEventListener('change', functio
 
 
 </script>
+
 <script type="text/javascript">
 
   //alert('success');
@@ -293,9 +304,49 @@ document.getElementById('DestinationOptions2').addEventListener('change', functi
     //wallet.innerHTML= wallet2;
 });
 
-//  document.getElementById('').value(id.value);
 
 
 
 </script>
+@push('scripts')
+<script type="text/javascript">
+$("body").on("keyup", "#sponsor", function () {
+  //alert('success');
+    let searchData = $("#sponsor").val();
+    if (searchData.length > 0) {
+        $.ajax({
+            type: 'POST',
+            url: '{{route("get-sponsor")}}',
+            data: {search: searchData},
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            success: function (result) {
+                $('#suggestUser').html(result.success)
+                console.log(result.data)
+                if (result.data) {
+                    $("#position").val("");
+                    $("#placement_id").val("");
+                    $("#position").removeAttr('disabled');
+                } else {
+                    $("#position").val("");
+                    $("#placement_id").val("");
+                    $('#position').prop('disabled', true);
+                }
+            }
+        });
+    }
+    if (searchData.length < 1) $('#suggestUser').html("")
+})
+
+</script>
+
+
+
+
+@endpush
+
+
+
+
+
+
 @endsection

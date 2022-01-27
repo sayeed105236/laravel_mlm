@@ -26,6 +26,9 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Laravel\Fortify\Contracts\RegisterResponse;
 use Illuminate\Support\Facades\Storage;
 
+use Facade\FlareClient\Http\Response;
+
+
 class ReferralController extends Controller implements CreatesNewUsers
 {
     use PasswordValidationRules;
@@ -65,17 +68,7 @@ class ReferralController extends Controller implements CreatesNewUsers
         //$allChildren = User::pluck('name','id')->all();
         return view('users.pages.my-team',compact(['user']));
     }
-    public function getSponsor(Request $request)
-    {
 
-        $userName = User::where('user_name','like',$request->search)->select('id','user_name')->first();
-        if ($userName){
-            return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName],200);
-        }else{
-            return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
-        }
-
-    }
 
     public function checkPosition(Request $request){
         $userName = User::where('id',$request['sponsor'])->pluck('user_name')->first();
@@ -120,6 +113,21 @@ class ReferralController extends Controller implements CreatesNewUsers
            }
        }else{
            return $subcat->user_name;
+       }
+
+   }
+   public function getSponsor(Request $request)
+   {
+     //dd($request->all());
+       $userName = User::where('user_name','like',$request->search)->first();
+       //dd($userName);
+
+       if ($userName){
+         //dd($userName['user_name']);
+           return response()->json(['success'=>'<span style="color: green;">User found!!</span>','data'=>$userName['user_name']],200);
+       }else{
+        // dd('userName');
+           return response()->json(['success'=>'<span style="color: red;">User not found!!</span>'],200);
        }
 
    }
@@ -186,6 +194,7 @@ class ReferralController extends Controller implements CreatesNewUsers
                     'placement_id' =>$placement_id,
                     'position' => $position_id,
                     'package_id' => $request['package_id'],
+
                     'password' => Hash::make($password),
 
                 ]);
@@ -200,7 +209,8 @@ class ReferralController extends Controller implements CreatesNewUsers
                 //level distribution
               //  $this->levelBonus($placement_id);
                 //pair bonus
-                $this->binary_count($placement_id,$position_id);
+                //dd($sponsor_amount->price);
+                $this->binary_count($placement_id,$position_id, $sponsor_amount->price);
 
 
                 $activation= GeneralSettings::select('activation_charge')->first();
@@ -261,20 +271,27 @@ class ReferralController extends Controller implements CreatesNewUsers
 
   //  }
 
-    public function binary_count($placement_id,$pos)
+    public function binary_count($placement_id,$pos,$planAmount)
     {
-       if ($pos == 1){
-            $pos = 'left_count';
-       }else{
-           $pos = 'right_count';
-       }
+      if ($pos == 1){
+          $pos = 'left_count';
+          $pos_ac = 'left_active';
+          $totalamount= 'left_total';
+      }else{
+          $pos = 'right_count';
+          $pos_ac = 'right_active';
+          $totalamount= 'right_total';
+      }
 
         while($placement_id != '' && $pos != ''){
 
+            DB::statement("UPDATE users SET $totalamount = `$totalamount`+$planAmount WHERE user_name = '$placement_id'");
             DB::statement("UPDATE users SET $pos = `$pos`+1 WHERE user_name = '$placement_id'");
+            DB::statement("UPDATE users SET $pos_ac = `$pos_ac`+$planAmount WHERE user_name = '$placement_id'");
 
             $this->is_pair_generate($placement_id);
             $pos= $this->find_position_id($placement_id);
+            $pos_ac= $this->find_active_position_id($placement_id);
             $placement_id= $this->find_placement_id($placement_id);
 
         }
@@ -297,6 +314,19 @@ class ReferralController extends Controller implements CreatesNewUsers
 
             $user_id = User::where('user_name',$placement_id)->first();
             return $user_id->placement_id;
+    }
+    public function find_active_position_id($placement_id){
+
+        $user_id = User::where('user_name',$placement_id)->first();
+        $pos_ac= $user_id->position;
+        if ($pos_ac == 1){
+            $pos_ac = 'left_active';
+        }elseif($pos_ac == 2){
+            $pos_ac = 'right_active';
+        }
+
+        return $pos_ac;
+
     }
 
     public function is_pair_generate($placement_id)

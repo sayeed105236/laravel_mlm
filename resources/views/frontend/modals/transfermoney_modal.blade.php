@@ -18,16 +18,23 @@
                         <form id="jquery-val-form" action="{{route('money-transfer')}}" method="post">
                             @csrf
                             <div class="form-group">
-                                <label for="select-country">Transfer User</label>
 
-                                <select class="select2Me form-control form-control-lg" name="user_id" required>
+
+                                <!-- <select class="select2Me form-control form-control-lg" name="user_id" required>
                                     <option label="select a user"></option>
 
                                     @foreach ( $data['user'] as $row)
                                         <option value="{{$row->id}}">{{$row->user_name}}</option>
                                     @endforeach
 
-                                </select>
+                                </select> -->
+
+                                   <label class="form-label" for="basic-default-email">Transfer User</label>
+                                   <input type="text" id="sponsor" name="user_id" class="form-control"
+                                          placeholder="Enter User Name" required/>
+
+                                   <div id="suggestUser"></div>
+                               
 
                             </div>
                             <?php

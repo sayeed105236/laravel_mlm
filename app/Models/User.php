@@ -45,6 +45,10 @@ class User extends Authenticatable
         'password',
         'left_count',
         'right_count',
+        'left_active',
+        'right_active',
+        'left_total',
+        'right_total',
         'left_side',
         'right_side',
         'status',
@@ -93,6 +97,7 @@ class User extends Authenticatable
         return $this->hasMany(User::class,'placement_id','user_name');
     }
     public function childs()
+
     {
         return $this->hasMany(User::class,'parent_id');
     }
