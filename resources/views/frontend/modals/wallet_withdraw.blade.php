@@ -19,9 +19,10 @@
                             @csrf
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                             <?php
-                            $payment= App\Models\UserPayment::all();
+                            $payment= App\Models\UserPayment::where('user_id',Auth::id())->where('status','Active')->get();
 
                              ?>
+
                             <div class="form-group">
                                 <label for="select-country">Select Payment Method</label>
 
