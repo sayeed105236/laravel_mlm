@@ -354,7 +354,7 @@
 
 
 
-                                      <div class="form-group">
+                                      <!-- <div class="form-group">
                                           <label for="basicSelect">Select Sponsor</label>
                                           <select class="select2Me form-control form-control-lg" name="sponsor" id="sponsor">
                                               <option label="Choose Sponsor"></option>
@@ -363,14 +363,21 @@
                                                   <option value="{{ $user->id }}">{{ ucwords($user->user_name) }}</option>
                                               @endforeach
                                           </select>
-                                      </div>
-                                      <!--<form id="sform" action="/search" >
+                                      </div> -->
+                                      <!-- <form id="sform" action="/search" >
                                       <div class="form-group">
                                         <label for="basicSelect" class="form-label">Select Sponsor</label>
                                         <input type="text" name="sponsor" name="query" id="search" id="sponsor" class="form-control"/>
                                       </div>
-                                    </form>-->
-                                    <div id="suggestUser"></div>
+                                    </form>
+                                    <div id="suggestUser"></div> -->
+                                    <div class="form-group">
+                                        <label class="form-label" for="basic-default-email">Sponsor</label>
+                                        <input type="text" id="sponsor" name="sponsor" class="form-control"
+                                               placeholder="Enter User Name" required/>
+
+                                        <div id="suggestUser"></div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="basicSelect">Select Position</label>
                                         <select class="select2Me form-control" name="position" id="position">
@@ -437,8 +444,79 @@
 
 @endsection
 @push('scripts')
-
 <script type="text/javascript">
+    $(document).ready(function () {
+        //select2Me('');
+    });
+    $("#successMessage").delay(10000).slideUp(300);
+    $('#sponsor').on('change', function (e) {
+        $('#placement_id').val('');
+        $("#position").select2("val", "");
+    });
+
+    $('#position').on('change', function (e) {
+        var position = $(this).val();
+        if (position == '') {
+            return false;
+        }
+        var sponsor = $('#sponsor').val();
+        if (sponsor == '') {
+            $(this).val('');
+            return alert('select a sponsor');
+        }
+        //var position=  $('#position').val();
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.ajax({
+            //url: $(this).attr('action'),
+            url: '{{route("referrals-checkposition")}}',
+            type: 'POST',
+            data: {sponsor: sponsor, position: position},
+            //dataType: 'json',
+            success: function (data) {
+                $('#placement_id').val(data);
+                //location.reload();
+            },
+            error: function (data) {
+                console.log(data);
+            }
+        });
+
+    });
+
+    $("body").on("keyup", "#sponsor", function () {
+        let searchData = $("#sponsor").val();
+        if (searchData.length > 0) {
+            $.ajax({
+                type: 'POST',
+                url: '{{route("get-sponsor")}}',
+                data: {search: searchData},
+                headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+                success: function (result) {
+                    $('#suggestUser').html(result.success)
+                    console.log(result.data)
+                    if (result.data) {
+                        $("#position").val("");
+                        $("#placement_id").val("");
+                        $("#position").removeAttr('disabled');
+                    } else {
+                        $("#position").val("");
+                        $("#placement_id").val("");
+                        $('#position').prop('disabled', true);
+                    }
+                }
+            });
+        }
+        if (searchData.length < 1) $('#suggestUser').html("")
+    })
+
+
+</script>
+
+<!-- <script type="text/javascript">
     $(document).ready(function () {
         selectToMe('');
     });
@@ -533,5 +611,5 @@
     }
     if(searchData.length<1) $('#suggestUser').html("")
   })
-</script>
+</script> -->
 @endpush

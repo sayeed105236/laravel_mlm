@@ -35,7 +35,7 @@
                           </div>
                           </div>
                           <div class="table-responsive">
-                              <table class="table table-hover">
+                              <table id="example" class="table table-hover">
                                   <thead>
                                       <tr>
                                         <th>SL</th>
@@ -60,7 +60,7 @@
                                         <td>{{$loop->index+1}}</td>
                                           <td>{{$row->created_at}}</td>
 
-                                          
+
                                           <td>{{$row->bonus_amount}}</td>
 
 

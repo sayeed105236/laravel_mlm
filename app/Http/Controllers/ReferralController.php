@@ -71,7 +71,9 @@ class ReferralController extends Controller implements CreatesNewUsers
 
 
     public function checkPosition(Request $request){
-        $userName = User::where('id',$request['sponsor'])->pluck('user_name')->first();
+      //dd($request->all());
+        $userName = User::where('user_name',$request['sponsor'])->pluck('user_name')->first();
+
 
         $check_position = User::where('placement_id',$userName)->where('position',$request['position'])->orderBy('id','desc')->first();
 
@@ -118,7 +120,7 @@ class ReferralController extends Controller implements CreatesNewUsers
    }
    public function getSponsor(Request $request)
    {
-     //dd($request->all());
+  // dd($request->all());
        $userName = User::where('user_name','like',$request->search)->first();
        //dd($userName);
 

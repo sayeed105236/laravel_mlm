@@ -52,7 +52,7 @@
 
                           </div>
                           <div class="table-responsive">
-                              <table class="table table-hover">
+                              <table id="example" class="table table-hover">
                                   <thead>
                                       <tr>
                                         <th>#</th>
@@ -76,7 +76,7 @@
 
                                               <span class="font-weight-bold">{{$row->user->name}}</span>
                                            </td>
-                                           
+
                                            <td>{{$row->amount}}$</td>
                                            <td>{{$row->payment_method->payment->name}}</td>
                                            <td>{{$row->payment_method->acc_name}}</td>

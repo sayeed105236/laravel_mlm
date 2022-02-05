@@ -336,6 +336,24 @@ $("body").on("keyup", "#sponsor", function () {
     }
     if (searchData.length < 1) $('#suggestUser').html("")
 })
+$("body").on("keyup", "#sponsor2", function () {
+  //alert('success');
+    let searchData2 = $("#sponsor2").val();
+    if (searchData2.length > 0) {
+        $.ajax({
+            type: 'POST',
+            url: '{{route("get-sponsor")}}',
+            data: {search: searchData2},
+            headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')},
+            success: function (result) {
+                $('#suggestUser2').html(result.success)
+                console.log(result.data)
+
+            }
+        });
+    }
+    if (searchData2.length < 1) $('#suggestUser2').html("")
+})
 
 </script>
 

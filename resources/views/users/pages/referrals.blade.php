@@ -43,14 +43,14 @@
                             <div class="card-header">
                                 <h4 class="card-title">Referral User Lists</h4>
 
-                                
+
                                 @include('frontend.modals.add_user')
                             </div>
 
 
                         </div>
                         <div class="table-responsive">
-                            <table class="table table-hover">
+                            <table id="example" class="table table-hover">
                                 <thead>
                                 <tr>
                                     <th>SL</th>

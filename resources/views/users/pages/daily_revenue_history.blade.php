@@ -35,13 +35,13 @@
                           </div>
                           </div>
                           <div class="table-responsive">
-                              <table class="table table-hover">
+                              <table id="example" class="table table-hover">
                                   <thead>
                                       <tr>
                                         <th>SL</th>
                                         <th>Date</th>
 
-                                        
+
                                           <th>Amount</th>
 
 

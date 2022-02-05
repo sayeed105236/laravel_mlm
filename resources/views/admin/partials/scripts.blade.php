@@ -18,7 +18,13 @@
 
 
 <script src="{{ asset('backend') }}/lib/sweetalert/code.js"></script>
-
+<script src="{{ asset('backend') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('backend') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+</script>
 <script>
     $(window).on('load', function() {
         if (feather) {

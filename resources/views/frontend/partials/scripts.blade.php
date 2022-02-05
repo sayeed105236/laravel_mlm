@@ -33,9 +33,15 @@
 <!--<script src="{{asset('common')}}/lib/select2/js/select2.min.js"></script>
 <script src="{{ asset('common') }}/lib/search/code.js"></script>-->
 <!-- END: Page JS-->
+<script src="{{ asset('backend') }}/assets/plugins/datatable/js/jquery.dataTables.min.js"></script>
+<script src="{{ asset('backend') }}/assets/plugins/datatable/js/dataTables.bootstrap5.min.js"></script>
 <script src="{{asset('app-assets/js/custom.js')}}"></script>
 
-
+<script>
+  $(document).ready(function() {
+    $('#example').DataTable();
+    } );
+</script>
 <script>
     $(window).on('load', function() {
         if (feather) {

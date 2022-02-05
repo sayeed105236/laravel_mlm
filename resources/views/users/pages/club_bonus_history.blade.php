@@ -35,7 +35,7 @@
                           </div>
                           </div>
                           <div class="table-responsive">
-                              <table class="table table-hover">
+                              <table id="example" class="table table-hover">
                                   <thead>
                                       <tr>
                                         <th>SL</th>
@@ -65,7 +65,7 @@
                                               <span class="font-weight-bold"></span>
                                           </td>
                                           <td></td>
-                                        
+
 
 
 
